@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="/stylesheets/article.css">
+<link rel="stylesheet" href="/stylesheets/doc_only.css">
+
+{{# article}}
+<header>
+  <div class="fuzz"></div>
+
+  <h1>{{# md}}{{title}}{{/ md}}</h1>
+
+  <h3>{{{authors_list}}}</h3>
+
+  {{# collabs}}
+  <h4>{{relation}}: {{{link}}}</h4>
+  {{/ collabs}}
+</header>
+
+<main>
+  <div id="content">
+    Este artículo es viejito. Sólo lo tenemos en PDF.
+  </div>
+
+  {{# release}}
+  <h2>Del número: <a href="/releases/{{id}}"><strong>{{name}}</strong></a></h2>
+
+  {{# cover}}
+  <img src="{{cover}}">
+  {{/ cover}}
+  {{/ release}}
+
+  <aside>
+    {{> article_file}}
+
+    {{> article_tags}}
+  </aside>
+</main>
+{{/ article}}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport"    content="width=device-width, initial-scale=1">
+
+    <meta name="title"       content="{{og_title}}">
+    <meta name="description" content="{{og_description}}">
+
+    <meta property="og:site_name"   content="Revista de la Universidad de México">
+    <meta property="og:title"       content="{{og_title}}">
+    <meta property="og:description" content="{{og_description}}">
+    <meta property="og:image"       content="{{og_image}}">
+    <meta property="og:type"        content="{{og_type}}">
+    <!-- <meta property="og:url"         content=""> -->
+
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized"  content="640">
+
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.png"/>
+
+    <link rel="stylesheet" href="/lib/materialicons.css">
+
+    <link rel="stylesheet" href="/stylesheets/grid.css">
+    <link rel="stylesheet" href="/stylesheets/general.css">
+    <link rel="stylesheet" href="/stylesheets/article-thumb.css">
+
+    <title>{{title}}</title>
+  </head>
+
+  <body>
+    <div style="position: relative; z-index: 8;">
+      <div style="height: 4em;
+                  width: 100%;
+                  text-align: center;
+                  {{# index}}
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  background-color: rgba(53, 53, 53, 0.7);
+                  {{/ index}}
+                  {{^ index}}
+                  background-color: rgba(53, 53, 53, 1);
+                  {{/ index}}">
+        <img src="/images/cultura-unam.png"
+             alt="Cultura UNAM"
+             style="height: 2.4em;
+                    margin: 0.8em;">
+      </div>
+
+      {{# index}}
+      <img src="{{landing_image}}"
+           style="width: 100%;
+                  margin: 0 !important;
+                  margin-bottom: -10px !important;">
+      {{/ index}}
+    </div>
+
+    {{> nav}}
+
+    {{{yield}}}
+
+    {{> footer}}
+
+    {{> sharebuttons}}
+  </body>
+</html>

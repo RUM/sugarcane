@@ -1,0 +1,89 @@
+<nav id="site-nav">
+  <input id="toggle"
+         class="no-desktop"
+         type="checkbox">
+
+  <a href="#"
+     class="no-desktop">
+    <label for="toggle"><span class="mdi mdi-menu"></span>&nbsp;</label>
+  </a>
+
+  {{> u}}
+
+  <a href="/releases/{{current_release.id}}"
+     class="toggleable">Número&nbsp;Actual</a>
+
+  <a href="/archive"
+     class="toggleable">Archivo</a>
+
+  <a href="/collabs"
+     class="toggleable">Colaboradores</a>
+
+  <a href="/about"
+     class="toggleable no-desktop">¿Quiénes&nbsp;somos?</a>
+
+  <a href="/blog"
+     class="toggleable">Blog</a>
+
+  <a href="/search"
+     class="toggleable"
+     style="flex: 0;
+            padding: 0 1em 0 1em;
+            font-size: 1.5em;">
+    <span class="mdi mdi-magnify"></span>
+  </a>
+
+  <div class="toggleable no-desktop"
+       style="line-height: 5.5em !important;
+              height: 4em !important;">
+    <a href="#"
+       class="twitter-share-link no-desktop"
+       target="_blank"
+       style="display: inline;">
+      <img src="/images/twitter-button.png"
+           alt="Twitter share link"
+           style="height: 2em;">
+    </a>
+    &nbsp;    &nbsp;
+    <a href="#"
+       class="facebook-share-link no-desktop"
+       target="_blank"
+       style="display: inline;">
+      <img src="/images/facebook-button.png"
+           alt="Facebook share link"
+           style="height: 2em;">
+    </a>
+  </div>
+
+  <div class="toggleable"
+       style="flex: 0;
+              padding: 0.8em;">
+    <a href="/mailing/signup"
+       style="font-weight: bold;
+              background-color: #E3655A;
+              line-height: 3em;
+              padding: 0 1.5em;">
+      Suscribirme
+    </a>
+  </div>
+
+  <script>
+    (function() {
+      for (var l of document.querySelectorAll('nav#site-nav a'))
+        (l.href === location.href && location.pathname !== '/') ? l.classList.add('active') : null;
+
+      {{# is_in_current_release}}
+      document.querySelector('nav#site-nav a[href*="/releases/"]')
+        .classList.add('active');
+      {{/ is_in_current_release}} ///
+      {{^ is_in_current_release}}
+      if (location.href.match(/\/articles\//))
+        document.querySelector('nav#site-nav a[href="/archive"]')
+        .classList.add('active');
+      else if (location.href.match(/\/collabs.*/))
+        document.querySelector('nav#site-nav a[href="/collabs"]')
+        .classList.add('active');
+      {{/ is_in_current_release}} ///
+    })();
+  </script>
+</nav>

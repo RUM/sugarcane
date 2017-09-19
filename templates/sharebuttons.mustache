@@ -1,0 +1,71 @@
+<style>
+aside#sharebuttons {
+  position: fixed;
+  right: 0;
+  top: 15em;
+  width: 2.5em;
+  background-color: #dddddd;
+  color: #757779;
+  text-align: center;
+  z-index: 6;
+}
+
+aside#sharebuttons > span {
+  position: absolute;
+  left: 0;
+  text-transform: uppercase;
+  font-size: small;
+  font-weight: bold;
+  transform: rotate(-90deg) translate(-2.5em,-4em);
+  /* transform: rotate(-90deg) translate(-5em,-2em); */
+}
+
+aside#sharebuttons div {
+  height: 2.5em;
+  width: 2.5em;
+  line-height: 2.5em;
+}
+
+aside#sharebuttons div a {
+  display: block;
+}
+
+aside#sharebuttons div a img {
+  vertical-align: middle;
+}
+</style>
+
+<aside id="sharebuttons"
+       class="no-mobile">
+  <span>
+    Comparte
+  </span>
+
+  <div>
+    <a href="#"
+       class="twitter-share-link"
+       target="_blank">
+      <img src="/images/twitter-logo.png"
+           alt="Twitter share link">
+    </a>
+  </div>
+
+  <div>
+    <a href="#"
+       class="facebook-share-link"
+       target="_blank">
+      <img src="/images/facebook-logo.png"
+           alt="Facebook share link">
+    </a>
+  </div>
+
+  <!-- <div> -->
+  <!--   <a href="#" -->
+  <!--      id="link-share-link"> -->
+  <!--   <img src="/images/link-logo.png" -->
+  <!--        alt="Link share link"> -->
+  <!--   </a> -->
+  <!-- </div> -->
+</aside>
+
+<script src="/javascripts/sharebuttons.js"></script>

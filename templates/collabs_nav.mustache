@@ -1,0 +1,23 @@
+<h2 style="text-transform: uppercase;
+           text-align: center;
+           color: #a8a8a8;
+           margin-top: 1.5em;
+           margin-bottom: 0em;">Colaboradores</h2>
+
+<nav id="sub-nav">
+  {{# groups}}
+  <a href="/collabs-lastname/{{.}}">{{.}}</a>
+  {{/ groups}}
+
+  <script>
+    (function() {
+    var ls = document.querySelectorAll('nav#sub-nav a');
+
+    for (var l of ls)
+      if (l.href == location.href) {
+        l.classList.add("active");
+        break;
+      }
+    })();
+  </script>
+</nav>

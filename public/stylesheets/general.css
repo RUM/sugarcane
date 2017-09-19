@@ -1,0 +1,308 @@
+@import url('/fonts/cormorant.css');
+@import url('/fonts/overpass.css');
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: normal;
+}
+
+h1, h2, h3 {
+  text-align: center;
+}
+
+body {
+  font-family: 'Overpass', sans-serif;
+  padding: 0;
+  margin: 0;
+  background-color: #FEFEFE;
+}
+
+a {
+  text-decoration: none;
+  color: #E3655A;
+}
+
+blockquote {
+  font-family: 'Cormorant', serif;
+  font-style: italic;
+
+  border-left: thick solid #e2e2e2;
+
+  padding-left: 1em;
+  padding-right: 1em;
+
+  max-width: 50em;
+  margin: auto;
+}
+
+/**************/
+/* NAV/FOOTER */
+/**************/
+
+nav,
+footer {
+  display: flex;
+  background-color: #141414;
+  font-size: 1em;
+  clear: both;
+  height: 4em;
+  line-height: 4em;
+  width: 100%;
+}
+
+nav {
+  padding: 0 5em;
+}
+
+body, html {
+  /* 4em for the nav and 4em for the "culturaUNAM" banner */
+  min-height: calc(100% - 8em);
+}
+
+nav a,
+footer a {
+  display: block;
+
+  text-align: center;
+  margin: 0;
+  flex: 1;
+
+  font-weight: bold;
+  font-size: small;
+  text-transform: uppercase;
+  color: #f1f1f1;
+}
+
+nav a:hover,
+footer a:hover {
+  color: #aaaaaa;
+}
+
+footer {
+  height: 8em;
+  line-height: 8em;
+}
+
+footer a {
+  margin-top: 3.5em;
+  line-height: normal !important;
+}
+
+footer img {
+  margin-top: -3em;
+}
+
+nav#site-nav {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 9;
+}
+
+nav#site-nav a.active {
+  color: #a8a8a8;
+  border-bottom: 2px solid #a8a8a8;
+}
+
+nav#sub-nav a.active {
+  color: #424242;
+}
+
+/**********/
+/* HEADER */
+/**********/
+
+header {
+  position: relative;
+
+  background-color: #141414;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  color: white;
+  padding: 4em;
+
+  text-align: center;
+  z-index: 8;
+}
+
+header * {
+  position: relative;  /* for .fuzz to work */
+  z-index: 2;
+}
+
+header a {
+  color: #F0EF13;
+}
+
+header h1 {
+  font-weight: 300;
+  font-size: 5em;
+  margin: 0;
+}
+
+header h3 {
+  margin-top: 0;
+  font-family: 'Cormorant', serif;
+  font-weight: normal;
+  font-size: 2em;
+}
+
+header h4 {
+  font-family: 'Cormorant', serif;
+  font-size: 1.4em;
+  margin: 0;
+}
+
+/********/
+/* MAIN */
+/********/
+
+main {
+  display: block;
+  max-width: 70em;
+  margin: auto auto 3em;
+  clear: both;
+  z-index: 1;
+}
+
+main nav {
+  background-color: transparent;
+  text-transform: uppercase;
+  color: #a8a8a8;
+
+  width: 60%;
+  margin: 0.5em auto -0.5em;
+
+  height: 4em;
+  line-height: 4em;
+}
+
+main nav a {
+  display: inline-block;
+  text-transform: uppercase;
+  color: #a8a8a8;
+  margin-bottom: 0em;
+}
+
+main section h2 {
+  color: #ffffff;
+  background-color: #272e5c;
+
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: left;
+  text-transform: uppercase;
+
+  border-top: 3px solid #1b203f;
+
+  height: 2.5em;
+  line-height: 2.5em;
+
+  padding-left: 1em;
+}
+
+main section h2 a {
+  color: #E7E7EB;
+}
+
+/**********/
+/* OTHERS */
+/**********/
+
+/* cannot use grayscale on background images */
+.fuzz {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  height: 100%;
+  width: 100%;
+
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.no-desktop {
+  display: none;
+}
+
+/* mobile specifics */
+@media (max-width: 50em) {
+  main {
+    width: 100% !important;
+  }
+
+  nav {
+    padding: 0 1em;
+  }
+
+  main nav {
+    width: 100%;
+  }
+
+  header h1 {
+    font-size: 3rem;
+  }
+
+  .no-mobile {
+    display: none !important;
+  }
+
+  .no-desktop {
+    display: block;
+  }
+
+  nav#site-nav,
+  footer {
+    display: block;
+    height: auto !important;
+  }
+
+  footer {
+    line-height: unset;
+  }
+
+  footer a {
+    margin: 0;
+    line-height: 4em !important;
+    height: 4em;
+  }
+
+  footer img {
+    margin-top: 0;
+  }
+
+  nav div {
+    text-align: center;
+    margin: 0;
+    flex: 1;
+  }
+
+  nav #toggle {
+    display: none;
+    width: 0;
+  }
+
+  nav label[for="toggle"] {
+    position: absolute;
+    right: 0;
+
+    font-weight: bold;
+    font-size: 1.9em;
+
+    color: #f1f1f1;
+    cursor: pointer;
+  }
+
+  nav #toggle:not(:checked) ~ .toggleable {
+    position: absolute;
+    top: -1000px !important;
+    display: none;
+    clear: both;
+  }
+}

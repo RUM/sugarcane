@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="/stylesheets/article.css">
+
+<script src="/javascripts/capcap.js"></script>
+<script src="/javascripts/footnotes.js"></script>
+
+<aside id="more-articles"
+       class="no-mobile">
+  <span>Lea también</span>
+
+  {{# morearticles}}
+  {{> article_thumb}}
+  {{/ morearticles}}
+</aside>
+
+{{# article}}
+<header style="background-image: url({{cover}})">
+  <div class="fuzz"></div>
+
+  <div class="titles">
+    <h1>{{# md}}{{title}}{{/ md}}</h1>
+    <h2>{{# md}}{{subtitle}}{{/ md}}</h2>
+  </div>
+
+  <h3>{{{authors_list}}}</h3>
+
+  {{# collabs}}
+  <h4>{{long_relation}}: {{{link}}}</h4>
+  {{/ collabs}}
+</header>
+
+<main>
+  <blockquote>
+    {{# md}}{{quote}}{{/ md}}
+  </blockquote>
+
+  <div id="content">
+    {{# md}}{{{content}}}{{/ md}}
+  </div>
+
+  <aside>
+    {{> article_file}}
+
+    {{> article_tags}}
+  </aside>
+</main>
+{{/ article}}
+
+<script>
+  document.onreadystatechange = () => {
+    if (document.readyState != "interactive") return;
+    _capcap();
+    _footnotes();
+  }
+</script>

@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="/stylesheets/release.css">
+
+{{# release}}
+<header style="background-image: url({{cover}})">
+  <div class="fuzz"></div>
+
+  <h4>{{simple_date}}</h4>
+  <h1>{{name}}</h1>
+
+  <br>
+
+  {{# file}}
+  <strong><a href="{{file}}" target="_blank"><span class="mdi mdi-download"></span>&nbsp;Descargar PDF</a></strong>
+  {{/ file}}
+</header>
+{{/ release}}
+
+<main>
+  <nav id="sub-nav">
+    {{# sections}}
+    <a href="#{{section_name}}">{{section_name}}</a>
+    {{/ sections}}
+  </nav>
+
+  <section id="release-quote"
+           class="no-mobile">
+    <div>
+      {{# quotes}}
+      <blockquote>
+        {{# md}}{{content}}{{/ md}}
+        <strong style="float: right;">- {{author}}</strong>
+      </blockquote>
+      <br>
+      {{/ quotes}}
+    </div>
+  </section>
+
+  {{# sections}}
+  <section class="{{section_name}}">
+    <h2 id="{{section_name}}" class="{{section_name}}">{{section_name}}</h2>
+
+    {{# articles}}
+    {{> article_thumb}}
+    {{/ articles}}
+  </section>
+  {{/ sections}}
+</main>

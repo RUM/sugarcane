@@ -1,0 +1,63 @@
+input[type="text"] {
+  font-size: 2em;
+
+  font-family: "Cormorant", serif;
+
+  width: 100%;
+  text-align: center;
+  margin: auto;
+}
+
+article.collab {
+  margin-left: 0;
+  width: calc(50% - 2.4em);
+  height: 16em;
+}
+
+article.article {
+  height: 10em;
+  margin: 1em 0;
+}
+
+article.article > figure {
+  width: 10em;
+  float: left;
+  height: 100%;
+}
+
+article.article > div {
+  width: calc(100% - 10em);
+}
+
+.empty {
+  font-family: 'Cormorant', serif;
+  font-size: 1.3em;
+  text-align: center;
+}
+
+.empty:before {
+  content: 'Nada...';
+}
+
+footer {
+  display: none;
+  position: absolute;
+  bottom: 0;
+}
+
+@media (max-width: 50em) {
+  article.collab {
+    height: 0;
+    width: calc(100% - 1em);
+    padding-bottom: calc(100% - 1em);
+    margin-bottom: 0.5em;
+  }
+
+  article.article {
+    height: auto;
+  }
+
+  article.article > div {
+    width: 100%;
+  }
+}

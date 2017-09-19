@@ -1,0 +1,206 @@
+header h1 p, header h2 p {
+  margin: 0;
+}
+
+header .titles {
+  margin: 5em 0;
+}
+
+header h2 {
+  font-size: 3em;
+  padding: 0;
+  margin: 0;
+}
+
+header h3, header h4 {
+  font-style: italic;
+}
+
+aside#more-articles {
+  position: absolute;
+  left: 0;
+  top: 90em;
+  width: 20em;
+  z-index: 0;
+}
+
+aside#more-articles article {
+  width: 100%;
+  margin-left: 0 !important;
+}
+
+aside#more-articles > span {
+  font-family: Cormorant; serif;
+  font-size: 1.5em;
+  font-style: italic;
+  font-weight: bold;
+  margin-left: 2em;
+}
+
+main {
+  font-family: 'Cormorant', serif;
+  width: 40em;
+}
+
+#content {
+  font-size: 1.7em;
+  margin-bottom: 2em;
+}
+
+#content p {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+#content p img {
+  margin: 1em 0 0 0;
+  width: 100%;
+}
+
+#content p img + em {
+  font-family: 'Overpass', sans-serif;
+  font-size: 0.6em;
+  font-weight: 300;
+  font-style: normal;
+  display: block;
+  text-indent: 0 !important;
+  margin-bottom: 1em;
+}
+
+#content blockquote {
+  margin: 2em auto;
+}
+
+#content h2 {
+  font-size: 1em;
+  font-family: 'Overpass', sans-serif;
+  font-weight: 400;
+  text-align: left;
+  margin-bottom: 0.1em;
+}
+
+#content h3 {
+  font-size: 1em;
+  font-family: 'Overpass', sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  text-align: left;
+}
+
+main > blockquote:first-of-type {
+  font-size: 2.2em;
+  font-weight: 600;
+  color: #AC87BB;
+  margin: 2em auto;
+  border: none;
+  padding: 0;
+}
+
+main > blockquote:first-of-type p {
+  text-indent: 0 !important;
+}
+
+main sup {
+  position: relative;
+  top: -0.5em;
+  vertical-align: top;
+  padding-top: 3em;
+}
+
+main a {
+  color: #E3675C;
+}
+
+main aside {
+  text-align: center;
+  font-family: 'Overpass', sans-serif;
+  font-size: 1.2em;
+  clear: both;
+  width: 100%;
+}
+
+main aside a {
+  display: block;
+  color: #505050;
+}
+
+main aside section {
+  border-top: 2px solid #959595;
+  padding: 1.5em;
+}
+
+main aside section a.tag {
+  display: inline-block;
+  border: none;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.5em 1.5em;
+}
+
+.footnotes {
+  padding-top: 1.5em;
+  border-top: 2px solid #959595;
+  margin: 2em 0;
+  font-size: 0.7em !important;
+  text-align: center;
+}
+
+.footnotes ol {
+  text-align: left;
+}
+
+.footnotes ol li {
+  padding-top: 4em;
+  margin-top: -4em;
+
+  margin-bottom: 1em;
+}
+
+.footnotes:before {
+  content: 'Notas';
+  font-size: 1.2em;
+  margin: auto;
+  color: #E3655A;
+}
+
+sup {
+  white-space: normal;
+}
+
+sup:hover .footnote-hover {
+  display: block;
+}
+
+.footnote-hover {
+  position: absolute;
+  top: 5em;
+  left: 0.8em;
+  display: none;
+  width: 20em;
+  padding: 0.8em;
+  font-weight: bold;
+  font-size: 0.7em;
+  background-color: #E3655A;
+  color: #f1f1f1;
+}
+
+p.pleca {
+  margin: 2em 0 !important;
+  padding-top: 2em !important;
+  border-top: 2px solid #959595;
+  font-size: 0.8em;
+}
+
+/* mobile specifics */
+@media (max-width: 50em) {
+  main {
+    padding: 1em;
+  }
+}
+
+@media (max-width: 85em) {
+  aside#more-articles {
+    display: none;
+  }
+}

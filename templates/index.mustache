@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="/stylesheets/index.css">
+<link rel="stylesheet" href="/stylesheets/collab-thumb.css">
+
+<main>
+  {{# current_release}}
+  <article id="header"
+           onclick="window.location = '/releases/{{id}}';">
+    <div>
+      <span id="title">{{name}}</span>
+      <br>
+      <span id="date">{{simple_date}}</span>
+    </div>
+
+    <div class="no-mobile">
+      <div style="font-size: 1.2em;
+                  border-left: 2px solid #FEFEFE;
+                  padding: 1em;">{{# md}}{{landing_quote}}{{/ md}}
+
+        <br>
+
+        {{# file}}
+        <a href="{{file}}"
+           style="font-size: 1.2em;
+                  font-weight: bold;
+                  color: #FAF911;">
+          <span class="mdi mdi-download"></span>&nbsp;Descargar PDF
+        </a>
+        {{/ file}}
+      </div>
+    </div>
+  </article>
+  {{/ current_release}}
+
+  <section id="selection">
+    {{# articles}}
+    {{> article_thumb}}
+    {{/ articles}}
+  </section>
+
+  <section id="collabs">
+    <a href="/collabs">
+      <h2 style="background-color: #254b5e;">Colaboradores</h2>
+    </a>
+
+    {{# collaborators}}
+    {{> collab_thumb}}
+    {{/ collaborators}}
+  </section>
+
+  <section id="suggestions">
+    <a href="/suggestions">
+      <h2 style="background-color: #5d7058;">La RUM recomienda</h2>
+    </a>
+
+    {{# suggestions}}
+    {{> suggestion_thumb}}
+    {{/ suggestions}}
+  </section>
+</main>

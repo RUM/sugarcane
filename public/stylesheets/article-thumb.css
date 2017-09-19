@@ -1,0 +1,96 @@
+:root {
+  --article-height: 26.1em;
+  --half-article-height: 12.1em;
+}
+
+article {
+  height: var(--article-height);
+  width: 100%;
+
+  display: inline-block;
+  vertical-align: top;
+
+  background-color: #F1EDE5;
+
+  border-bottom: 0.2em solid #a4a4a4;
+  border-top: 0.2em solid #42505b;
+
+  cursor: pointer;
+
+  margin: 1em;
+}
+
+article > figure {
+  width: 100%;
+  height: calc(var(--article-height) / 2);
+
+  margin: 0 !important;
+
+  display: inline-block;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+article > figure a {
+  display: block;
+  height: 100%;
+}
+
+article > div {
+  margin: 0;
+  display: inline-block;
+  padding: 1em;
+}
+
+article > div h3  {
+  text-align: left;
+}
+
+article > div h3 a {
+  color: #141414;
+  font-family: 'Overpass', sans-serif;
+}
+
+article > div h3 {
+  margin: 0;
+}
+
+article > div ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+article > div ul li {
+  font-family: 'Cormorant', serif;
+  font-style: italic;
+}
+
+article > div > label {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+article > div > label.dossier {
+  color: #dd9980;
+}
+
+article > div > label.reseñas {
+  color: #1b203f;
+}
+
+article > div > label.panóptico {
+  color: #048a81;
+}
+
+article > div > label.editorial {
+  display: none;
+}
+
+/* mobile */
+@media (max-width: 50em) {
+  article {
+    margin: 1em 0;
+  }
+}

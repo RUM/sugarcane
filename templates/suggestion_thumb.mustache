@@ -1,0 +1,15 @@
+<article class="suggestion"
+         onclick="window.location = '{{external_link}}'">
+  <strong style="text-transform: uppercase;">{{type}}</strong>
+
+  <br>
+
+  <p style="font-size: 1.1em;">{{# md}}{{name}}{{/ md}}</p>
+
+  <p style="white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #E3655A;">
+    <a href="{{external_link}}" target="_blank">{{external_link_text}}</a>
+  </p>
+</article>

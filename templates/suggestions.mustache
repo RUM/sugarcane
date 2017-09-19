@@ -1,0 +1,30 @@
+<style>
+main {
+  width: 60em;
+}
+
+article.suggestion {
+  display: inline-block;
+  width: calc(50% - 1.13em);
+  margin: 1em 0.5em;
+  padding: 1em;
+  height: auto;
+}
+
+@media (max-width: 50em) {
+  article.suggestion {
+    display: inline-block;
+    width: 100%;
+  }
+}
+</style>
+
+<main>
+  <h2 style="text-transform: uppercase;
+             text-align: center;
+             color: #A8A8A8 !important;
+             margin: 1.5em;">La RUM Recomienda</h2>
+  {{# suggestions}}
+  {{> suggestion_thumb}}
+  {{/ suggestions}}
+</main>

@@ -1,0 +1,13 @@
+main {
+  text-align: center;
+}
+
+main > div {
+  margin: 1em;
+}
+
+main > img {
+  max-height: 10em;
+  max-width: 50%;
+  margin: 1em;"
+}

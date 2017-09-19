@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="/stylesheets/collab-thumb.css">
+<link rel="stylesheet" href="/stylesheets/collabs.css">
+<link rel="stylesheet" href="/stylesheets/collab.css">
+
+<script src="/javascripts/capcap.js"></script>
+
+<main>
+  {{> collabs_nav}}
+
+  {{# collab}}
+  <br>
+  <img src="{{metadata.image}}">
+
+  <h1>{{name}}</h1>
+
+  <div id="sinopsis">{{# md}}{{{sinopsis}}}{{/ md}}</div>
+
+  <h2>Artículos de {{fname}} {{lname}} en la Revista</h2>
+
+  {{# articles}}
+  {{> article_thumb}}
+  {{/ articles}}
+
+  {{/ collab}}
+</main>
+
+<script>
+  document.onreadystatechange = () => {
+    if (document.readyState != "interactive") return;
+    _capcap();
+  }
+</script>

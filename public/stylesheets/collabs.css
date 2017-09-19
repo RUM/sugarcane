@@ -1,0 +1,13 @@
+article.collab {
+  height: 0;
+  width: calc(25% - 3em);
+  padding-bottom: calc(25% - 3em);
+}
+
+@media (max-width: 50em) {
+  article.collab {
+    height: 0;
+    width: calc(50% - 0.5em);
+    padding-bottom: calc(50% - 0.5em);
+  }
+}

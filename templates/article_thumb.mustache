@@ -1,0 +1,28 @@
+<article class="article-thumb {{section}}"
+         onclick="window.location = '/articles/{{id}}/{{seo_title}}';">
+  <figure style="background-image: url({{cover}});"></figure>
+
+  <div>
+    <label class="{{section}} section-label">{{section}}</label>
+
+    {{# section}}{{# metadata.subsection}}
+    <span class="section-label"> - </span>
+    {{/ metadata.subsection}}{{/ section}}
+
+    <label class="{{section}}">{{metadata.subsection}}</label>
+
+    <h3>
+      <a href="/articles/{{id}}/{{seo_title}}">{{# md}}{{title}}{{/ md}}</a>
+    </h3>
+
+    <ul>
+      {{# collaborations}}
+      <li>
+        {{# collabs}}
+        <em>{{fname}} {{lname}}</em>
+        {{/ collabs}}
+      </li>
+      {{/ collaborations}}
+    </ul>
+  </div>
+</article>

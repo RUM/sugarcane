@@ -1,0 +1,243 @@
+header h1 {
+  text-transform: uppercase;
+}
+
+header h4 {
+  font-family: 'Overpass', sans-serif;
+  font-size: 1.3em;
+  text-transform: uppercase;
+}
+
+header blockquote {
+  border: none;
+}
+
+header blockquote p {
+  font-family: 'Overpass', sans-serif;
+  font-style: normal;
+  font-size: 1.3em;
+}
+
+section {
+  clear: both;
+}
+
+section h2 {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 3em;
+
+  z-index: 1;
+}
+
+h2.editorial {
+  display: none;
+}
+
+h2.dossier {
+  background-color: #dd9980;
+  border-top: 3px solid #6a3724;
+}
+
+h2.panóptico {
+  background-color: #048a81;
+  border-top: 3px solid #185463;
+}
+
+h2.reseñas {
+  background-color: #1b203f;
+  border-top: 3px solid #33494d;
+}
+
+article.article-thumb > div > .section-label {
+  display: none;
+}
+
+#release-quote {
+  width: calc(50% - 2.1em);
+  display:inline-block;
+  margin: 1em;
+  float: right;
+}
+
+#release-quote > div {
+  display: flex;
+  align-items: center;
+  height: var(--half-article-height);
+}
+
+#release-quote > div > blockquote {
+  /* font-size: 1.7em; */
+}
+
+/* desktop specifics */
+@media (min-width: 50em) {
+  header {
+    padding: 6em 0;
+  }
+
+  section h2 {
+    margin: 1em 0.8em;
+  }
+
+  /*************/
+  /* EDITORIAL */
+  /*************/
+
+  section.editorial {
+    width: calc(50% - 2.1em);
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  article.editorial {
+    height: var(--half-article-height);
+  }
+
+  article.editorial figure {
+    width: 50%;
+    height: 100%;
+    float: left;
+  }
+
+  /***********/
+  /* DOSSIER */
+  /***********/
+
+  article.dossier:nth-of-type(1) figure {
+    width: 100% !important;
+  }
+
+  article.dossier:nth-of-type(2) {
+    width: calc(60% - 2em) !important;
+  }
+
+  article.dossier:nth-of-type(2) div {
+    width: 40% !important;
+  }
+
+  article.dossier:nth-of-type(2) figure {
+    height: 100% !important;
+    float: left !important;
+    width: 60% !important;
+  }
+
+  /*
+   * multiples of 4n are hard to set given the flow of the html
+   * these are the small ones:
+   *
+   * |-----------------------------------------------|
+   * |     4n + 3      |                  |          |
+   * |-----------------|      4n + 1      |  4n + 2  |
+   * |        4n       |                  |          |
+   * |-----------------------------------------------|
+   */
+
+  article.dossier:nth-of-type(4n) {
+    position: relative;
+    margin-left: calc(-1 * calc(40% - 2em) - 0.9em);
+    margin-top: 15em;
+  }
+
+  article.dossier:nth-of-type(4n),
+  article.dossier:nth-of-type(4n+1),
+  article.dossier:nth-of-type(4n+3) {
+    width: calc(40% - 2.3em);
+  }
+
+  article.dossier:nth-of-type(4n),
+  article.dossier:nth-of-type(4n+3) {
+    height: var(--half-article-height);
+  }
+
+  article.dossier:nth-of-type(4n+2) {
+    width: calc(20% - 2em);
+  }
+
+  article.dossier:nth-of-type(4n) div,
+  article.dossier:nth-of-type(4n+3) div {
+    width: 70%;
+  }
+
+  article.dossier:nth-of-type(4n) figure,
+  article.dossier:nth-of-type(4n+3) figure {
+    width: 30%;
+    float: left;
+    height: 100%;
+  }
+
+  article.dossier:nth-of-type(4n+1) figure,
+  article.dossier:nth-of-type(4n+2) figure {
+    width: 100%;
+    height: calc(var(--half-article-height) + 2em);
+  }
+
+  article.dossier:nth-of-type(15),
+  article.dossier:nth-of-type(16),
+  article.dossier:nth-of-type(17) {
+    position: relative;
+    width: calc(33% - 1.95em);
+    height: var(--article-height);
+    margin: 1em;
+  }
+
+  article.dossier:nth-of-type(15) figure,
+  article.dossier:nth-of-type(16) figure,
+  article.dossier:nth-of-type(17) figure {
+    width: 100%;
+    height: var(--half-article-height);
+  }
+
+  /*************/
+  /* PANÓPTICO */
+  /*************/
+
+  article.panóptico:nth-of-type(1),
+  article.panóptico:nth-of-type(2) {
+    width: calc(50% - 2.15em);
+  }
+
+  article.panóptico:nth-of-type(3),
+  article.panóptico:nth-of-type(4),
+  article.panóptico:nth-of-type(5) {
+    width: calc(33% - 1.95em);
+  }
+
+  article.panóptico figure {
+    width: 100%;
+    height: calc(var(--half-article-height) + 4em);
+  }
+
+  /***********/
+  /* RESEÑAS */
+  /***********/
+
+  /*
+   * |-------------------------------------|
+   * |          |               |          |
+   * |  6n + 1  |     6n + 2    |  6n + 3  |
+   * |          |               |          |
+   * |-------------------------------------|
+   * |               |          |          |
+   * |     6n + 4    |  6n + 5  |    6n    |
+   * |               |          |          |
+   * |-------------------------------------/
+   */
+
+  article.reseñas:nth-of-type(6n),
+  article.reseñas:nth-of-type(6n + 1),
+  article.reseñas:nth-of-type(6n + 3),
+  article.reseñas:nth-of-type(6n + 5) {
+    width: calc(30% - 1.8em);
+  }
+
+  article.reseñas:nth-of-type(6n + 2),
+  article.reseñas:nth-of-type(6n + 4) {
+    width: calc(40% - 3em);
+  }
+
+  article.reseñas figure {
+    width: 100%;
+    height: calc(var(--half-article-height) + 4em);
+  }
+}

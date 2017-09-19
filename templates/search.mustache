@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="/stylesheets/article-thumb.css" />
+<link rel="stylesheet" href="/stylesheets/collab-thumb.css" />
+<link rel="stylesheet" href="/stylesheets/search.css" />
+
+<main>
+  <noscript>
+    Necesito Javascript para esta funcionalidad.
+    No te culpo por tener JS deshabilitado. ¡Bien por tí!
+  </noscript>
+
+  <br>
+
+  <input id="search"
+         placeholder="Nombre de autor o título de artículo"
+         type="text"
+         autofocus="true">
+
+  <div style="display: flex;">
+    <div style="width: 50%">
+      <h3>Colaboradores</h3>
+      <div id="collabs"></div>
+    </div>
+
+    <div style="width: 50%">
+      <h3>Artículos</h3>
+
+      <div id="articles"></div>
+    </div>
+  </div>
+</main>
+
+<script src="/javascripts/search.js"></script>
