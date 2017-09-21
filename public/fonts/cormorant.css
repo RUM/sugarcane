@@ -2,40 +2,40 @@
   font-family: 'Cormorant';
   font-style: normal;
   font-weight: 400;
-  src: url(/fonts/Cormorant-Regular.ttf);
+  src: url(https://www.revistadelauniversidad.mx/fonts/Cormorant-Regular.ttf);
 }
 
 @font-face {
   font-family: 'Cormorant';
   font-style: normal;
   font-weight: 700;
-  src: url(/fonts/Cormorant-Bold.ttf);
+  src: url(https://www.revistadelauniversidad.mx/fonts/Cormorant-Bold.ttf);
 }
 
 @font-face {
   font-family: 'Cormorant';
   font-style: italic;
   font-weight: 400;
-  src: url(/fonts/Cormorant-Italic.ttf);
+  src: url(https://www.revistadelauniversidad.mx/fonts/Cormorant-Italic.ttf);
 }
 
 @font-face {
   font-family: 'Cormorant';
   font-style: italic;
   font-weight: 700;
-  src: url(/fonts/Cormorant-BoldItalic.ttf);
+  src: url(https://www.revistadelauniversidad.mx/fonts/Cormorant-BoldItalic.ttf);
 }
 
 @font-face {
   font-family: 'Cormorant';
   font-style: normal;
   font-weight: 600;
-  src: url(/fonts/Cormorant-SemiBold.ttf);
+  src: url(https://www.revistadelauniversidad.mx/fonts/Cormorant-SemiBold.ttf);
 }
 
 @font-face {
   font-family: 'Cormorant';
   font-style: italic;
   font-weight: 600;
-  src: url(/fonts/Cormorant-SemiBoldItalic.ttf);
+  src: url(https://www.revistadelauniversidad.mx/fonts/Cormorant-SemiBoldItalic.ttf);
 }

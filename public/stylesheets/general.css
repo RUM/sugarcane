@@ -1,5 +1,5 @@
-@import url('/fonts/cormorant.css');
-@import url('/fonts/overpass.css');
+@import url('https://www.revistadelauniversidad.mx/fonts/cormorant.css');
+@import url('https://www.revistadelauniversidad.mx/fonts/overpass.css');
 
 * {
   box-sizing: border-box;

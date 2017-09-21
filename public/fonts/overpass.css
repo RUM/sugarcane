@@ -2,40 +2,40 @@
   font-family: 'Overpass';
   font-style: normal;
   font-weight: 300;
-  src: url(/fonts/Overpass-Light.ttf);
+  src: url(https://www.revistadelauniversidad.mx/fonts/Overpass-Light.ttf);
 }
 
 @font-face {
   font-family: 'Overpass';
   font-style: italic;
   font-weight: 300;
-  src: url(/fonts/Overpass-LightItalic.ttf);
+  src: url(https://www.revistadelauniversidad.mx/fonts/Overpass-LightItalic.ttf);
 }
 
 @font-face {
   font-family: 'Overpass';
   font-style: normal;
   font-weight: 400;
-  src: url(/fonts/Overpass-Regular.ttf);
+  src: url(https://www.revistadelauniversidad.mx/fonts/Overpass-Regular.ttf);
 }
 
 @font-face {
   font-family: 'Overpass';
   font-style: italic;
   font-weight: 400;
-  src: url(/fonts/Overpass-Italic.ttf);
+  src: url(https://www.revistadelauniversidad.mx/fonts/Overpass-Italic.ttf);
 }
 
 @font-face {
   font-family: 'Overpass';
   font-style: normal;
   font-weight: 700;
-  src: url(/fonts/Overpass-Bold.ttf);
+  src: url(https://www.revistadelauniversidad.mx/fonts/Overpass-Bold.ttf);
 }
 
 @font-face {
   font-family: 'Overpass';
   font-style: italic;
   font-weight: 700;
-  src: url(/fonts/Overpass-BoldItalic.ttf);
+  src: url(https://www.revistadelauniversidad.mx/fonts/Overpass-BoldItalic.ttf);
 }
