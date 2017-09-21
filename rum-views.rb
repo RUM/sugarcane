@@ -53,10 +53,6 @@ class RUM
       def index
         true
       end
-
-      def landing_image
-        $landing_image
-      end
     end
 
     class Article < Layout

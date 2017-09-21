@@ -48,9 +48,11 @@ $db_article_by_id = lambda { |id|
 }
 
 $db_index_articles = lambda {
-  url = "/articles?select=*,releases{*},collaborations{*,collabs{*}}&id=in.#{$index_articles.join(',')}"
+  ars = $db_current_release.call[:metadata][:landing][:articles_ids]
 
-  sort_like $index_articles, db(url).each { |a|
+  url = "/articles?select=*,releases{*},collaborations{*,collabs{*}}&id=in.#{ars.join(',')}"
+
+  sort_like ars, db(url).each { |a|
     a[:seo_title]   = seo_string a[:title]
     a[:simple_date] = simple_date a[:releases][:date]
     a[:collaborations].delete_if { |c| c[:relation] != 'author' }
