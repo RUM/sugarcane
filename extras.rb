@@ -3,7 +3,7 @@
 def seo_string x
   I18n.
     transliterate(x).
-    gsub(/[_\*\.\,\:\/\&\\]+/,"").
+    gsub(/[\?_\*\.\,\:\/\&\\]+/,"").
     gsub(/\s+/, "-").
     downcase
 end
