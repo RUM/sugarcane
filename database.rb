@@ -32,9 +32,18 @@ $db_release_articles = lambda { |id|
 }
 
 $db_current_release = lambda {
-  $db_releases.call.select { |x|
+  releases = $db_releases.call
+  c = releases.select { |x|
     (x[:date].match /\d{4}-(\d{2})-\d{2}/)[1].to_i == Time.now.month
   }.first
+
+  if not c[:online]
+    c = releases.select { |x|
+      (x[:date].match /\d{4}-(\d{2})-\d{2}/)[1].to_i == Time.now.month - 1
+    }.first
+  end
+
+  return c
 }
 
 # ARTICLES

@@ -8,6 +8,7 @@ start:
 		--port $(WEB_PORT) \
 		--environment production \
 		--pidfile $(PID_FILE) \
+		--redirect-stderr /tmp/rum-errors.log \
 		--daemon
 
 develop:
@@ -24,16 +25,16 @@ stats:
 
 sync:
 	@rsync -OPr \
-			--copy-links \
-			--checksum \
-			--exclude=$(PID_FILE) \
-			--exclude=.git \
-			--exclude=scripts \
-			--exclude=dependencies.tsv \
-			--exclude=storage \
-			--delete-after \
-			$(DIST)/ \
-			$(SRV_USER)@$(SRV_SERVER):$(SRV_DEST)
+		--copy-links \
+		--checksum \
+		--exclude=$(PID_FILE) \
+		--exclude=.git \
+		--exclude=scripts \
+		--exclude=dependencies.tsv \
+		--exclude=storage \
+		--delete-after \
+		$(DIST)/ \
+		$(SRV_USER)@$(SRV_SERVER):$(SRV_DEST)
 
 restart: stop start
 
@@ -41,6 +42,6 @@ remote-stop:
 	@ssh $(SRV_USER)@$(SRV_SERVER) "cd $(SRV_DEST); make stop"
 
 remote-start:
-	@ssh $(SRV_USER)@$(SRV_SERVER)  "export LANG=en_US.UTF-8; cd $(SRV_DEST); make start"
+	@ssh $(SRV_USER)@$(SRV_SERVER) "/bin/bash --login -c 'cd $(SRV_DEST); make start'"
 
 deploy: sync remote-stop remote-start

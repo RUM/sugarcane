@@ -176,7 +176,7 @@ article.article-thumb > div > .section-label {
   article.dossier:nth-of-type(16),
   article.dossier:nth-of-type(17) {
     position: relative;
-    width: calc(33% - 1.95em);
+    width: calc(33% - 1.99em);
     height: var(--article-height);
     margin: 1em;
   }
@@ -200,7 +200,7 @@ article.article-thumb > div > .section-label {
   article.panóptico:nth-of-type(3),
   article.panóptico:nth-of-type(4),
   article.panóptico:nth-of-type(5) {
-    width: calc(33% - 1.95em);
+    width: calc(33% - 1.99em);
   }
 
   article.panóptico figure {
