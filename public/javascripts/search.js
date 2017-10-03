@@ -43,6 +43,8 @@ function _search_article_template(a) {
   // TODO: add a.seo_title
   // TODO: add collabs
 
+  if (a.cover === null) a.cover = '';
+
   return `
 <article class="article"
          onclick="window.location = '/articles/${a.id}'">
@@ -60,6 +62,8 @@ function _search_article_template(a) {
 };
 
 function _search_collab_template(c) {
+  if (c.metadata.image === null) c.metadata.image = '';
+
   return `
 <article class="collab"
          style="background-image: url(${c.metadata.image});"
