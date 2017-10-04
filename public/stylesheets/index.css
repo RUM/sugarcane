@@ -10,7 +10,7 @@ article#header {
 
 article#header #title,
 article#header #date {
-  font-size: 16vw;
+  font-size: 11vw;
   font-family: 'Overpass', sans-serif;
   font-weight: 300;
   text-transform: uppercase;
@@ -18,7 +18,7 @@ article#header #date {
 }
 
 article#header #date {
-  font-size: 1.5em;
+  font-size: 7vw;
 }
 
 article#header div {
@@ -116,6 +116,10 @@ article.suggestion {
 
   article#header #title {
     font-size: 5em;
+  }
+
+  article#header #date {
+    font-size: 1.5em;
   }
 
   section {
