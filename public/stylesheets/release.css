@@ -223,9 +223,9 @@ article.article-thumb > div > .section-label {
     height: calc(var(--half-article-height) + 4em);
   }
 
-  /***********/
-  /* RESEÑAS */
-  /***********/
+  /*******************/
+  /* RESEÑAS/CRÍTICA */
+  /*******************/
 
   /*
    * |-------------------------------------|

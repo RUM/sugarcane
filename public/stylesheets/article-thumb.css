@@ -76,6 +76,7 @@ article > div > label.dossier {
   color: #dd9980;
 }
 
+article > div > label.crítica,
 article > div > label.reseñas {
   color: #1b203f;
 }

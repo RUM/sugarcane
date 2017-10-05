@@ -1,5 +1,5 @@
 main {
-  width: 60em;
+  max-width: 60em;
 }
 
 main > nav {
@@ -24,38 +24,5 @@ main > img {
   font-family: 'Cormorant', serif;
   font-size: 1.7em;
   margin-bottom: 3em;
-}
-
-article.article-thumb {
-  background-color: white;
-  border-top: 3px solid #42505b;
-  width: 100%;
-  height: 10em;
-  margin: 0em;
-}
-
-article.article-thumb > figure {
-  width: 10em;
-  float: left;
-  height: 100%;
-}
-
-@media (max-width: 50em) {
-  #sinopsis {
-    padding: 0 1em;
-  }
-
-  article.article-thumb {
-    height: var(--article-height);
-  }
-
-  article.article-thumb > figure {
-    width: 100%;
-    height: calc(var(--article-height) / 2);
-  }
-
-  article.article-thumb > div {
-    margin: 0;
-    padding: 1em;
-  }
+  padding: 0 1em;
 }
