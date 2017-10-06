@@ -12,9 +12,9 @@ class RUM < Sinatra::Base
              }
   end
 
-  get '/releases/?' do
+  get '/releases-all/?' do
     mustache :releases,
-             :locals => { :releases => $db_releases.call }
+             :locals => { :releases => $db_releases_all.call }
   end
 
   get '/releases/:id/?' do

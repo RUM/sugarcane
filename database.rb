@@ -7,10 +7,16 @@ end
 
 # RELEASES
 
-$db_releases = lambda {
+$db_releases_all = lambda {
   db('/releases').
     each { |r| r[:simple_date] = simple_date r[:date] }.
     sort { |a,b| b[:date] <=> a[:date] }
+}
+
+$db_releases = lambda {
+  db('/releases?online=eq.true').
+    each { |r| r[:simple_date] = simple_date r[:date] }.
+    sort { |a,b| a[:date] <=> b[:date] }
 }
 
 $db_releases_by_id = lambda { |id|
