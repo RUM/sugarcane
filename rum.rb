@@ -22,7 +22,7 @@ class RUM < Sinatra::Base
 
     halt 404, "No hay de esos..." if not @release
 
-    groups = $db_release_articles.call params[:id]
+    groups = $db_articles_by_release.call params[:id]
 
     sections = (0..@release[:metadata][:sections].length-1).map { |i|
       {

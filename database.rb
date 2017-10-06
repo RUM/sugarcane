@@ -26,16 +26,7 @@ $db_releases_by_id = lambda { |id|
     first
 }
 
-$db_release_articles = lambda { |id|
-  db("/articles?select=*,releases{*},collaborations{*,collabs{*}}&release_id=eq.#{id}").
-    each { |a|
-    a[:seo_title]   = seo_string a[:title]
-    a[:simple_date] = simple_date a[:releases][:date]
-    a[:section]     = a[:releases][:metadata][:sections][a[:metadata][:section]]
 
-    a[:collaborations].delete_if { |c| c[:relation] != 'author' }
-  }.group_by { |a| a[:metadata][:section] }
-}
 
 $db_current_release = lambda {
   releases = $db_releases.call
@@ -60,6 +51,17 @@ $db_article_by_id = lambda { |id|
   a[:simple_date] = simple_date a[:releases][:date]
 
   a
+}
+
+$db_articles_by_release = lambda { |release_id|
+  db("/articles?select=*,releases{*},collaborations{*,collabs{*}}&release_id=eq.#{release_id}").
+    each { |a|
+    a[:seo_title]   = seo_string a[:title]
+    a[:simple_date] = simple_date a[:releases][:date]
+    a[:section]     = a[:releases][:metadata][:sections][a[:metadata][:section]]
+
+    a[:collaborations].delete_if { |c| c[:relation] != 'author' }
+  }.group_by { |a| a[:metadata][:section] }
 }
 
 $db_index_articles = lambda {
