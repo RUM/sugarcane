@@ -18,7 +18,7 @@ class RUM < Sinatra::Base
   end
 
   get '/releases/:id/?' do
-    @release = $db_releases_by_id.call params[:id]
+    @release = $db_release_by_id.call params[:id]
 
     halt 404, "No hay de esos..." if not @release
 

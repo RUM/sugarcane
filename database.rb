@@ -1,8 +1,8 @@
 def db url
-  JSON.parse(
-    Net::HTTP.get('revistadelauniversidad.mx', url, 4056),
-    { :symbolize_names => true }
-  )
+  s = 'revistadelauniversidad.mx'
+  s = 'localhost' if ENV['RACK_ENV'] == 'development'
+
+  JSON.parse(Net::HTTP.get(s, url, 4056), { :symbolize_names => true })
 end
 
 # RELEASES
@@ -19,14 +19,12 @@ $db_releases = lambda {
     sort { |a,b| a[:date] <=> b[:date] }
 }
 
-$db_releases_by_id = lambda { |id|
+$db_release_by_id = lambda { |id|
   db("/releases?id=eq.#{id}").
     each { |r| r[:simple_date] = simple_date r[:date] }.
     sort { |a,b| b[:date] <=> a[:date] }.
     first
 }
-
-
 
 $db_current_release = lambda {
   releases = $db_releases.call
