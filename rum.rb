@@ -39,6 +39,14 @@ class RUM < Sinatra::Base
              }
   end
 
+  get '/archive/?' do
+    mustache :archive,
+             :locals => {
+               :releases => $db_releases.call,
+               :content => Kramdown::Document.new($db_pages_by_id.call("archive")[:content]).to_html
+             }
+  end
+
   get '/articles/:id/?' do
     @article = $db_article_by_id.call params[:id]
 
@@ -162,7 +170,7 @@ class RUM < Sinatra::Base
     mustache :search
   end
 
-  get %r{/(about|directory|related|find_us|privacy|publish|blog|archive)/?} do
+  get %r{/(about|directory|related|find_us|privacy|publish|blog)/?} do
     mustache :md,
              :locals => { :content => $db_pages_by_id.call(params[:captures].first)[:content] }
   end
