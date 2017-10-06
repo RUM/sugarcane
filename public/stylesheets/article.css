@@ -18,23 +18,38 @@ header h3, header h4 {
 
 aside#more-articles {
   position: absolute;
-  left: 0;
+  left: 1em;
   top: 90em;
-  width: 20em;
+  width: 15em;
   z-index: 0;
+}
+
+aside#more-articles > span {
+  font-family: Cormorant, serif;
+  font-size: 1.5em;
+  font-style: italic;
+  font-weight: bold;
 }
 
 aside#more-articles article {
   width: 100%;
-  margin-left: 0 !important;
+  height: auto;
+  margin: 0 !important;
+  border-bottom: none !important;
+  background-color: white;
 }
 
-aside#more-articles > span {
-  font-family: Cormorant; serif;
-  font-size: 1.5em;
-  font-style: italic;
-  font-weight: bold;
-  margin-left: 2em;
+aside#more-articles article figure {
+  display: none;
+}
+
+aside#more-articles article h3 {
+  font-weight: 300;
+  font-size: 1.2em;
+}
+
+aside#more-articles article .collabs-list {
+  font-size: 1.3em;
 }
 
 main {
@@ -199,7 +214,8 @@ p.pleca {
   }
 }
 
-@media (max-width: 85em) {
+/* hide suggestions on small and medium screens */
+@media (max-width: 75em) {
   aside#more-articles {
     display: none;
   }
