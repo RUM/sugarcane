@@ -12,6 +12,7 @@ start:
 		--daemon
 
 develop:
+	@postgrest ../database/postgrest-public.conf &
 	@bundle exec rerun --pattern "**/*.{rb}" -- rackup
 
 install:

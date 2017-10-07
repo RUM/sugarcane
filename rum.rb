@@ -113,14 +113,10 @@ class RUM < Sinatra::Base
   get '/collabs/?' do
     all_collabs = $db_collabs.call.sort_by { |x| x[:lname] }
 
-    groups = all_collabs.group_by { |x| x[:lname][0].upcase }
-
-    starred = all_collabs.select { |x| x[:starred] }.shuffle.first(12)
-
     mustache :collabs,
              :locals => {
-               :groups => groups.keys.sort,
-               :collabs => starred
+               :groups =>  all_collabs.group_by { |x| x[:lname][0].upcase }.keys.sort,
+               :collabs => all_collabs.select { |x| x[:starred] }.shuffle.first(12)
              }
   end
 
