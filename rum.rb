@@ -162,11 +162,29 @@ class RUM < Sinatra::Base
              :locals => { :suggestions => $db_suggestions.call }
   end
 
+  get '/blog' do
+    posts = JSON.parse(Net::HTTP.get(URI('https://blog.revistadelauniversidad.mx/wp-json/wp/v2/posts?_embed')),
+                       { :symbolize_names => true }).each { |p|
+      p[:created] = Date.strptime(p[:date],"%Y-%m-%d").day.to_s + " de " + simple_date(p[:date])
+
+      begin
+        p[:category] = p[:_embedded][:'wp:term'][0][0][:name]
+      rescue
+        p[:category] = ""
+      end
+    }
+
+    mustache :blog,
+             :locals => {
+               :posts => posts
+             }
+  end
+
   get '/search/?' do
     mustache :search
   end
 
-  get %r{/(about|directory|related|find_us|privacy|publish|blog)/?} do
+  get %r{/(about|directory|related|find_us|privacy|publish)/?} do
     mustache :md,
              :locals => { :content => $db_pages_by_id.call(params[:captures].first)[:content] }
   end
