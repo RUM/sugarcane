@@ -46,7 +46,7 @@ $db_current_release = lambda {
 # ARTICLES
 
 $db_article_by_id = lambda { |id|
-  a = db("/articles?select=*,collaborations{*,collabs{#{collab_attrs}}},releases{#{release_attrs}}&id=eq.#{id}&limit=1").first
+  a = db("/articles?select=*,collaborations(*,collabs(#{collab_attrs})),releases(#{release_attrs})&id=eq.#{id}&limit=1").first
   a[:seo_title]   = seo_string a[:title]
   a[:simple_date] = simple_date a[:releases][:date]
 
@@ -54,7 +54,7 @@ $db_article_by_id = lambda { |id|
 }
 
 $db_articles_by_release = lambda { |release_id|
-  db("/articles?select=#{article_attrs},releases{#{release_attrs}},collaborations{*,collabs{#{collab_attrs}}}&release_id=eq.#{release_id}").
+  db("/articles?select=#{article_attrs},releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&release_id=eq.#{release_id}").
     each { |a|
     a[:seo_title]   = seo_string a[:title]
     a[:simple_date] = simple_date a[:releases][:date]
@@ -67,7 +67,7 @@ $db_articles_by_release = lambda { |release_id|
 $db_index_articles = lambda {
   ars = $db_current_release.call[:metadata][:landing][:articles_ids]
 
-  url = "/articles?select=#{article_attrs},releases{#{release_attrs}},collaborations{*,collabs{#{collab_attrs}}}&id=in.#{ars.join(',')}"
+  url = "/articles?select=#{article_attrs},releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&id=in.#{ars.join(',')}"
 
   sort_like ars, db(url).each { |a|
     a[:seo_title]   = seo_string a[:title]
@@ -78,7 +78,7 @@ $db_index_articles = lambda {
 }
 
 $db_more_articles = lambda {
-  db("/articles?select=id,title,collaborations{*,collabs{#{collab_attrs}}},releases{#{release_attrs}}&starred=eq.true&online=eq.true").
+  db("/articles?select=id,title,collaborations(*,collabs(#{collab_attrs})),releases(#{release_attrs})&starred=eq.true&online=eq.true").
     shuffle.first(3).
     each { |a|
     a[:seo_title]   = seo_string a[:title]
@@ -88,7 +88,7 @@ $db_more_articles = lambda {
 }
 
 $db_starred_articles = lambda {
-  db("/articles?select=#{article_attrs},releases{#{release_attrs}},collaborations{*,collabs{#{collab_attrs}}}&starred=eq.true&online=eq.true&limit=6").
+  db("/articles?select=#{article_attrs},releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&starred=eq.true&online=eq.true&limit=6").
     each { |a|
     a[:seo_title]   = seo_string a[:title]
     a[:section]     = a[:releases][:metadata][:sections][a[:metadata][:section]]
@@ -98,7 +98,7 @@ $db_starred_articles = lambda {
 # COLLABS
 
 $db_collabs  = lambda {
-  db("/collabs?select=#{collab_attrs},starred,metadata,articles{#{article_attrs},collaborations{*,collabs{#{collab_attrs}}}}&online=eq.true").
+  db("/collabs?select=#{collab_attrs},starred,metadata,articles(#{article_attrs},collaborations(*,collabs(#{collab_attrs})))&online=eq.true").
     each { |a|
     a[:name]     = a[:fname] + " " + a[:lname]
     a[:seo_name] = seo_string a[:name]
@@ -106,7 +106,7 @@ $db_collabs  = lambda {
 }
 
 $db_collab_by_id  = lambda { |id|
-  a = db("/collabs?select=*,articles{#{article_attrs},collaborations{*,collabs{#{collab_attrs}}}}&articles.order=date.desc&id=eq.#{id}&limit=1").first
+  a = db("/collabs?select=*,articles(#{article_attrs},collaborations(*,collabs(#{collab_attrs})))&articles.order=date.desc&id=eq.#{id}&limit=1").first
   a[:name]     = a[:fname] + " " + a[:lname]
   a[:seo_name] = seo_string a[:name]
 
