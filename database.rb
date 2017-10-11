@@ -12,21 +12,18 @@ collab_attrs  = "id,fname,lname"
 # RELEASES
 
 $db_releases_all = lambda {
-  db('/releases').
-    each { |r| r[:simple_date] = simple_date r[:date] }.
-    sort { |a,b| b[:date] <=> a[:date] }
+  db('/releases?order=date.desc').
+    each { |r| r[:simple_date] = simple_date r[:date] }
 }
 
 $db_releases = lambda {
-  db('/releases?online=eq.true').
-    each { |r| r[:simple_date] = simple_date r[:date] }.
-    sort { |a,b| a[:date] <=> b[:date] }
+  db('/releases?online=eq.true&order=date.asc').
+    each { |r| r[:simple_date] = simple_date r[:date] }
 }
 
 $db_release_by_id = lambda { |id|
   db("/releases?id=eq.#{id}").
     each { |r| r[:simple_date] = simple_date r[:date] }.
-    sort { |a,b| b[:date] <=> a[:date] }.
     first
 }
 
@@ -109,13 +106,12 @@ $db_collabs  = lambda {
 }
 
 $db_collab_by_id  = lambda { |id|
-  a = db("/collabs?select=*,articles{#{article_attrs},collaborations{*,collabs{#{collab_attrs}}}}&id=eq.#{id}&limit=1").first
+  a = db("/collabs?select=*,articles{#{article_attrs},collaborations{*,collabs{#{collab_attrs}}}}&articles.order=date.desc&id=eq.#{id}&limit=1").first
   a[:name]     = a[:fname] + " " + a[:lname]
   a[:seo_name] = seo_string a[:name]
 
   a[:articles].
-    each { |a| a[:seo_title] = seo_string a[:title] }.
-    sort { |a,b| b[:date] <=> a[:date] }
+    each { |a| a[:seo_title] = seo_string a[:title] }
 
   a
 }
