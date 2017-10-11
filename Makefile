@@ -20,7 +20,7 @@ install:
 	./run/install
 
 stats:
-	@ssh $(SRV_USER)@$(SRV_SERVER) "goaccess ~/rum_access.log --log-format=COMBINED -a > /tmp/stats.html"
+	@ssh $(SRV_USER)@$(SRV_SERVER) "/usr/local/bin/goaccess ~/rum_access.log --log-format=COMBINED > /tmp/stats.html"
 	@rsync $(SRV_USER)@$(SRV_SERVER):/tmp/stats.html /tmp/rum-stats--$$(date +'%Y-%m-%d').html
 	@$$BROWSER /tmp/rum-stats--$$(date +'%Y-%m-%d').html
 
