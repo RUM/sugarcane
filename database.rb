@@ -77,8 +77,8 @@ $db_index_articles = lambda {
   }
 }
 
-$db_more_articles = lambda {
-  db("/articles?select=id,title,collaborations(*,collabs(#{collab_attrs})),releases(#{release_attrs})&starred=eq.true&online=eq.true").
+$db_more_articles = lambda { |not_id|
+  db("/articles?select=id,title,collaborations(*,collabs(#{collab_attrs})),releases(#{release_attrs})&id=not.eq.#{not_id}&starred=eq.true&online=eq.true").
     shuffle.first(3).
     each { |a|
     a[:seo_title]   = seo_string a[:title]
