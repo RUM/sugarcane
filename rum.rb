@@ -102,7 +102,7 @@ class RUM < Sinatra::Base
     else
       mustache :article,
                :locals => {
-                 :morearticles => $db_more_articles.call,
+                 :morearticles => $db_more_articles.call(@article[:id]),
                  :article => @article,
                  :collabs => collabs,
                  :authors_list => authors_list
