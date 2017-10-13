@@ -40,10 +40,12 @@ function _search_render(array, container, template) {
 };
 
 function _search_article_template(a) {
-  // TODO: add a.seo_title
-  // TODO: add collabs
+  // TODO: add collabs?
 
   if (a.cover === null) a.cover = '';
+
+  // strip down MD caracters:
+  a.title = a.title.replace(/[_\*]/g, '')
 
   return `
 <article class="article"
