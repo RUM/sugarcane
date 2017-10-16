@@ -57,8 +57,7 @@ $db_article_by_id = lambda { |id|
 }
 
 $db_articles_by_release = lambda { |release_id|
-  db("/articles?select=#{article_attrs},releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&release_id=eq.#{release_id}").
-    each { |a| a[:collaborations].delete_if { |c| c[:relation] != 'author' } }.
+  db("/articles?select=#{article_attrs},releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&collaborations.relation=eq.author&release_id=eq.#{release_id}").
     group_by { |a| a[:metadata][:section] }
 }
 
@@ -78,19 +77,14 @@ $db_articles_by_tags = lambda { |array|
 $db_index_articles = lambda {
   ars = $db_current_release.call[:metadata][:landing][:articles_ids]
 
-  url = "/articles?select=#{article_attrs},releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&id=in.#{ars.join(',')}"
+  url = "/articles?select=#{article_attrs},releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&collaborations.relation=eq.author&id=in.#{ars.join(',')}"
 
-  sort_like ars, db(url).each { |a|
-    a[:collaborations].delete_if { |c| c[:relation] != 'author' }
-  }
+  sort_like ars, db(url)
 }
 
 $db_more_articles = lambda { |not_id|
-  db("/articles?select=#{article_attrs},collaborations(*,collabs(#{collab_attrs})),releases(#{release_attrs})&id=not.eq.#{not_id}&starred=eq.true&online=eq.true").
-    shuffle.first(3).
-    each { |a|
-    a[:collaborations].delete_if { |c| c[:relation] != 'author' }
-  }
+  db("/articles?select=#{article_attrs},collaborations(*,collabs(#{collab_attrs})),releases(#{release_attrs})&id=not.eq.#{not_id}&collaborations.relation=eq.author&starred=eq.true&online=eq.true").
+    shuffle.first(3)
 }
 
 $db_starred_articles = lambda {
@@ -104,7 +98,7 @@ $db_collabs  = lambda {
 }
 
 $db_collab_by_id  = lambda { |id|
-  db("/collabs?select=#{collab_attrs},sinopsis,metadata,articles(#{article_attrs},collaborations(*,collabs(#{collab_attrs})))&articles.order=date.desc&id=eq.#{id}&limit=1").first
+  db("/collabs?select=#{collab_attrs},sinopsis,metadata,articles(#{article_attrs},collaborations(*,collabs(#{collab_attrs})))&articles.collaborations.relation=eq.author&articles.order=date.desc&id=eq.#{id}&limit=1").first
 }
 
 $db_starred_collabs  = lambda {
