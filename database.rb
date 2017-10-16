@@ -5,26 +5,22 @@ def db url
   JSON.parse(Net::HTTP.get(s, url, 4056), { :symbolize_names => true })
 end
 
-release_attrs = "id,date,name,metadata"
-article_attrs = "id,title,cover,file,metadata"
-collab_attrs  = "id,fname,lname"
+release_attrs = "id,date,cover,month_year,name,metadata"
+article_attrs = "id,title,cover,file,metadata,release_name,section_name,seo_title"
+collab_attrs  = "id,fname,lname,seo_name,name"
 
 # RELEASES
 
 $db_releases_all = lambda {
-  db('/releases?order=date.desc').
-    each { |r| r[:simple_date] = simple_date r[:date] }
+  db("/releases?select=#{release_attrs},number&order=date.desc")
 }
 
 $db_releases = lambda {
-  db('/releases?online=eq.true&order=date.asc').
-    each { |r| r[:simple_date] = simple_date r[:date] }
+  db("/releases?select=#{release_attrs}&online=eq.true&order=date.asc")
 }
 
 $db_release_by_id = lambda { |id|
-  db("/releases?id=eq.#{id}").
-    each { |r| r[:simple_date] = simple_date r[:date] }.
-    first
+  db("/releases?id=eq.#{id}").first
 }
 
 $db_current_release = lambda {
@@ -46,22 +42,17 @@ $db_current_release = lambda {
 # ARTICLES
 
 $db_article_by_id = lambda { |id|
-  a = db("/articles?select=*,collaborations(*,collabs(#{collab_attrs})),releases(#{release_attrs})&id=eq.#{id}&limit=1").first
-  a[:seo_title]   = seo_string a[:title]
-  a[:simple_date] = simple_date a[:releases][:date]
+  a = db("/articles?select=*,month_year,section_name,collaborations(*,collabs(#{collab_attrs})),releases(#{release_attrs})&id=eq.#{id}&limit=1").first
 
   a
 }
 
 $db_articles_by_release = lambda { |release_id|
   db("/articles?select=#{article_attrs},releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&release_id=eq.#{release_id}").
-    each { |a|
-    a[:seo_title]   = seo_string a[:title]
-    a[:simple_date] = simple_date a[:releases][:date]
-    a[:section]     = a[:releases][:metadata][:sections][a[:metadata][:section]]
+    each { |a| a[:collaborations].delete_if { |c| c[:relation] != 'author' } }.
+    group_by { |a| a[:metadata][:section] }
+}
 
-    a[:collaborations].delete_if { |c| c[:relation] != 'author' }
-  }.group_by { |a| a[:metadata][:section] }
 }
 
 $db_index_articles = lambda {
@@ -70,57 +61,34 @@ $db_index_articles = lambda {
   url = "/articles?select=#{article_attrs},releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&id=in.#{ars.join(',')}"
 
   sort_like ars, db(url).each { |a|
-    a[:seo_title]   = seo_string a[:title]
-    a[:simple_date] = simple_date a[:releases][:date]
     a[:collaborations].delete_if { |c| c[:relation] != 'author' }
-    a[:section]     = a[:releases][:metadata][:sections][a[:metadata][:section]]
   }
 }
 
 $db_more_articles = lambda { |not_id|
-  db("/articles?select=id,title,collaborations(*,collabs(#{collab_attrs})),releases(#{release_attrs})&id=not.eq.#{not_id}&starred=eq.true&online=eq.true").
+  db("/articles?select=#{article_attrs},collaborations(*,collabs(#{collab_attrs})),releases(#{release_attrs})&id=not.eq.#{not_id}&starred=eq.true&online=eq.true").
     shuffle.first(3).
     each { |a|
-    a[:seo_title]   = seo_string a[:title]
     a[:collaborations].delete_if { |c| c[:relation] != 'author' }
-    a[:simple_date] = simple_date a[:releases][:date]
   }
 }
 
 $db_starred_articles = lambda {
-  db("/articles?select=#{article_attrs},releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&starred=eq.true&online=eq.true&limit=6").
-    each { |a|
-    a[:seo_title]   = seo_string a[:title]
-    a[:section]     = a[:releases][:metadata][:sections][a[:metadata][:section]]
-  }
+  db("/articles?select=#{article_attrs},releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&starred=eq.true&online=eq.true&limit=6")
 }
 
 # COLLABS
 
 $db_collabs  = lambda {
-  db("/collabs?select=#{collab_attrs},starred,metadata,articles(#{article_attrs},collaborations(*,collabs(#{collab_attrs})))&online=eq.true").
-    each { |a|
-    a[:name]     = a[:fname] + " " + a[:lname]
-    a[:seo_name] = seo_string a[:name]
-  }
+  db("/collabs?select=#{collab_attrs},starred,metadata,articles(#{article_attrs},collaborations(*,collabs(#{collab_attrs})))&online=eq.true")
 }
 
 $db_collab_by_id  = lambda { |id|
-  a = db("/collabs?select=*,articles(#{article_attrs},collaborations(*,collabs(#{collab_attrs})))&articles.order=date.desc&id=eq.#{id}&limit=1").first
-  a[:name]     = a[:fname] + " " + a[:lname]
-  a[:seo_name] = seo_string a[:name]
-
-  a[:articles].
-    each { |a| a[:seo_title] = seo_string a[:title] }
-
-  a
+  db("/collabs?select=#{collab_attrs},sinopsis,metadata,articles(#{article_attrs},collaborations(*,collabs(#{collab_attrs})))&articles.order=date.desc&id=eq.#{id}&limit=1").first
 }
 
 $db_starred_collabs  = lambda {
-  db("/collabs?select=#{collab_attrs},metadata&starred=eq.true&online=eq.true").each { |a|
-    a[:name]     = a[:fname] + " " + a[:lname]
-    a[:seo_name] = seo_string a[:name]
-  }
+  db("/collabs?select=#{collab_attrs},metadata&starred=eq.true&online=eq.true")
 }
 
 # OTHERS

@@ -47,7 +47,7 @@ class RUM
 
       def og_description
         cr = $db_current_release.call
-        "Número Actual: #{cr[:name]} - #{cr[:simple_date]} "
+        "Número Actual: #{cr[:name]} - #{cr[:month_year]} "
       end
 
       def index
@@ -83,7 +83,7 @@ class RUM
 
     class Release < Layout
       def og_description
-        "#{@release[:name]} - #{@release[:simple_date]} "
+        "#{@release[:name]} - #{@release[:month_year]} "
       end
 
       def og_image
