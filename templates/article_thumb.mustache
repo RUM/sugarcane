@@ -3,13 +3,19 @@
   <figure style="background-image: url({{cover}});"></figure>
 
   <div>
+    {{# release_name}}
+    <label class="section-label">{{release_name}}</label>
+    {{/ release_name}}
+
+    {{# section_name}}
+    <span class="section-label"> / </span>
     <label class="{{section_name}} section-label">{{section_name}}</label>
+    {{/ section_name}}
 
     {{# section}}{{# metadata.subsection}}
     <span class="section-label"> - </span>
-    {{/ metadata.subsection}}{{/ section}}
-
     <label class="{{section}}">{{metadata.subsection}}</label>
+    {{/ metadata.subsection}}{{/ section}}
 
     <h3>
       <a href="/articles/{{id}}/{{seo_title}}">{{# md}}{{title}}{{/ md}}</a>
