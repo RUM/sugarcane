@@ -62,6 +62,17 @@ $db_articles_by_release = lambda { |release_id|
     group_by { |a| a[:metadata][:section] }
 }
 
+$db_articles_by_tags = lambda { |array|
+  post = Net::HTTP.post URI("http://#{$api}:#{$api_port}/rpc/articles_with_tags"),
+                        "{\"tags_array\": #{array.to_json} }",
+                        "Content-Type" => "application/json"
+
+  ids = JSON.parse(post.body).map { |x| x['id'] }.join(',')
+
+  JSON.parse(
+    Net::HTTP.get($api, "/articles?select=#{article_attrs},collabs(#{collab_attrs}),collaborations(*,collabs(#{collab_attrs}))&order=date.desc&id=in.#{ids}", $api_port),
+    { :symbolize_names => true }
+  )
 }
 
 $db_index_articles = lambda {

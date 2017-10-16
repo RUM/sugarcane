@@ -157,6 +157,16 @@ class RUM < Sinatra::Base
              }
   end
 
+  get '/tags/:tags' do
+    tags = params[:tags].force_encoding("UTF-8").downcase.split(",")
+
+    mustache :tag,
+             :locals => {
+               :tags => tags,
+               :articles => $db_articles_by_tags.call(tags)
+             }
+  end
+
   get '/suggestions/?' do
     mustache :suggestions,
              :locals => { :suggestions => $db_suggestions.call }

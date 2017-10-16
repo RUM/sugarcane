@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="/stylesheets/article-thumb-list.css">
+
+<main>
+  <h2 style="text-transform: uppercase;
+             text-align: center;
+             color: #a8a8a8;
+             margin-top: 1.5em;
+             margin-bottom: 0em;">Artículos con</h2>
+
+  <nav id="sub-nav">
+    {{# tags}}
+    <a href="/tags/{{.}}">#{{.}}</a>
+    {{/tags}}
+  </nav>
+
+  {{# articles}}
+  {{> article_thumb}}
+  {{/ articles}}
+</main>
