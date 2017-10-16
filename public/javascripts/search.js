@@ -57,7 +57,7 @@ function _search_article_template(a) {
 
   <div>
     <h3>
-      <a href="/articles/${a.id}">${a.title}</a>
+      <a href="/articles/${a.id}/${a.seo_title}">${a.title}</a>
     </h3>
   </div>
 </article>`;
@@ -72,7 +72,7 @@ function _search_collab_template(c) {
          class="no-mobile">
   <div class="fuzz"></div>
 
-  <a href="/collabs/${c.id}">${c.fname} ${c.lname}</a>
+  <a href="/collabs/${c.id}/${c.seo_name}">${c.fname} ${c.lname}</a>
 </article>`;
 };
 
@@ -117,13 +117,13 @@ function _search_unlock_shoot(e,f) {
 
   if (_search_will_search('collabs'))
     _search_fetch(
-      `${_search_origin}/collabs?select=id,fname,lname,metadata&or=(lname.ilike.${v}*,fname.ilike.${v}*)&limit=12`,
+      `${_search_origin}/collabs?select=id,fname,lname,seo_name,metadata&or=(lname.ilike.${v}*,fname.ilike.${v}*)&limit=12`,
       (data) => _search_render(data, '#collabs', _search_collab_template)
     );
 
   if (_search_will_search('articles'))
     _search_fetch(
-      `${_search_origin}/articles?select=id,title,cover&title=ilike.*${v}*&limit=6`,
+      `${_search_origin}/articles?select=id,title,seo_title,cover&title=ilike.*${v}*&limit=6`,
       (data) => _search_render(data, '#articles', _search_article_template)
     );
 

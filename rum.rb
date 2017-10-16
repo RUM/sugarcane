@@ -126,7 +126,7 @@ class RUM < Sinatra::Base
     redirect "/collabs/#{params[:id]}/#{@collab[:seo_name]}"
   end
 
-  get '/collabs/:id/:seo_url?' do
+  get '/collabs/:id/:seo_url/?' do
     all_collabs = $db_collabs.call.sort_by { |x| x[:lname] }
 
     groups  = all_collabs.group_by { |x| x[:lname][0].upcase }
