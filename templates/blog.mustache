@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="/stylesheets/article-thumb.css">
+
+<style>
+  article {
+    height: calc(var(--half-article-height) + 4em);
+    padding: 0.5em;
+    cursor: unset;
+  }
+
+  h2 {
+    margin-top: 0;
+    display: flex;
+  }
+
+  article img {
+    border-radius: 3px !important;
+    vertical-align: middle;
+  }
+
+  article li em {
+    font-size: 1.2em;
+  }
+
+  @media (min-width: 50em) {
+    article {
+      width: calc(33% - 1.99em);
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+    }
+  }
+</style>
+
+<main>
+  {{# posts}}
+  <article class="article-thumb">
+    <div>
+      <h2><a href="{{{link}}}" target="_blank">{{{title.rendered}}}</a></h2>
+
+      <span style="text-transform: uppercase; font-size: small;">{{category}}</span>
+
+      <ul class="collabs-list">
+        {{# _embedded.author}}
+        <li>
+          <img alt="{{name}} avatar" src="{{avatar_urls.96}}" height="64" width="64">
+          &nbsp;&nbsp;&nbsp;
+          <em>{{name}}</em>
+        </li>
+        {{/ _embedded.author}}
+      </ul>
+
+      <span style="font-size: small;">{{created}}</span>
+    </div>
+  </article>
+  {{/ posts}}
+</main>
