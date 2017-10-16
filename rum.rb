@@ -90,7 +90,7 @@ class RUM < Sinatra::Base
       collabs = nil
     end
 
-    @title = "#{ @article[:title] } | #{ authors_plain_list }"
+    @title = "#{ @article[:plain_title] } | #{ authors_plain_list }"
 
     if @article[:doc_only]
       mustache :article_doc_only,

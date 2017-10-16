@@ -42,7 +42,7 @@ $db_current_release = lambda {
 # ARTICLES
 
 $db_article_by_id = lambda { |id|
-  a = db("/articles?select=*,seo_title,month_year,collaborations(*,collabs(#{collab_attrs})),releases(#{release_attrs})&id=eq.#{id}&limit=1").first
+  a = db("/articles?select=*,seo_title,plain_title,month_year,collaborations(*,collabs(#{collab_attrs})),releases(#{release_attrs})&id=eq.#{id}&limit=1").first
   s = a[:section_name]
   a[:section_name] = (s == 'editorial' ? nil : s)
 
