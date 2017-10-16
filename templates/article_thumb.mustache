@@ -12,10 +12,10 @@
     <label class="{{section_name}} section-label">{{section_name}}</label>
     {{/ section_name}}
 
-    {{# section}}{{# metadata.subsection}}
+    {{# metadata.subsection}}
     <span class="section-label"> - </span>
-    <label class="{{section}}">{{metadata.subsection}}</label>
-    {{/ metadata.subsection}}{{/ section}}
+    <label class="subsection-label {{section_name}}">{{metadata.subsection}}</label>
+    {{/ metadata.subsection}}
 
     <h3>
       <a href="/articles/{{id}}/{{seo_title}}">{{# md}}{{title}}{{/ md}}</a>

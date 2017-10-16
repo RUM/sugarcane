@@ -5,7 +5,7 @@ def db url
   JSON.parse(Net::HTTP.get(s, url, 4056), { :symbolize_names => true })
 end
 
-release_attrs = "id,date,cover,month_year,name,metadata"
+release_attrs = "id,date,cover,month_year,name,metadata,online"
 article_attrs = "id,title,cover,file,metadata,release_name,section_name,seo_title"
 collab_attrs  = "id,fname,lname,seo_name,name"
 
@@ -42,7 +42,7 @@ $db_current_release = lambda {
 # ARTICLES
 
 $db_article_by_id = lambda { |id|
-  a = db("/articles?select=*,month_year,section_name,collaborations(*,collabs(#{collab_attrs})),releases(#{release_attrs})&id=eq.#{id}&limit=1").first
+  a = db("/articles?select=*,month_year,collaborations(*,collabs(#{collab_attrs})),releases(#{release_attrs})&id=eq.#{id}&limit=1").first
   s = a[:section_name]
   a[:section_name] = (s == 'editorial' ? nil : s)
 

@@ -6,6 +6,8 @@ function _capcap() {
   for (var i = 0; i < ps.length; i++)
     if (ps[i].innerText.trim() !== "") { p = ps[i]; break; }
 
+  if (!p) return;
+
   var first = p.innerText.slice(0,1);
   var head  = p.innerHTML.slice(0, p.innerHTML.indexOf(first));
   var tail  = p.innerHTML.slice(p.innerHTML.indexOf(first) + 1);
