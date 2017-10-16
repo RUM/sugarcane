@@ -64,7 +64,7 @@ class RUM
           @article[:quote]
 
         else
-          "#{@release[:name]} - #{@release[:simple_date]}"
+          "#{@release[:name]} - #{@release[:month_year]} XXX"
         end
       end
 
@@ -101,7 +101,7 @@ class RUM
 
     class Collab  < Layout
       def og_description
-        "#{@collab[:fname]} #{@collab[:lname]}"
+        @collab[:name]
       end
 
       def og_image

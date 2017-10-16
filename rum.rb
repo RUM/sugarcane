@@ -70,7 +70,7 @@ class RUM < Sinatra::Base
       authors_plain_list  =
         @article[:collaborations].
           select { |x| x[:relation] == 'author' }.
-          map    { |x| "#{x[:collabs][:fname]} #{x[:collabs][:lname]}" }.
+          map    { |x| x[:collabs][:name] }.
           join(", ")
 
       collabs  = @article[:collaborations].
@@ -163,9 +163,16 @@ class RUM < Sinatra::Base
   end
 
   get '/blog' do
+    # TODO: stop using wordpress... it smells
+
+    months_spa = [nil, "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+
     posts = JSON.parse(Net::HTTP.get(URI('https://blog.revistadelauniversidad.mx/wp-json/wp/v2/posts?_embed')),
                        { :symbolize_names => true }).each { |p|
-      p[:created] = Date.strptime(p[:date],"%Y-%m-%d").day.to_s + " de " + simple_date(p[:date])
+
+      d = Date.parse(p[:date])
+
+      p[:created] = "#{d.day} de #{months_spa[d.month]} de #{d.year}"
 
       begin
         p[:category] = p[:_embedded][:'wp:term'][0][0][:name]

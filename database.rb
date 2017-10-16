@@ -1,8 +1,15 @@
-def db url
-  s = 'revistadelauniversidad.mx'
-  s = 'localhost' if ENV['RACK_ENV'] == 'development'
+$api = '127.0.0.1'
+$api_port = '4056'
+$api_prefix = ''
 
-  JSON.parse(Net::HTTP.get(s, url, 4056), { :symbolize_names => true })
+# if ENV['RACK_ENV'] == 'production'
+#   $api = 'api.revistadelauniversidad.mx'
+#   $api_port = '80'
+#   $api_prefix = ''
+# end
+
+def db(url)
+  JSON.parse(Net::HTTP.get($api, $api_prefix + url, $api_port), { :symbolize_names => true })
 end
 
 release_attrs = "id,date,cover,month_year,name,metadata,online"
