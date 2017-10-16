@@ -40,7 +40,7 @@ class RUM
       end
     end
 
-    class Index   < Layout
+    class Index < Layout
       def og_title
         "Inicio - Revista de la Universidad de México"
       end
@@ -99,7 +99,7 @@ class RUM
       end
     end
 
-    class Collab  < Layout
+    class Collab < Layout
       def og_description
         @collab[:name]
       end

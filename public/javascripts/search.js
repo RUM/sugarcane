@@ -72,7 +72,7 @@ function _search_collab_template(c) {
          class="no-mobile">
   <div class="fuzz"></div>
 
-  <a href="/collabs/${c.id}/${c.seo_name}">${c.fname} ${c.lname}</a>
+  <a href="/collabs/${c.id}/${c.seo_name}">${c.name}</a>
 </article>`;
 };
 
@@ -117,7 +117,7 @@ function _search_unlock_shoot(e,f) {
 
   if (_search_will_search('collabs'))
     _search_fetch(
-      `${_search_origin}/collabs?select=id,fname,lname,seo_name,metadata&or=(lname.ilike.${v}*,fname.ilike.${v}*)&limit=12`,
+      `${_search_origin}/collabs?select=id,name,seo_name,metadata&or=(lname.ilike.${v}*,fname.ilike.${v}*)&limit=12`,
       (data) => _search_render(data, '#collabs', _search_collab_template)
     );
 
