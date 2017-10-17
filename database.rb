@@ -37,7 +37,7 @@ $db_current_release = lambda {
 # ARTICLES
 
 $db_article_by_id = lambda { |id|
-  a = db("/articles?select=*,seo_title,plain_title,month_year,collaborations(*,collabs(#{collab_attrs})),releases(#{release_attrs})&id=eq.#{id}&limit=1").first
+  a = db("/articles?select=*,seo_title,plain_title,month_year,collaborations(*,collabs(#{collab_attrs})),release:releases(#{release_attrs})&id=eq.#{id}&limit=1").first
   s = a[:section_name]
   a[:section_name] = (s == 'editorial' ? nil : s)
 
@@ -45,7 +45,7 @@ $db_article_by_id = lambda { |id|
 }
 
 $db_articles_by_release = lambda { |release_id|
-  db("/articles?select=#{article_attrs},releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&collaborations.relation=eq.author&release_id=eq.#{release_id}").
+  db("/articles?select=#{article_attrs},release:releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&collaborations.relation=eq.author&release_id=eq.#{release_id}").
     group_by { |a| a[:metadata][:section] }
 }
 
@@ -65,18 +65,18 @@ $db_articles_by_tags = lambda { |array|
 $db_index_articles = lambda {
   ars = $db_current_release.call[:metadata][:landing][:articles_ids]
 
-  url = "/articles?select=#{article_attrs},releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&collaborations.relation=eq.author&id=in.#{ars.join(',')}"
+  url = "/articles?select=#{article_attrs},release:releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&collaborations.relation=eq.author&id=in.#{ars.join(',')}"
 
   sort_like ars, db(url)
 }
 
 $db_more_articles = lambda { |not_id|
-  db("/articles?select=#{article_attrs},collaborations(*,collabs(#{collab_attrs})),releases(#{release_attrs})&id=not.eq.#{not_id}&collaborations.relation=eq.author&starred=eq.true&online=eq.true").
+  db("/articles?select=#{article_attrs},collaborations(*,collabs(#{collab_attrs})),release:releases(#{release_attrs})&id=not.eq.#{not_id}&collaborations.relation=eq.author&starred=eq.true&online=eq.true").
     shuffle.first(3)
 }
 
 $db_starred_articles = lambda {
-  db("/articles?select=#{article_attrs},releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&starred=eq.true&online=eq.true&limit=6")
+  db("/articles?select=#{article_attrs},release:releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&starred=eq.true&online=eq.true&limit=6")
 }
 
 # COLLABS

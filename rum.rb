@@ -58,7 +58,7 @@ class RUM < Sinatra::Base
 
     halt 404, "No hay de esos..." if not @article
 
-    @release = @article[:releases]
+    @release = @article[:release]
 
     begin
       authors_list  =
