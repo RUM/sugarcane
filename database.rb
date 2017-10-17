@@ -18,25 +18,25 @@ collab_attrs  = "id,fname,lname,seo_name,name"
 
 # RELEASES
 
-$db_releases_all = lambda {
+$db_releases_all = -> {
   db("/releases?select=#{release_attrs},number&order=date.desc")
 }
 
-$db_releases = lambda {
+$db_releases = -> {
   db("/releases?select=#{release_attrs}&online=eq.true&order=date.asc")
 }
 
-$db_release_by_id = lambda { |id|
+$db_release_by_id = -> (id) {
   db("/releases?id=eq.#{id}").first
 }
 
-$db_current_release = lambda {
+$db_current_release = -> {
   db("/releases?select=#{release_attrs},file&online=eq.true&order=date.desc&limit=1").first
 }
 
 # ARTICLES
 
-$db_article_by_id = lambda { |id|
+$db_article_by_id = -> (id) {
   a = db("/articles?select=*,seo_title,plain_title,month_year,collaborations(*,collabs(#{collab_attrs})),release:releases(#{release_attrs})&id=eq.#{id}&limit=1").first
   s = a[:section_name]
   a[:section_name] = (s == 'editorial' ? nil : s)
@@ -44,12 +44,12 @@ $db_article_by_id = lambda { |id|
   a
 }
 
-$db_articles_by_release = lambda { |release_id|
+$db_articles_by_release = -> (release_id) {
   db("/articles?select=#{article_attrs},release:releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&collaborations.relation=eq.author&release_id=eq.#{release_id}").
     group_by { |a| a[:metadata][:section] }
 }
 
-$db_articles_by_tags = lambda { |array|
+$db_articles_by_tags = -> (array) {
   post = Net::HTTP.post URI("http://#{$api}:#{$api_port}/rpc/articles_with_tags"),
                         "{\"tags_array\": #{array.to_json} }",
                         "Content-Type" => "application/json"
@@ -62,7 +62,7 @@ $db_articles_by_tags = lambda { |array|
   )
 }
 
-$db_index_articles = lambda {
+$db_index_articles = -> {
   ars = $db_current_release.call[:metadata][:landing][:articles_ids]
 
   url = "/articles?select=#{article_attrs},release:releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&collaborations.relation=eq.author&id=in.#{ars.join(',')}"
@@ -70,47 +70,47 @@ $db_index_articles = lambda {
   sort_like ars, db(url)
 }
 
-$db_more_articles = lambda { |not_id|
+$db_more_articles = -> (not_id) {
   db("/articles?select=#{article_attrs},collaborations(*,collabs(#{collab_attrs})),release:releases(#{release_attrs})&id=not.eq.#{not_id}&collaborations.relation=eq.author&starred=eq.true&online=eq.true").
     shuffle.first(3)
 }
 
-$db_starred_articles = lambda {
+$db_starred_articles = -> {
   db("/articles?select=#{article_attrs},release:releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&starred=eq.true&online=eq.true&limit=6")
 }
 
 # COLLABS
 
-$db_collabs  = lambda {
+$db_collabs = -> {
   db("/collabs?select=#{collab_attrs},starred,metadata,articles(#{article_attrs},collaborations(*,collabs(#{collab_attrs})))&online=eq.true")
 }
 
-$db_collab_by_id  = lambda { |id|
+$db_collab_by_id = -> (id) {
   db("/collabs?select=#{collab_attrs},sinopsis,metadata,articles(#{article_attrs},collaborations(*,collabs(#{collab_attrs})))&articles.collaborations.relation=eq.author&articles.order=date.desc&id=eq.#{id}&limit=1").first
 }
 
-$db_starred_collabs  = lambda {
+$db_starred_collabs = -> {
   db("/collabs?select=#{collab_attrs},metadata&starred=eq.true&online=eq.true")
 }
 
-$db_collabs_by_letter = lambda { |x|
+$db_collabs_by_letter = -> (x) {
   db("/collabs?select=#{collab_attrs},metadata&online=eq.true&lname=ilike.#{x}*")
 }
 
-$db_collabs_index_letters = lambda {
+$db_collabs_index_letters = -> {
   db("/collabs_index_letters").first[:array]
 }
 
 # OTHERS
 
-$db_suggestions = lambda {
+$db_suggestions = -> {
   db("/suggestions")
 }
 
-$db_starred_suggestions = lambda {
+$db_starred_suggestions = -> {
   db("/suggestions?starred=eq.true")
 }
 
-$db_pages_by_id = lambda { |id|
+$db_pages_by_id = -> (id) {
   db("/pages?id=eq.#{id}&limit=1").first
 }
