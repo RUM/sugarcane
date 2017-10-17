@@ -115,7 +115,7 @@ class RUM < Sinatra::Base
 
     mustache :collabs,
              :locals => {
-               :groups =>  all_collabs.group_by { |x| x[:lname][0].upcase }.keys.sort,
+               :groups =>  $db_collabs_index_letters.call,
                :collabs => all_collabs.select { |x| x[:starred] }.shuffle.first(12)
              }
   end
@@ -127,33 +127,23 @@ class RUM < Sinatra::Base
   end
 
   get '/collabs/:id/:seo_url/?' do
-    all_collabs = $db_collabs.call.sort_by { |x| x[:lname] }
-
-    groups  = all_collabs.group_by { |x| x[:lname][0].upcase }
-
     @collab = $db_collab_by_id.call params[:id]
 
     halt 404, "No hay de esos..." if not @collab
 
     mustache :collab,
              :locals => {
-               :groups => groups.keys.sort,
+               :groups => $db_collabs_index_letters.call,
                :collab => @collab,
                :articles => @collab[:articles]
              }
   end
 
   get '/collabs-lastname/:letter' do
-    all_collabs = $db_collabs.call
-
-    collabs = all_collabs.select { |x| x[:lname][0].upcase == params[:letter].upcase }
-
-    groups = all_collabs.group_by { |x| x[:lname][0].upcase }
-
     mustache :collabs,
              :locals => {
-               :groups => groups.keys.sort,
-               :collabs => collabs
+               :groups => $db_collabs_index_letters.call,
+               :collabs => $db_collabs_by_letter.call(params[:letter])
              }
   end
 

@@ -31,19 +31,7 @@ $db_release_by_id = lambda { |id|
 }
 
 $db_current_release = lambda {
-  releases = $db_releases.call
-
-  c = releases.select { |x|
-    (x[:date].match /\d{4}-(\d{2})-\d{2}/)[1].to_i == Time.now.month
-  }.first
-
-  if not c[:online]
-    c = releases.select { |x|
-      (x[:date].match /\d{4}-(\d{2})-\d{2}/)[1].to_i == Time.now.month - 1
-    }.first
-  end
-
-  return c
+  db("/releases?select=#{release_attrs},file&online=eq.true&order=date.desc&limit=1").first
 }
 
 # ARTICLES
@@ -103,6 +91,14 @@ $db_collab_by_id  = lambda { |id|
 
 $db_starred_collabs  = lambda {
   db("/collabs?select=#{collab_attrs},metadata&starred=eq.true&online=eq.true")
+}
+
+$db_collabs_by_letter = lambda { |x|
+  db("/collabs?select=#{collab_attrs},metadata&online=eq.true&lname=ilike.#{x}*")
+}
+
+$db_collabs_index_letters = lambda {
+  db("/collabs_index_letters").first[:array]
 }
 
 # OTHERS
