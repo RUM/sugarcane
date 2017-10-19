@@ -1,6 +1,26 @@
 # coding: utf-8
 
 class RUM < Sinatra::Base
+  error 400..510 do
+    message = case status
+              when (401 or 403) then
+                "Tú no... ¡úshcale!"
+              when 404 then
+                "No hay de esos..."
+              when 500 then
+                "Ya se le tronó el moño a esto..."
+              else
+                "¡Ay No! Por favor..."
+              end
+
+    mustache :error,
+             :layout => false,
+             :locals => {
+               :status => status,
+               :message => message
+             }
+  end
+
   get '/' do
     mustache :index,
              :locals => {
@@ -20,7 +40,7 @@ class RUM < Sinatra::Base
   get '/releases/:id/?' do
     @release = $db_release_by_id.call params[:id]
 
-    halt 404, "No hay de esos..." if not @release
+    halt 404 if not @release
 
     groups = $db_articles_by_release.call params[:id]
 
@@ -50,13 +70,15 @@ class RUM < Sinatra::Base
   get '/articles/:id/?' do
     @article = $db_article_by_id.call params[:id]
 
+    halt 404 if not @article
+
     redirect "/articles/#{params[:id]}/#{@article[:seo_title]}"
   end
 
   get '/articles/:id/:seo_url/?' do
     @article = $db_article_by_id.call params[:id]
 
-    halt 404, "No hay de esos..." if not @article
+    halt 404 if not @article
 
     @release = @article[:release]
 
@@ -123,13 +145,15 @@ class RUM < Sinatra::Base
   get '/collabs/:id/?' do
     @collab = $db_collab_by_id.call params[:id]
 
+    halt 404 if not @collab
+
     redirect "/collabs/#{params[:id]}/#{@collab[:seo_name]}"
   end
 
   get '/collabs/:id/:seo_url/?' do
     @collab = $db_collab_by_id.call params[:id]
 
-    halt 404, "No hay de esos..." if not @collab
+    halt 404 if not @collab
 
     mustache :collab,
              :locals => {
