@@ -62,13 +62,6 @@ $db_articles_by_tags = -> (array) {
   )
 }
 
-$db_index_articles = -> {
-  ars = $db_current_release.call[:metadata][:landing][:articles_ids]
-
-  url = "/articles?select=#{article_attrs},release:releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&collaborations.relation=eq.author&id=in.#{ars.join(',')}"
-
-  sort_like ars, db(url)
-}
 
 $db_more_articles = -> (not_id) {
   db("/articles?select=#{article_attrs},collaborations(*,collabs(#{collab_attrs})),release:releases(#{release_attrs})&id=not.eq.#{not_id}&collaborations.relation=eq.author&starred=eq.true&online=eq.true").

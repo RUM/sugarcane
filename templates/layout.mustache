@@ -34,27 +34,12 @@
       <div style="height: 4em;
                   width: 100%;
                   text-align: center;
-                  {{# index}}
-                  position: absolute;
-                  top: 0;
-                  left: 0;
-                  background-color: rgba(53, 53, 53, 0.7);
-                  {{/ index}}
-                  {{^ index}}
-                  background-color: rgba(53, 53, 53, 1);
-                  {{/ index}}">
+                  background-color: rgba(53, 53, 53, 1);">
         <img src="/images/cultura-unam.png"
              alt="Cultura UNAM"
              style="height: 2.4em;
                     margin: 0.8em;">
       </div>
-
-      {{# index}}
-      <img src="{{current_release.metadata.landing.image}}"
-           style="width: 100%;
-                  margin: 0 !important;
-                  margin-bottom: -10px !important;">
-      {{/ index}}
     </div>
 
     {{> nav}}

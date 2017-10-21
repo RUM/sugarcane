@@ -24,9 +24,6 @@ class RUM < Sinatra::Base
   get '/' do
     mustache :index,
              :locals => {
-               :index => true,
-               :articles => $db_index_articles.call,
-               :current_release => $db_current_release.call,
                :collaborators => $db_starred_collabs.call.shuffle.first(6),
                :suggestions => $db_starred_suggestions.call
              }
