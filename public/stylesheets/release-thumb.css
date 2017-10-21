@@ -1,0 +1,43 @@
+article.release {
+  height: 0;
+  width: calc(25% - 3em);
+  padding-bottom: calc(25% - 3em);
+
+  position: relative;
+  display: inline-block;
+
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+
+  text-align: center;
+}
+
+article.release a {
+  position: relative;
+  line-height: 2em;
+
+  font-family: 'Cormorant', serif;
+  font-weight: bold;
+  font-size: 1.3em;
+  font-style: italic;
+
+  color: white;
+
+  display: block;
+
+  height: 0;
+  width: 100%;
+  padding-bottom: 100%;
+
+  z-index: 3 !important;
+}
+
+@media (max-width: 50em) {
+  article.release {
+    line-height: unset;
+    height: 0;
+    width: calc(50% - 0.5em);
+    padding-bottom: calc(50% - 0.5em);
+  }
+}
