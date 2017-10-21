@@ -124,7 +124,7 @@ class RUM < Sinatra::Base
     else
       mustache :article,
                :locals => {
-                 :morearticles => $db_more_articles.call(@article[:id]),
+                 :articles_suggestion => $db_articles_suggestion.call(@article[:id], 3),
                  :article => @article,
                  :collabs => collabs,
                  :authors_list => authors_list
