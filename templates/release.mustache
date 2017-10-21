@@ -24,15 +24,12 @@
 
   <section id="release-quote"
            class="no-mobile">
-    <div>
-      {{# quotes}}
-      <blockquote>
-        {{# md}}{{content}}{{/ md}}
-        <strong style="float: right;">- {{author}}</strong>
-      </blockquote>
-      <br>
-      {{/ quotes}}
-    </div>
+    {{# quotes}}
+    <blockquote>
+      {{# md}}{{content}}{{/ md}}
+      <strong style="flex: 0 0 100%; text-align: right;">- {{author}}</strong>
+    </blockquote>
+    {{/ quotes}}
   </section>
 
   {{# sections}}

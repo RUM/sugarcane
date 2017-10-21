@@ -66,10 +66,11 @@ $db_articles_by_tags = -> (array) {
   )
 }
 
+$db_articles_suggestion = -> (not_id, i) {
+  url = "/articles?select=#{article_attrs},collaborations(*,collabs(#{collab_attrs})),release:releases(#{release_attrs})&collaborations.relation=eq.author&starred=eq.true&online=eq.true"
+  url += (not_id ? "&id=not.eq.#{not_id}" : '')
 
-$db_more_articles = -> (not_id) {
-  db("/articles?select=#{article_attrs},collaborations(*,collabs(#{collab_attrs})),release:releases(#{release_attrs})&id=not.eq.#{not_id}&collaborations.relation=eq.author&starred=eq.true&online=eq.true").
-    shuffle.first(3)
+  db(url).shuffle.first(i)
 }
 
 $db_starred_articles = -> {

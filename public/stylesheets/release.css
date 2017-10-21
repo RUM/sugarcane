@@ -56,19 +56,15 @@ article.article-thumb > div > .section-label {
 
 #release-quote {
   width: calc(50% - 2.1em);
-  display:inline-block;
   margin: 1em;
   float: right;
 }
 
-#release-quote > div {
+#release-quote > blockquote {
   display: flex;
+  flex-flow: row wrap;
   align-items: center;
   height: var(--half-article-height);
-}
-
-#release-quote > div > blockquote {
-  /* font-size: 1.7em; */
 }
 
 /* desktop specifics */
