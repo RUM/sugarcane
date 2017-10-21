@@ -1,7 +1,14 @@
-<link rel="stylesheet" href="/stylesheets/index.css">
 <link rel="stylesheet" href="/stylesheets/collab-thumb.css">
+<link rel="stylesheet" href="/stylesheets/release-thumb.css">
+<link rel="stylesheet" href="/stylesheets/index.css">
 
 <main>
+  <section id="latest-releases">
+    {{# latest_releases}}
+    {{> release_thumb}}
+    {{/ latest_releases}}
+  </section>
+
   <section id="collabs">
     <a href="/collabs">
       <h2 style="background-color: #254b5e;">Colaboradores</h2>

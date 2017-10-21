@@ -22,6 +22,10 @@ $db_releases_all = -> {
   db("/releases?select=#{release_attrs},number&order=date.desc")
 }
 
+$db_releases_latest = -> {
+  db("/releases?select=#{release_attrs}&online=eq.true&order=date.desc&limit=3")
+}
+
 $db_releases = -> {
   db("/releases?select=#{release_attrs}&online=eq.true&order=date.asc")
 }

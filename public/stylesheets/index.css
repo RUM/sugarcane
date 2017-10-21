@@ -3,6 +3,23 @@ main {
   flex-flow: row wrap;
 }
 
+section#latest-releases {
+  text-align: center;
+  min-height: 60%;
+  padding: 3em 1em 1em;
+}
+
+section#latest-releases article.release a {
+  font-family: Overpass;
+  font-style: normal;
+  line-height: 2em;
+  text-transform: uppercase;
+}
+
+section#latest-releases article.release a .date {
+  font-size: 0.5em;
+}
+
 h2 {
   margin-top: 0;
 }
@@ -70,5 +87,26 @@ article.suggestion {
 @media (min-width: 50em) {
   section {
     padding: 1em;
+  }
+
+  section#latest-releases {
+    width: 100%;
+  }
+
+  section#latest-releases article.release {
+    height: 0;
+    width: calc(33% - 0.6em) !important;
+    padding-bottom: calc(33% - 0.6em) !important;
+    margin: 0;
+    margin-right: 1em;
+    margin-bottom: 1em;
+  }
+
+  section#latest-releases article.release:nth-of-type(3) {
+    margin-right: 0;
+  }
+
+  section#latest-releases article.release a {
+    font-size: 2em;
   }
 }
