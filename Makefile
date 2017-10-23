@@ -13,7 +13,6 @@ ifeq ($(env), production)
 	@bundle exec puma \
 		--port $(WEB_PORT) \
 		--environment production \
-		--pidfile $(PID_FILE) \
 		--redirect-stderr /tmp/rum-errors.log \
 		--daemon
 
@@ -25,7 +24,6 @@ else ifeq ($(env), staging)
 	@bundle exec puma \
 		--port $(WEB_PORT) \
 		--environment production \
-		--pidfile $(PID_FILE) \
 		--daemon
 
 else
@@ -60,7 +58,7 @@ sync:
 restart: stop start
 
 remote-stop:
-	@ssh $(SRV_USER)@$(SRV_SERVER) "cd $(SRV_DEST); make stop"
+	@ssh $(SRV_USER)@$(SRV_SERVER) "cd $(SRV_DEST); make stop env=$(env)"
 
 remote-start:
 	@ssh $(SRV_USER)@$(SRV_SERVER) "/bin/bash --login -c 'cd $(SRV_DEST); make start env=$(env)'"
