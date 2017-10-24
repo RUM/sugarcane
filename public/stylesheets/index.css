@@ -1,48 +1,23 @@
-article#header {
-  display: flex;
-  color: #FEFEFE;
-  background-color: #B8311E;
-  width: 100%;
-  height: auto;
-  padding: 1em;
-  margin: 1em 0;
-}
-
-article#header #title,
-article#header #date {
-  font-size: 11vw;
-  font-family: 'Overpass', sans-serif;
-  font-weight: 300;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-article#header #date {
-  font-size: 7vw;
-}
-
-article#header div {
-  font-size: 0.8em;
-  padding: 0 1em;
-}
-
-article#header div p {
-  margin: 0;
-}
-
-section#selection article {
-  height: var(--article-height);
-  width: 100%;
-}
-
-section#selection article figure {
-  width: 100%;
-  height: calc(var(--article-height) / 2);
-}
-
 main {
   display: flex;
   flex-flow: row wrap;
+}
+
+section#latest-releases {
+  text-align: center;
+  min-height: 60%;
+  padding: 3em 1em 1em;
+}
+
+section#latest-releases article.release a {
+  font-family: Overpass;
+  font-style: normal;
+  line-height: 2em;
+  text-transform: uppercase;
+}
+
+section#latest-releases article.release a .date {
+  font-size: 0.5em;
 }
 
 h2 {
@@ -82,96 +57,54 @@ section#suggestions article.suggestion {
 
 /* Desktop complexities */
 @media (min-width: 50em) {
-  article#header {
-    margin: 2em 1em;
-  }
-
-  article#header #title {
-    font-size: 5em;
-  }
-
-  article#header #date {
-    font-size: 1.5em;
-  }
-
   section {
     padding: 2em 1em;
   }
 
+  section#latest-releases {
+    width: 100%;
+  }
+
+  section#latest-releases article.release {
+    height: 0;
+    width: calc(33% - 0.6em) !important;
+    padding-bottom: calc(33% - 0.6em) !important;
+    margin: 0;
+    margin-right: 1em;
+    margin-bottom: 1em;
+  }
+
+  section#latest-releases article.release:nth-of-type(3) {
+    margin-right: 0;
+  }
+
+  section#latest-releases article.release a {
+    font-size: 2em;
+  }
+
   section#selection {
-    position: relative;
-    margin: -1em;
+    width: 75%;
   }
 
-  /*
-   * |-------------------------------------|
-   * |               |                     |
-   * |       1       |           2         |
-   * |               |                     |
-   * |-------------------------------------|
-   * |          |               |          |
-   * |     3    |       4       |     5    |
-   * |          |               |          |
-   * |-------------------------------------|
-   * |       6       |             |       |
-   * |---------------|      8      |   9   |
-   * |       7       |             |       |
-   * |-------------------------------------|
-   */
-
-  section#selection article {
-    margin: 1em;
-    height: var(--article-height);
+  section#selection article.article-thumb {
+    width: calc(33% - 0.71em);
+    margin: 0;
+    margin-right: 1em;
   }
 
-  section#selection article:nth-of-type(1),
-  section#selection article:nth-of-type(4),
-  section#selection article:nth-of-type(8) {
-    width: calc(40% - 2em);
+  section#selection article.article-thumb:nth-of-type(3) {
+    margin-right: 0;
   }
 
-  section#selection article:nth-of-type(2) {
-    width: calc(60% - 2.3em);
+  section#blog {
+    display: inline-block;
+    width: 25%;
   }
 
-  section#selection article:nth-of-type(2) div {
-    width: 40% !important;
+  section#blog article {
+    margin: 0;
   }
 
-  section#selection article:nth-of-type(2) figure {
-    height: 100% !important;
-    float: left !important;
-    width: 60% !important;
-  }
-
-  section#selection article:nth-of-type(3),
-  section#selection article:nth-of-type(5) {
-    width: calc(30% - 2.3em);
-  }
-
-  section#selection article:nth-of-type(6),
-  section#selection article:nth-of-type(7) {
-    height: var(--half-article-height);
-    width: calc(50% - 2.2em);
-  }
-
-  section#selection article:nth-of-type(7) {
-    /* position: absolute; */
-    /* left: 0; */
-    /* top: 67.8em; */
-  }
-
-  section#selection article:nth-of-type(6) div,
-  section#selection article:nth-of-type(7) div {
-    width: 70%;
-  }
-
-  section#selection article:nth-of-type(6) figure,
-  section#selection article:nth-of-type(7) figure {
-    width: 30%;
-    float: left;
-    height: 100%;
-  }
   section#collabs {
     display: inline-block;
     width: 58.33%;

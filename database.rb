@@ -22,6 +22,10 @@ $db_releases_all = -> {
   db("/releases?select=#{release_attrs},number&order=date.desc")
 }
 
+$db_releases_latest = -> (i) {
+  db("/releases?select=#{release_attrs}&online=eq.true&order=date.desc&limit=#{i}")
+}
+
 $db_releases = -> {
   db("/releases?select=#{release_attrs}&online=eq.true&order=date.asc")
 }
@@ -62,13 +66,6 @@ $db_articles_by_tags = -> (array) {
   )
 }
 
-$db_index_articles = -> {
-  ars = $db_current_release.call[:metadata][:landing][:articles_ids]
-
-  url = "/articles?select=#{article_attrs},release:releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&collaborations.relation=eq.author&id=in.#{ars.join(',')}"
-
-  sort_like ars, db(url)
-}
 $db_articles_suggestion = -> (not_id, i) {
   url = "/articles?select=#{article_attrs},collaborations(*,collabs(#{collab_attrs})),release:releases(#{release_attrs})&collaborations.relation=eq.author&starred=eq.true&online=eq.true"
   url += (not_id ? "&id=not.eq.#{not_id}" : '')

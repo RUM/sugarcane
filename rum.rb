@@ -22,11 +22,27 @@ class RUM < Sinatra::Base
   end
 
   get '/' do
+    post = JSON.parse(Net::HTTP.get(URI('https://blog.revistadelauniversidad.mx/wp-json/wp/v2/posts?_embed&per_page=1')),
+                       { :symbolize_names => true }).each { |p|
+
+      begin
+        p[:cover] = p[:_embedded][:'wp:featuredmedia'][0][:source_url]
+      rescue
+        p[:cover] = nil
+      end
+
+      begin
+        p[:category] = p[:_embedded][:'wp:term'][0][0][:name]
+      rescue
+        p[:category] = ""
+      end
+    }.first
+
     mustache :index,
              :locals => {
-               :index => true,
-               :articles => $db_index_articles.call,
-               :current_release => $db_current_release.call,
+               :latest_post => post,
+               :articles_suggestion => $db_articles_suggestion.call(nil, 3),
+               :latest_releases => $db_releases_latest.call(2),
                :collaborators => $db_starred_collabs.call.shuffle.first(6),
                :suggestions => $db_starred_suggestions.call
              }

@@ -1,41 +1,66 @@
-<link rel="stylesheet" href="/stylesheets/index.css">
 <link rel="stylesheet" href="/stylesheets/collab-thumb.css">
+<link rel="stylesheet" href="/stylesheets/release-thumb.css">
+<link rel="stylesheet" href="/stylesheets/index.css">
 
 <main>
-  {{# current_release}}
-  <article id="header"
-           onclick="window.location = '/releases/{{id}}';">
-    <div>
-      <span id="title">{{name}}</span>
-      <br>
-      <span id="date">{{month_year}}</span>
-    </div>
-
-    <div class="no-mobile">
-      <div style="font-size: 1.2em;
-                  border-left: 2px solid #FEFEFE;
-                  padding: 1em;">{{# md}}{{metadata.landing.phrase}}{{/ md}}
-
-        <br>
-
-        {{# file}}
-        <a href="{{file}}"
-           style="font-size: 1.2em;
-                  font-weight: bold;
-                  color: #FAF911;">
-          <span class="mdi mdi-download"></span>&nbsp;Descargar PDF
-        </a>
-        {{/ file}}
-      </div>
-    </div>
-  </article>
-  {{/ current_release}}
+  <section id="latest-releases">
+    {{# latest_releases}}
+    {{> release_thumb}}
+    {{/ latest_releases}}
+  </section>
 
   <section id="selection">
-    {{# articles}}
+    <a href="/archive">
+      <h2 style="background-color: #DD9980;
+          border-top: 3px solid #6a3724;">Selección</h2>
+    </a>
+
+    {{# articles_suggestion}}
     {{> article_thumb}}
-    {{/ articles}}
+    {{/ articles_suggestion}}
   </section>
+
+  {{# latest_post}}
+  <section id="blog">
+    <a href="/blog">
+      <h2 style="background-color: #666;
+                 border-top: 3px solid #000;">Blog</h2>
+    </a>
+
+    <article class="article-thumb">
+      {{# cover}}
+      <figure style="background-image: url({{cover}});"></figure>
+      {{/ cover}}
+
+      {{^ cover}}
+      <figure style="background-image: url(/images/rum-u-black.png);
+                     background-size: auto 100%;"></figure>
+      {{/ cover}}
+
+      <div>
+        <label class="section-label">Blog</label>
+        <span class="section-label"> / </span>
+        <label class="section-label">{{category}}</label>
+
+        <h3>
+          <a href="{{{link}}}" target="_blank">
+            <p>{{{title.rendered}}}</p>
+          </a>
+        </h3>
+
+        <ul class="collabs-list">
+          {{# _embedded.author}}
+          <li>
+            <em>{{name}}</em>
+          </li>
+          {{/ _embedded.author}}
+        </ul>
+
+        <span style="font-size: small;">{{created}}</span>
+      </div>
+    </article>
+  </section>
+  {{/ latest_post}}
 
   <section id="collabs">
     <a href="/collabs">
