@@ -82,6 +82,10 @@ section#suggestions article.suggestion {
     font-size: 2em;
   }
 
+  section#selection {
+    width: 75%;
+  }
+
   section#selection article.article-thumb {
     width: calc(33% - 0.71em);
     margin: 0;

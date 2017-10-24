@@ -20,6 +20,48 @@
     {{/ articles_suggestion}}
   </section>
 
+  {{# latest_post}}
+  <section id="blog">
+    <a href="/blog">
+      <h2 style="background-color: #666;
+                 border-top: 3px solid #000;">Blog</h2>
+    </a>
+
+    <article class="article-thumb">
+      {{# cover}}
+      <figure style="background-image: url({{cover}});"></figure>
+      {{/ cover}}
+
+      {{^ cover}}
+      <figure style="background-image: url(/images/rum-u-black.png);
+                     background-size: auto 100%;"></figure>
+      {{/ cover}}
+
+      <div>
+        <label class="section-label">Blog</label>
+        <span class="section-label"> / </span>
+        <label class="section-label">{{category}}</label>
+
+        <h3>
+          <a href="{{{link}}}" target="_blank">
+            <p>{{{title.rendered}}}</p>
+          </a>
+        </h3>
+
+        <ul class="collabs-list">
+          {{# _embedded.author}}
+          <li>
+            <em>{{name}}</em>
+          </li>
+          {{/ _embedded.author}}
+        </ul>
+
+        <span style="font-size: small;">{{created}}</span>
+      </div>
+    </article>
+  </section>
+  {{/ latest_post}}
+
   <section id="collabs">
     <a href="/collabs">
       <h2 style="background-color: #1b203f;
