@@ -8,7 +8,7 @@ start:
 ifeq ($(env), production)
 	@echo "Starting in PRODUCTION!!!"
 
-	@postgrest ~/rum/postgrest.conf &> /dev/null &
+	@postgrest postgrest.conf &> /dev/null &
 
 	@bundle exec puma \
 		--port $(WEB_PORT) \

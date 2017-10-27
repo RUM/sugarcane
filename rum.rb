@@ -61,8 +61,9 @@ class RUM < Sinatra::Base
     groups = $db_articles_by_release.call params[:id]
 
     sections = (0..@release[:metadata][:sections].length-1).map { |i|
+      sn = @release[:metadata][:sections][i]
       {
-        'section_name' => @release[:metadata][:sections][i],
+        'section_name' => sn,
         'articles' => (sort_like (@release[:metadata][:articles_ids] or []), groups[i])
       }
     }

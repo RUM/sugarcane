@@ -203,6 +203,7 @@ main section h2 {
   line-height: 2.5em;
 
   padding-left: 1em;
+  z-index: 9;
 }
 
 main section h2 a {

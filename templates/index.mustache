@@ -12,7 +12,7 @@
   <section id="selection">
     <a href="/archive">
       <h2 style="background-color: #DD9980;
-          border-top: 3px solid #6a3724;">Selección</h2>
+          border-top: 3px solid #6a3724;">Artículos Destacados</h2>
     </a>
 
     {{# articles_suggestion}}
@@ -27,7 +27,8 @@
                  border-top: 3px solid #000;">Blog</h2>
     </a>
 
-    <article class="article-thumb">
+    <article class="article-thumb"
+             onclick="window.location = '{{{link}}}';">
       {{# cover}}
       <figure style="background-image: url({{cover}});"></figure>
       {{/ cover}}
