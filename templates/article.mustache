@@ -2,6 +2,7 @@
 
 <script src="/javascripts/capcap.js"></script>
 <script src="/javascripts/footnotes.js"></script>
+<script src="/javascripts/expandable.js"></script>
 
 <aside id="more-articles"
        class="no-mobile">
@@ -51,7 +52,9 @@
 <script>
   document.onreadystatechange = () => {
     if (document.readyState != "interactive") return;
+
     _capcap();
     _footnotes();
+    _expandables();
   }
 </script>
