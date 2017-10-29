@@ -1,0 +1,39 @@
+<article class="article-thumb {{section_name}} {{metadata.subsection}}"
+         style="cursor: unset;">
+  {{# is_video}}
+  <figure style="background-image: url({{cover}}); position: relative;"
+          onclick="_loadvideo(this, '{{id}}');">
+    <div class="fuzz"
+         style="text-align: center; font-size: 7em; color: white; padding: 40px;">
+      <span class="mdi mdi-play-circle-outline"></span>
+    </div>
+  </figure>
+  {{/ is_video}}
+
+  {{# is_audio}}
+  <figure style="text-align:center;">
+    <audio controls="" preload="none">
+      No se deja esta cosa tocar audio...
+      <source src="{{file}}">
+    </audio>
+  </figure>
+  {{/ is_audio}}
+
+  <div>
+    {{# release_name}}
+    <label class="section-label">{{release_name}}</label>
+    {{/ release_name}}
+
+    {{# section_name}}
+    <span class="section-label"> / </span>
+    <label class="{{section_name}} section-label">{{section_name}}</label>
+    {{/ section_name}}
+
+    {{# metadata.subsection}}
+    <span class="section-label"> - </span>
+    <label class="subsection-label {{section_name}}">{{metadata.subsection}}</label>
+    {{/ metadata.subsection}}
+
+    <h3>{{# md}}{{title}}{{/ md}}</h3>
+  </div>
+</article>

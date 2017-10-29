@@ -62,6 +62,16 @@ class RUM < Sinatra::Base
 
     sections = (0..@release[:metadata][:sections].length-1).map { |i|
       sn = @release[:metadata][:sections][i]
+
+      if sn == 'multimedia'
+        groups[i].each { |a|
+          a[:is_multimedia] = true
+
+          a[:is_video] = (a[:metadata][:subsection] == "video")
+          a[:is_audio] = (a[:metadata][:subsection] == "audio")
+        }
+      end
+
       {
         'section_name' => sn,
         'articles' => (sort_like (@release[:metadata][:articles_ids] or []), groups[i])

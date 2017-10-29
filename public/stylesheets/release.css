@@ -67,6 +67,14 @@ article.article-thumb > div > .section-label {
   height: var(--half-article-height);
 }
 
+article.multimedia.audio {
+  height: unset;
+}
+
+article.multimedia.audio figure {
+  height: unset;
+}
+
 /* desktop specifics */
 @media (min-width: 50em) {
   header {
@@ -257,5 +265,62 @@ article.article-thumb > div > .section-label {
   article.reseñas figure {
     width: 100%;
     height: calc(var(--half-article-height) + 4em);
+  }
+
+  /**************/
+  /* MULTIMEDIA */
+  /**************/
+
+  article.multimedia {
+    display: inline-block;
+    height: auto;
+  }
+
+  article.multimedia.video {
+    width: calc(calc(100% - 6.6em) - 600px);
+  }
+
+  article.multimedia.audio {
+    max-width: 300px;
+    height: calc(var(--half-article-height) - 2.45em);
+  }
+
+  article.multimedia.audio audio {
+    width: 300px;
+    display: block;
+  }
+
+  article.multimedia.audio figure {
+    height: unset;
+  }
+
+  article.audio:nth-of-type(4),
+  article.audio:nth-of-type(5) {
+    position: relative;
+    float: right;
+    bottom: calc(var(--article-height) + -14.5em);
+  }
+
+  article.audio:nth-of-type(4) {
+    left: calc(calc(100% - 4.6em) - 1385px);
+  }
+
+  article.audio:nth-of-type(5) {
+    left: calc(calc(100% - 3.6em) - 733px);
+  }
+
+  /* TODO: clean this up... */
+
+  article.video:nth-of-type(6),
+  article.video:nth-of-type(7),
+  article.video:nth-of-type(8) {
+    float: left;
+    width: calc(33% - 1.85em);
+  }
+
+  article.video:nth-of-type(7),
+  article.video:nth-of-type(8) {
+    bottom: 11.65em;
+    position: relative;
   }
 }

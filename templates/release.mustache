@@ -1,5 +1,7 @@
 <link rel="stylesheet" href="/stylesheets/release.css">
 
+<script src="/javascripts/loadvideo.js"></script>
+
 {{# release}}
 <header style="background-image: url({{cover}})">
   <div class="fuzz"></div>
@@ -37,7 +39,13 @@
     <h2 id="{{section_name}}" class="{{section_name}}">{{section_name}}</h2>
 
     {{# articles}}
+    {{^ is_multimedia}}
     {{> article_thumb}}
+    {{/ is_multimedia}}
+
+    {{# is_multimedia}}
+    {{> article_thumb_multimedia}}
+    {{/ is_multimedia}}
     {{/ articles}}
   </section>
   {{/ sections}}
