@@ -64,7 +64,7 @@ class RUM
           @article[:quote]
 
         else
-          "#{@release[:name]} - #{@release[:month_year]} XXX"
+          "#{@release[:name]} - #{@release[:month_year]}"
         end
       end
 

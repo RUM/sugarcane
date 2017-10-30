@@ -67,12 +67,15 @@ main {
   white-space: pre-wrap;
 }
 
-#content p img {
+#content p img,
+#content audio {
   margin: 1em 0 0 0;
   width: 100%;
 }
 
-#content p img + em {
+#content p img + em,
+#content audio + em,
+#content audio + p em {
   font-family: 'Overpass', sans-serif;
   font-size: 0.6em;
   font-weight: 300;

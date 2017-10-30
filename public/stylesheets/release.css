@@ -25,7 +25,7 @@ section {
 section h2 {
   position: sticky;
   position: -webkit-sticky;
-  top: 3em;
+  top: 3.3em;
 
   z-index: 1;
 }

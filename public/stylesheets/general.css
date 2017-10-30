@@ -99,7 +99,7 @@ nav#site-nav {
   position: sticky;
   position: -webkit-sticky;
   top: 0;
-  z-index: 9;
+  z-index: 10;
 }
 
 nav#site-nav a.active {
