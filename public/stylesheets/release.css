@@ -50,6 +50,11 @@ h2.reseñas {
   border-top: 3px solid #33494d;
 }
 
+h2.multimedia {
+  background-color: #70555d;
+  border-top: 3px solid #583438;
+}
+
 article.article-thumb > div > .section-label {
   display: none;
 }

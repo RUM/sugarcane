@@ -86,6 +86,10 @@ article > div > label.panóptico {
   color: #048a81;
 }
 
+article > div > label.multimedia {
+  color: #70555d;
+}
+
 article > div > label.editorial {
   display: none;
 }
