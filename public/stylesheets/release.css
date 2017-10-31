@@ -287,7 +287,7 @@ article.multimedia.audio figure {
 
   article.multimedia.audio {
     max-width: 300px;
-    height: calc(var(--half-article-height) - 2.45em);
+    height: calc(var(--half-article-height) - 2em);
   }
 
   article.multimedia.audio audio {
@@ -303,7 +303,7 @@ article.multimedia.audio figure {
   article.audio:nth-of-type(5) {
     position: relative;
     float: right;
-    bottom: calc(var(--article-height) + -14.5em);
+    bottom: calc(var(--article-height) + -14.1em);
   }
 
   article.audio:nth-of-type(4) {
@@ -327,5 +327,9 @@ article.multimedia.audio figure {
   article.video:nth-of-type(8) {
     bottom: 11.65em;
     position: relative;
+  }
+
+  article figure pre {
+    color: #333;
   }
 }
