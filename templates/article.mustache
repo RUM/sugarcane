@@ -53,6 +53,9 @@
   document.onreadystatechange = () => {
     if (document.readyState != "interactive") return;
 
+    if (document.body.clientHeight < 2300)
+      document.querySelector('#more-articles').remove();
+
     _capcap();
     _footnotes();
     _expandables();
