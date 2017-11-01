@@ -83,7 +83,7 @@ class RUM
 
     class Release < Layout
       def og_description
-        "#{@release[:name]} - #{@release[:month_year]} "
+        "#{@release[:name]} - #{@release[:month_year]}"
       end
 
       def og_image

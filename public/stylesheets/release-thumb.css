@@ -37,7 +37,11 @@ article.release a {
   article.release {
     line-height: unset;
     height: 0;
-    width: calc(50% - 0.5em);
-    padding-bottom: calc(50% - 0.5em);
+
+    width: 100% !important;
+    padding-bottom: 100% !important;
+
+    margin-top: 1em;
+    margin-right: 1em;
   }
 }

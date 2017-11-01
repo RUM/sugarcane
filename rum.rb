@@ -42,7 +42,7 @@ class RUM < Sinatra::Base
              :locals => {
                :latest_post => post,
                :articles_suggestion => $db_articles_suggestion.call(nil, 3),
-               :latest_releases => $db_releases_latest.call(2),
+               :latest_releases => $db_releases_latest.call(3),
                :collaborators => $db_starred_collabs.call.shuffle.first(6),
                :suggestions => $db_starred_suggestions.call
              }

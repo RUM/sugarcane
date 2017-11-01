@@ -80,6 +80,13 @@ article.multimedia.audio figure {
   height: unset;
 }
 
+article figure p {
+  text-align: center;
+  color: #333;
+  width: 100%;
+  font-size: small;
+}
+
 /* desktop specifics */
 @media (min-width: 50em) {
   header {
@@ -327,9 +334,5 @@ article.multimedia.audio figure {
   article.video:nth-of-type(8) {
     bottom: 11.65em;
     position: relative;
-  }
-
-  article figure pre {
-    color: #333;
   }
 }

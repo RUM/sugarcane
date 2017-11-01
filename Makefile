@@ -22,6 +22,7 @@ else ifeq ($(env), staging)
 	@bundle exec puma \
 		--port $(WEB_PORT) \
 		--environment production \
+		--redirect-stderr /tmp/rum-staging-errors.log \
 		--daemon
 
 else

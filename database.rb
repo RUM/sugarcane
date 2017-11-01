@@ -31,7 +31,7 @@ $db_releases = -> {
 }
 
 $db_release_by_id = -> (id) {
-  db("/releases?id=eq.#{id}").first
+  db("/releases?select=*,month_year&id=eq.#{id}").first
 }
 
 $db_current_release = -> {
