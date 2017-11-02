@@ -67,10 +67,16 @@ $db_articles_by_tags = -> (array) {
 }
 
 $db_articles_suggestion = -> (not_id, i) {
-  url = "/articles?select=#{article_attrs},collaborations(*,collabs(#{collab_attrs})),release:releases(#{release_attrs})&collaborations.relation=eq.author&starred=eq.true&online=eq.true"
+  post = Net::HTTP.post URI("http://#{$api}:#{$api_port}/rpc/articles_suggestion"),
+                        "{ \"i\": #{i + 1} }",
+                        "Content-Type" => "application/json"
+
+  ids = JSON.parse(post.body).map { |x| x['id'] }.join(',')
+
+  url = "/articles?select=#{article_attrs},collaborations(*,collabs(#{collab_attrs})),release:releases(#{release_attrs})&collaborations.relation=eq.author&id=in.#{ids}"
   url += (not_id ? "&id=not.eq.#{not_id}" : '')
 
-  db(url).shuffle.first(i)
+  db(url).first(i)
 }
 
 $db_starred_articles = -> {
@@ -87,8 +93,14 @@ $db_collab_by_id = -> (id) {
   db("/collabs?select=#{collab_attrs},sinopsis,metadata,articles(#{article_attrs},collaborations(*,collabs(#{collab_attrs})))&articles.collaborations.relation=eq.author&articles.order=date.desc&id=eq.#{id}&limit=1").first
 }
 
-$db_starred_collabs = -> {
-  db("/collabs?select=#{collab_attrs},metadata&starred=eq.true&online=eq.true")
+$db_collabs_suggestion = -> (i) {
+  post = Net::HTTP.post URI("http://#{$api}:#{$api_port}/rpc/collabs_suggestion"),
+                        "{ \"i\": #{i} }",
+                        "Content-Type" => "application/json"
+
+  ids = JSON.parse(post.body).map { |x| x['id'] }.join(',')
+
+  db("/collabs?select=#{collab_attrs},metadata&id=in.#{ids}")
 }
 
 $db_collabs_by_letter = -> (x) {

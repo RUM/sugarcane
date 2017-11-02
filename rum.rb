@@ -43,7 +43,7 @@ class RUM < Sinatra::Base
                :latest_post => post,
                :articles_suggestion => $db_articles_suggestion.call(nil, 3),
                :latest_releases => $db_releases_latest.call(3),
-               :collaborators => $db_starred_collabs.call.shuffle.first(6),
+               :collaborators => $db_collabs_suggestion.call(6),
                :suggestions => $db_starred_suggestions.call
              }
   end
@@ -160,12 +160,10 @@ class RUM < Sinatra::Base
   end
 
   get '/collabs/?' do
-    all_collabs = $db_collabs.call.sort_by { |x| x[:lname] }
-
     mustache :collabs,
              :locals => {
                :groups =>  $db_collabs_index_letters.call,
-               :collabs => all_collabs.select { |x| x[:starred] }.shuffle.first(12)
+               :collabs => $db_collabs_suggestion.call(12)
              }
   end
 
