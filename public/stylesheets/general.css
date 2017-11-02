@@ -38,12 +38,11 @@ blockquote {
   margin: auto;
 }
 
-/**************/
-/* NAV/FOOTER */
-/**************/
+/*******/
+/* NAV */
+/*******/
 
-nav,
-footer {
+nav {
   display: flex;
   background-color: #141414;
   font-size: 1em;
@@ -62,8 +61,7 @@ body, html {
   min-height: calc(100% - 8em);
 }
 
-nav a,
-footer a {
+nav a {
   display: block;
 
   text-align: center;
@@ -76,23 +74,8 @@ footer a {
   color: #f1f1f1;
 }
 
-nav a:hover,
-footer a:hover {
+nav a:hover {
   color: #aaaaaa;
-}
-
-footer {
-  height: 8em;
-  line-height: 8em;
-}
-
-footer a {
-  margin-top: 3.5em;
-  line-height: normal !important;
-}
-
-footer img {
-  margin-top: -3em;
 }
 
 nav#site-nav {
@@ -269,24 +252,9 @@ main section h2 a {
     display: block;
   }
 
-  nav#site-nav,
-  footer {
+  nav#site-nav {
     display: block;
     height: auto !important;
-  }
-
-  footer {
-    line-height: unset;
-  }
-
-  footer a {
-    margin: 0;
-    line-height: 4em !important;
-    height: 4em;
-  }
-
-  footer img {
-    margin-top: 0;
   }
 
   nav div {
