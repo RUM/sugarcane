@@ -175,6 +175,10 @@ main aside section a.tag {
   margin-bottom: 1em;
 }
 
+.footnotes ol li p {
+  word-break: break-word;
+}
+
 .footnotes:before {
   content: 'Notas';
   font-size: 1.2em;

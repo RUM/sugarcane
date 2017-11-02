@@ -38,6 +38,8 @@ article.release a {
     line-height: unset;
     height: 0;
 
+    font-size: 1.8em;
+
     width: 100% !important;
     padding-bottom: 100% !important;
 

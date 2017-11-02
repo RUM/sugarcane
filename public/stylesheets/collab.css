@@ -2,10 +2,6 @@ main {
   max-width: 60em;
 }
 
-main > nav {
-  width: 75% !important;
-}
-
 main > h1 {
   font-family: 'Overpass', sans-serif;
   font-weight: 300;

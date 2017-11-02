@@ -23,7 +23,7 @@ class RUM < Sinatra::Base
 
   get '/' do
     post = JSON.parse(Net::HTTP.get(URI('https://blog.revistadelauniversidad.mx/wp-json/wp/v2/posts?_embed&per_page=1')),
-                       { :symbolize_names => true }).each { |p|
+                      { :symbolize_names => true }).each { |p|
 
       begin
         p[:cover] = p[:_embedded][:'wp:featuredmedia'][0][:source_url]
@@ -240,7 +240,7 @@ class RUM < Sinatra::Base
     mustache :search
   end
 
-  get %r{/(about|directory|related|find_us|privacy|publish)/?} do
+  get $static_pages do
     mustache :md,
              :locals => { :content => $db_pages_by_id.call(params[:captures].first)[:content] }
   end

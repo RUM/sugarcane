@@ -2,7 +2,10 @@ include config.mk
 
 stop:
 	-@fuser -k $(WEB_PORT)/tcp
+
+ifeq ($(env), production)
 	-@fuser -k $(PGREST_PORT)/tcp
+endif
 
 start:
 ifeq ($(env), production)
@@ -47,8 +50,6 @@ sync:
 		--delete-after \
 		$(PROJECT)/ \
 		$(SRV_USER)@$(SRV_SERVER):$(SRV_DEST)
-
-restart: stop start
 
 remote-stop:
 	@ssh $(SRV_USER)@$(SRV_SERVER) "cd $(SRV_DEST); make stop env=$(env)"

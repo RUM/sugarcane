@@ -87,6 +87,19 @@ article figure p {
   font-size: small;
 }
 
+main > nav {
+  display: flex;
+  flex-flow: row wrap;
+  height: auto;
+
+  padding-top: 4.5em;
+  margin-top: -3.5em;
+}
+
+main > nav a {
+  flex: 1 33%;
+}
+
 /* desktop specifics */
 @media (min-width: 50em) {
   header {
@@ -95,6 +108,10 @@ article figure p {
 
   section h2 {
     margin: 1em 0.8em;
+  }
+
+  main > nav a {
+    flex: 1;
   }
 
   /*************/
