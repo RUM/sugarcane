@@ -36,7 +36,12 @@
 
   {{# sections}}
   <section class="{{section_name}}">
-    <h2 id="{{section_name}}" class="{{section_name}}">{{section_name}}</h2>
+    <a href="#sub-nav">
+      <h2 id="{{section_name}}" class="{{section_name}}">
+        <span style="float: right; margin-right: 0.5em;" class="mdi mdi-arrow-up"></span>
+        {{section_name}}
+      </h2>
+    </a>
 
     {{# articles}}
     {{^ is_multimedia}}

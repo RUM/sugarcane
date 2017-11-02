@@ -22,15 +22,17 @@ section {
   clear: both;
 }
 
-section h2 {
+section > a[href="#sub-nav"] {
+  display: block;
   position: sticky;
   position: -webkit-sticky;
-  top: 3.3em;
+  top: 4em;
 
   z-index: 1;
 }
 
-h2.editorial {
+h2.editorial,
+a.editorial {
   display: none;
 }
 
