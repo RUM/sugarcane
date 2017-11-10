@@ -12,7 +12,7 @@ article.article-thumb > figure {
   height: 100%;
 }
 
-@media (max-width: 50em) {
+@media (max-width: 72em) {
   article.article-thumb {
     height: var(--article-height);
   }

@@ -33,7 +33,7 @@ article.release a {
   z-index: 3 !important;
 }
 
-@media (max-width: 50em) {
+@media (max-width: 72em) {
   article.release {
     line-height: unset;
     height: 0;

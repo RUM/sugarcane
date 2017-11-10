@@ -49,7 +49,7 @@ footer img {
 }
 
 /* mobile specifics */
-@media (max-width: 50em) {
+@media (max-width: 72em) {
   footer {
     display: block;
     height: auto !important;

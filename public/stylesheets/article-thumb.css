@@ -95,7 +95,7 @@ article > div > label.editorial {
 }
 
 /* mobile */
-@media (max-width: 50em) {
+@media (max-width: 72em) {
   article {
     margin: 1em 0;
   }

@@ -103,7 +103,7 @@ main > nav a {
 }
 
 /* desktop specifics */
-@media (min-width: 50em) {
+@media (min-width: 72em) {
   header {
     padding: 6em 0;
   }

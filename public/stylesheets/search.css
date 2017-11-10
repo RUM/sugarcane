@@ -45,7 +45,7 @@ footer {
   bottom: 0;
 }
 
-@media (max-width: 50em) {
+@media (max-width: 72em) {
   article.collab {
     height: 0;
     width: calc(100% - 1em);

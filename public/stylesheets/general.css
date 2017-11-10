@@ -147,7 +147,7 @@ header h4 {
 
 main {
   display: block;
-  max-width: 70em;
+  max-width: 72em;
   margin: auto auto 3em;
   clear: both;
   z-index: 1;
@@ -215,7 +215,7 @@ main section h2 a {
 }
 
 /* mobile specifics */
-@media (max-width: 50em) {
+@media (max-width: 72em) {
   main {
     width: 100% !important;
   }

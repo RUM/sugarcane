@@ -29,7 +29,7 @@ article.collab a {
   z-index: 3 !important;
 }
 
-@media (max-width: 50em) {
+@media (max-width: 72em) {
   article.collab a {
     line-height: unset;
   }

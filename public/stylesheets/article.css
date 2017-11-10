@@ -215,7 +215,7 @@ p.pleca {
 }
 
 /* mobile specifics */
-@media (max-width: 50em) {
+@media (max-width: 72em) {
   main {
     padding: 1em;
   }
