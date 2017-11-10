@@ -1,0 +1,43 @@
+article {
+  height: auto;
+  padding: 0.5em;
+  cursor: unset;
+}
+
+h2 {
+  margin-top: 0;
+  display: flex;
+}
+
+article img {
+  border-radius: 3px !important;
+  vertical-align: middle;
+}
+
+article li em {
+  font-size: 1.2em;
+}
+
+article .excerpt {
+  display: none;
+}
+
+article .date {
+  font-size: small;
+  font-family: Overpas, sans-serif;
+}
+
+@media (min-width: 50em) {
+  article {
+    width: calc(100% - 2.2em);
+    display: inline-flex;
+    align-items: center;
+  }
+
+  article .excerpt {
+    display: block;
+    font-family: Cormorant, serif;
+    font-size: 1.2em;
+    flex: 1 50%;
+  }
+}

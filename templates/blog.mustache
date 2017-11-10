@@ -1,32 +1,5 @@
 <link rel="stylesheet" href="/stylesheets/article-thumb.css">
-
-<style>
-  article {
-    height: calc(var(--half-article-height) + 6em);
-    padding: 0.5em;
-    cursor: unset;
-  }
-
-  h2 {
-    margin-top: 0;
-    display: flex;
-  }
-
-  article img {
-    border-radius: 3px !important;
-    vertical-align: middle;
-  }
-
-  article li em {
-    font-size: 1.2em;
-  }
-
-  @media (min-width: 50em) {
-    article {
-      width: calc(33% - 1.99em);
-    }
-  }
-</style>
+<link rel="stylesheet" href="/stylesheets/blog.css">
 
 <main>
   {{# posts}}
@@ -45,8 +18,14 @@
         </li>
         {{/ _embedded.author}}
       </ul>
+    </div>
 
-      <span style="font-size: small;">{{created}}</span>
+    <div class="excerpt">
+      <strong class="date">{{created}}</strong>
+
+      {{{excerpt.rendered}}}
+
+      <a href="{{{link}}}" target="_blank">Post completo</a>
     </div>
   </article>
   {{/ posts}}

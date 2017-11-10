@@ -28,7 +28,7 @@ section > a[href="#sub-nav"] {
   position: -webkit-sticky;
   top: 4em;
 
-  z-index: 1;
+  z-index: 2;
 }
 
 h2.editorial,
@@ -303,22 +303,23 @@ main > nav a {
   /**************/
 
   article.multimedia {
-    display: inline-block;
     height: auto;
   }
 
   article.multimedia.video {
-    width: calc(calc(100% - 6.6em) - 600px);
+    width: calc(40% - 2.2em);
   }
 
   article.multimedia.audio {
-    max-width: 300px;
+    max-width: calc(30% - 2.2em);
     height: calc(var(--half-article-height) - 2em);
   }
 
   article.multimedia.audio audio {
-    width: 300px;
+    width: 100%;
     display: block;
+    border-radius: 0;
+    max-height: 32px;
   }
 
   article.multimedia.audio figure {
@@ -328,30 +329,19 @@ main > nav a {
   article.audio:nth-of-type(4),
   article.audio:nth-of-type(5) {
     position: relative;
-    float: right;
-    bottom: calc(var(--article-height) + -14.1em);
+    bottom: calc(var(--article-height) + -14em);
   }
 
   article.audio:nth-of-type(4) {
-    left: calc(calc(100% - 4.6em) - 1385px);
+    margin-left: calc(calc(40%) + 1em);
   }
-
-  article.audio:nth-of-type(5) {
-    left: calc(calc(100% - 3.6em) - 733px);
-  }
-
-  /* TODO: clean this up... */
 
   article.video:nth-of-type(6),
   article.video:nth-of-type(7),
   article.video:nth-of-type(8) {
-    float: left;
-    width: calc(33% - 1.85em);
-  }
-
-  article.video:nth-of-type(7),
-  article.video:nth-of-type(8) {
-    bottom: 11.65em;
     position: relative;
+    bottom: 11.65em;
+    margin-bottom: -11.65em;
+    width: calc(33% - 2em);
   }
 }
