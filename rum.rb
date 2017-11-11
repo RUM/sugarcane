@@ -38,6 +38,8 @@ class RUM < Sinatra::Base
       end
     }.first
 
+    # post = {}
+
     mustache :index,
              :locals => {
                :latest_post => post,
