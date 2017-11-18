@@ -44,6 +44,6 @@ article.release a {
     padding-bottom: 100% !important;
 
     margin-top: 1em;
-    margin-right: 1em;
+    margin-right: 0;
   }
 }
