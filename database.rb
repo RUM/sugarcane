@@ -13,7 +13,7 @@ def db(url)
 end
 
 release_attrs = "id,date,cover,month_year,name,metadata,online"
-article_attrs = "id,title,cover,file,metadata,release_name,section_name,seo_title"
+article_attrs = "id,title,cover,file,metadata,release_name,section_name,seo_title,release_date"
 collab_attrs  = "id,fname,lname,seo_name,name"
 
 # RELEASES
@@ -41,7 +41,7 @@ $db_current_release = -> {
 # ARTICLES
 
 $db_article_by_id = -> (id) {
-  a = db("/articles?select=*,seo_title,plain_title,month_year,collaborations(*,collabs(#{collab_attrs})),release:releases(#{release_attrs})&id=eq.#{id}&limit=1").first
+  a = db("/articles?select=*,seo_title,plain_title,month_year:release_month_year,collaborations(*,collabs(#{collab_attrs})),release:releases(#{release_attrs})&id=eq.#{id}&limit=1").first
   s = a[:section_name]
   a[:section_name] = (s == 'editorial' ? nil : s)
 
@@ -90,7 +90,7 @@ $db_collabs = -> {
 }
 
 $db_collab_by_id = -> (id) {
-  db("/collabs?select=#{collab_attrs},sinopsis,metadata,articles(#{article_attrs},collaborations(*,collabs(#{collab_attrs})))&articles.collaborations.relation=eq.author&articles.order=date.desc&id=eq.#{id}&limit=1").first
+  db("/collabs?select=#{collab_attrs},sinopsis,metadata,articles(#{article_attrs},collaborations(*,collabs(#{collab_attrs})))&articles.collaborations.relation=eq.author&articles.order=release_date.desc&id=eq.#{id}&limit=1").first
 }
 
 $db_collabs_suggestion = -> (i) {
