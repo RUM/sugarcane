@@ -88,6 +88,11 @@ class RUM < Sinatra::Base
       }
     }
 
+    if @release[:file]
+      @release[:file_format] = @release[:file].gsub(/(^.*\.)/, '').upcase
+      @release[:file_seo_name] = @release[:seo_name] + "." + @release[:file_format].downcase
+    end
+
     mustache :release,
              :locals => {
                :release => @release,
@@ -150,6 +155,11 @@ class RUM < Sinatra::Base
     end
 
     @title = "#{ @article[:plain_title] } | #{ authors_plain_list }"
+
+    if @article[:file]
+      @article[:file_format] = @article[:file].gsub(/(^.*\.)/, '').upcase
+      @article[:file_seo_name] = @article[:seo_title] + "." + @article[:file_format].downcase
+    end
 
     if @article[:doc_only]
       mustache :article_doc_only,
