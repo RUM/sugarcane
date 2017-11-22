@@ -61,7 +61,7 @@ $db_articles_by_tags = -> (array) {
   ids = JSON.parse(post.body).map { |x| x['id'] }.join(',')
 
   JSON.parse(
-    Net::HTTP.get($api, "/articles?select=#{article_attrs},collabs(#{collab_attrs}),collaborations(*,collabs(#{collab_attrs}))&order=date.desc&id=in.#{ids}", $api_port),
+    Net::HTTP.get($api, "/articles?select=#{article_attrs},collabs(#{collab_attrs}),collaborations(*,collabs(#{collab_attrs}))&order=release_date.desc&id=in.#{ids}", $api_port),
     { :symbolize_names => true }
   )
 }
