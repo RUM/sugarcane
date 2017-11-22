@@ -116,11 +116,22 @@ function _search_unlock_shoot(e,f) {
   _search_qlocked = true;
 
   var cqs = '';
+  var tagsq = '';
 
-  if (v.split(' ').length > 1)
+  var vsplit = v.split(' ');
+
+  if (vsplit.length > 1) {
     cqs = `name.ilike.*${v}*`;
-  else
+
+    vsplit.forEach((c,i) => {
+      tagsq += `tags.cs.["${c}"]`;
+      if (vsplit.length !== i+1) tagsq += ",";
+    });
+  }
+  else {
     cqs = `lname.ilike.${v}*,fname.ilike.${v}*`;
+    tagsq += `tags.cs.["${v}"]`
+  }
 
   if (_search_will_search('collabs'))
     _search_fetch(
@@ -130,7 +141,7 @@ function _search_unlock_shoot(e,f) {
 
   if (_search_will_search('articles'))
     _search_fetch(
-      `${_search_origin}/articles?select=id,title,seo_title,cover&title=ilike.*${v}*&limit=6`,
+      `${_search_origin}/articles?select=id,title,seo_title,cover&or=(title.ilike.*${v}*,${tagsq})&limit=6`,
       (data) => _search_render(data, '#articles', _search_article_template)
     );
 
