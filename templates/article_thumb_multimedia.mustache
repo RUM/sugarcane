@@ -1,5 +1,4 @@
-<article class="article-thumb {{section_name}} {{metadata.subsection}}"
-         style="cursor: unset;">
+<article class="article-thumb {{section_name}} {{metadata.subsection}}">
   {{# is_video}}
   {{# content}}
   <figure style="background-image: url({{cover}});
@@ -39,7 +38,7 @@
   </figure>
   {{/ is_audio}}
 
-  <div>
+  <div onclick="window.location = '/articles/{{id}}/{{seo_title}}';">
     {{# release_name}}
     <label class="section-label">{{release_name}}</label>
     {{/ release_name}}
