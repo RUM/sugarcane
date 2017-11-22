@@ -1,9 +1,26 @@
-include config.mk
+# default.mk
+#
+# PROJECT = $(shell pwd)
+#
+# SRV_USER   =
+# SRV_SERVER =
+#
+# PGREST_PORT =
+#
+# ifeq ($(env), production)
+# SRV_DEST =
+# WEB_PORT =
+# else
+# SRV_DEST =
+# WEB_PORT =
+# endif
+
+include default.mk
 
 stop:
 	-@fuser -k $(WEB_PORT)/tcp
 
-ifeq ($(env), production)
+ifneq ($(env), staging)
 	-@fuser -k $(PGREST_PORT)/tcp
 endif
 
@@ -29,10 +46,10 @@ else ifeq ($(env), staging)
 		--daemon
 
 else
-	@postgrest postgrest.conf &
+	@postgrest postgrest-dev.conf &> /tmp/postgrest-dev.log &
 
 	@bundle exec rerun --pattern "**/*.{rb}" -- \
-		rackup --port $(WEB_PORT)
+		rackup --host 0.0.0.0 --port $(WEB_PORT)
 endif
 
 install:
@@ -40,6 +57,8 @@ install:
 	./run/install
 
 sync:
+	@git rev-parse --short HEAD > $(PROJECT)/.latest-commit
+
 	@rsync -OPr \
 		--copy-links \
 		--checksum \

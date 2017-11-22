@@ -2,3 +2,4 @@ vendor
 public/storage
 public/fonts
 public/lib
+.latest-commit
