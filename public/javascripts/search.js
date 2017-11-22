@@ -115,9 +115,16 @@ function _search_unlock_shoot(e,f) {
 
   _search_qlocked = true;
 
+  var cqs = '';
+
+  if (v.split(' ').length > 1)
+    cqs = `name.ilike.*${v}*`;
+  else
+    cqs = `lname.ilike.${v}*,fname.ilike.${v}*`;
+
   if (_search_will_search('collabs'))
     _search_fetch(
-      `${_search_origin}/collabs?select=id,name,seo_name,metadata&or=(lname.ilike.${v}*,fname.ilike.${v}*)&limit=12`,
+      `${_search_origin}/collabs?select=id,name,seo_name,metadata&or=(${cqs})&limit=12`,
       (data) => _search_render(data, '#collabs', _search_collab_template)
     );
 
