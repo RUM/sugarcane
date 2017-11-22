@@ -60,6 +60,14 @@ class RUM < Sinatra::Base
 
     halt 404 if not @release
 
+    redirect "/releases/#{params[:id]}/#{@release[:seo_name]}"
+  end
+
+  get '/releases/:id/:seo_url/?' do
+    @release = $db_release_by_id.call params[:id]
+
+    halt 404 if not @release
+
     groups = $db_articles_by_release.call params[:id]
 
     sections = (0..@release[:metadata][:sections].length-1).map { |i|
