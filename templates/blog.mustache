@@ -2,31 +2,28 @@
 <link rel="stylesheet" href="/stylesheets/blog.css">
 
 <main>
-  {{# posts}}
-  <article class="article-thumb">
-    <div>
-      <h2><a href="{{{link}}}" target="_blank">{{{title.rendered}}}</a></h2>
+    <h2 style="text-transform: uppercase;
+               text-align: center;
+               color: #a8a8a8;
+               margin-top: 1.5em;
+               width: 100%;
+               flex: 1 100%;
+               clear: both;
+               margin-bottom: 0em;">Blogs de la Revista</h2>
 
-      <span style="text-transform: uppercase; font-size: small;">{{category}}</span>
+  <nav id="sub-nav" class="no-desktop">
+    {{# categories}}
+    <a href="#{{slug}}">{{name}}</a>
+    {{/ categories}}
+  </nav>
 
-      <ul class="collabs-list">
-        {{# _embedded.author}}
-        <li>
-          <img alt="{{name}} avatar" src="{{avatar_urls.96}}" height="64" width="64">
-          &nbsp;&nbsp;&nbsp;
-          <em>{{name}}</em>
-        </li>
-        {{/ _embedded.author}}
-      </ul>
-    </div>
+  {{# categories}}
+  <section id="{{slug}}" class="{{name}}">
+    <h3>Ultimo post en <a href="https://blog.revistadelauniversidad.mx/category/{{slug}}">{{name}}</a></h3>
 
-    <div class="excerpt">
-      <strong class="date">{{created}}</strong>
-
-      {{{excerpt.rendered}}}
-
-      <a href="{{{link}}}" target="_blank">Post completo</a>
-    </div>
-  </article>
-  {{/ posts}}
+    {{# posts}}
+    {{> blog_post_thumb}}
+    {{/ posts}}
+  </section>
+  {{/ categories}}
 </main>

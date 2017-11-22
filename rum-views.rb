@@ -116,5 +116,15 @@ class RUM
         "profile"
       end
     end
+
+    class Blog < Layout
+      def og_title
+        "Blogs - Revista de la Universidad de México"
+      end
+
+      def og_description
+        "Nuestros Blogs <3"
+      end
+    end
   end
 end

@@ -1,12 +1,22 @@
+nav {
+  flex: 1 100%;
+  width: 100%;
+}
+
+main {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+section {
+  flex: 1 100%;
+  margin-top: 2em;
+}
+
 article {
   height: auto;
   padding: 0.5em;
   cursor: unset;
-}
-
-h2 {
-  margin-top: 0;
-  display: flex;
 }
 
 article img {
@@ -14,12 +24,12 @@ article img {
   vertical-align: middle;
 }
 
-article li em {
-  font-size: 1.2em;
+article ul {
+  margin-top: 2em;
 }
 
-article .excerpt {
-  display: none;
+article li em {
+  font-size: 1.2em;
 }
 
 article .date {
@@ -27,7 +37,16 @@ article .date {
   font-family: Overpas, sans-serif;
 }
 
-@media (min-width: 50em) {
+article .bm {
+  flex: 1 40%;
+}
+
+/* Desktop */
+@media (min-width: 72em) {
+  section {
+    flex: 1 50%;
+  }
+
   article {
     width: calc(100% - 2.2em);
     display: inline-flex;
@@ -38,6 +57,6 @@ article .date {
     display: block;
     font-family: Cormorant, serif;
     font-size: 1.2em;
-    flex: 1 50%;
+    flex: 1 60%;
   }
 }

@@ -238,9 +238,11 @@ class RUM < Sinatra::Base
 
     months_spa = [nil, "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
 
+    categories = JSON.parse(Net::HTTP.get(URI('https://blog.revistadelauniversidad.mx/wp-json/wp/v2/categories')),
+                            { :symbolize_names => true })
+
     posts = JSON.parse(Net::HTTP.get(URI('https://blog.revistadelauniversidad.mx/wp-json/wp/v2/posts?_embed')),
                        { :symbolize_names => true }).each { |p|
-
       d = Date.parse(p[:date])
 
       p[:created] = "#{d.day} de #{months_spa[d.month]} de #{d.year}"
@@ -252,9 +254,16 @@ class RUM < Sinatra::Base
       end
     }
 
+    categories.each { |c|
+      c[:posts] = posts.
+                    select { |p| p[:category] == c[:name] }.
+                    sort_by { |p| p[:date] }.
+                    reverse.first(1)
+    }.delete_if { |c| c[:posts].count == 0 }
+
     mustache :blog,
              :locals => {
-               :posts => posts
+               :categories => categories
              }
   end
 
