@@ -69,6 +69,7 @@ nav a {
   font-size: small;
   text-transform: uppercase;
   color: #f1f1f1;
+  fill: #f1f1f1;
 }
 
 nav a:hover {
@@ -115,8 +116,10 @@ header * {
   z-index: 2;
 }
 
-header a {
+header a,
+header a svg path {
   color: #F0EF13;
+  fill: #F0EF13;
 }
 
 header h1 {
@@ -170,6 +173,8 @@ main nav a {
 
 main section h2 {
   color: #ffffff;
+  fill: #ffffff;
+
   background-color: #272e5c;
 
   font-size: 1.2em;

@@ -140,6 +140,7 @@ main aside {
 main aside a {
   display: block;
   color: #505050;
+  fill: #505050;
 }
 
 main aside section {

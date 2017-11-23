@@ -12,7 +12,7 @@
   <br>
 
   {{# file}}
-  <strong><a href="{{file}}" target="_blank" download="{{file_seo_name}}"><span class="mdi mdi-download"></span>&nbsp;Descargar PDF</a></strong>
+  <strong><a href="{{file}}" target="_blank" download="{{file_seo_name}}">{{> download_svg}}&nbsp;Descargar PDF</a></strong>
   {{/ file}}
 </header>
 {{/ release}}
@@ -38,7 +38,11 @@
   <section class="{{section_name}}">
     <a href="#sub-nav">
       <h2 id="{{section_name}}" class="{{section_name}}">
-        <span style="float: right; margin-right: 0.5em;" class="mdi mdi-arrow-up"></span>
+        <span style="float: right; margin-right: 0.5em;" class="no-desktop">
+          <svg style="width:24px;height:24px" viewBox="0 0 24 14">
+            <path d="M13,20H11V8L5.5,13.5L4.08,12.08L12,4.16L19.92,12.08L18.5,13.5L13,8V20Z" />
+          </svg>
+        </span>
         {{section_name}}
       </h2>
     </a>
