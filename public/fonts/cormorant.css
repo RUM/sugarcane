@@ -2,46 +2,52 @@
   font-family: 'Cormorant';
   font-style: normal;
   font-weight: 400;
-  src: url(https://www.revistadelauniversidad.mx/fonts/Cormorant-Regular.ttf);
-  src: url(/fonts/Cormorant-Regular.ttf);
-}
-
-@font-face {
-  font-family: 'Cormorant';
-  font-style: normal;
-  font-weight: 700;
-  src: url(https://www.revistadelauniversidad.mx/fonts/Cormorant-Bold.ttf);
-  src: url(/fonts/Cormorant-Bold.ttf);
+  src: local('Cormorant Regular'), local('Cormorant-Regular'), url(/fonts/Cormorant-Regular.woff2);
+  /* src: url(https://www.revistadelauniversidad.mx/fonts/Cormorant-Regular.ttf); */
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
 }
 
 @font-face {
   font-family: 'Cormorant';
   font-style: italic;
   font-weight: 400;
-  src: url(https://www.revistadelauniversidad.mx/fonts/Cormorant-Italic.ttf);
-  src: url(/fonts/Cormorant-Italic.ttf);
-}
-
-@font-face {
-  font-family: 'Cormorant';
-  font-style: italic;
-  font-weight: 700;
-  src: url(https://www.revistadelauniversidad.mx/fonts/Cormorant-BoldItalic.ttf);
-  src: url(/fonts/Cormorant-BoldItalic.ttf);
+  src: local('Cormorant Italic'), local('Cormorant-Italic'), url(/fonts/Cormorant-Italic.woff2);
+  /* src: url(https://www.revistadelauniversidad.mx/fonts/Cormorant-Italic.ttf); */
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
 }
 
 @font-face {
   font-family: 'Cormorant';
   font-style: normal;
   font-weight: 600;
-  src: url(https://www.revistadelauniversidad.mx/fonts/Cormorant-SemiBold.ttf);
-  src: url(/fonts/Cormorant-SemiBold.ttf);
+  src: local('Cormorant SemiBold'), local('Cormorant-SemiBold'), url(/fonts/Cormorant-SemiBold.woff2);
+  /* src: url(https://www.revistadelauniversidad.mx/fonts/Cormorant-SemiBold.ttf); */
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
 }
 
 @font-face {
   font-family: 'Cormorant';
   font-style: italic;
   font-weight: 600;
-  src: url(https://www.revistadelauniversidad.mx/fonts/Cormorant-SemiBoldItalic.ttf);
-  src: url(/fonts/Cormorant-SemiBoldItalic.ttf);
+  src: local('Cormorant SemiBold Italic'), local('Cormorant-SemiBoldItalic'), url(/fonts/Cormorant-SemiBoldItalic.woff2);
+  /* src: url(https://www.revistadelauniversidad.mx/fonts/Cormorant-SemiBoldItalic.ttf); */
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+@font-face {
+  font-family: 'Cormorant';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Cormorant Bold'), local('Cormorant-Bold'), url(/fonts/Cormorant-Bold.woff2);
+  /* src: url(https://www.revistadelauniversidad.mx/fonts/Cormorant-Bold.ttf); */
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+@font-face {
+  font-family: 'Cormorant';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Cormorant Bold Italic'), local('Cormorant-BoldItalic'), url(/fonts/Cormorant-BoldItalic.woff2);
+  /* src: url(https://www.revistadelauniversidad.mx/fonts/Cormorant-BoldItalic.ttf); */
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
 }
