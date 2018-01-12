@@ -46,8 +46,7 @@ h2.panóptico {
   border-top: 3px solid #185463;
 }
 
-h2.crítica,
-h2.reseñas {
+h2.crítica {
   background-color: #1b203f;
   border-top: 3px solid #33494d;
 }
@@ -258,9 +257,9 @@ main > nav a {
     height: calc(var(--half-article-height) + 4em);
   }
 
-  /*******************/
-  /* RESEÑAS/CRÍTICA */
-  /*******************/
+  /***********/
+  /* CRÍTICA */
+  /***********/
 
   /*
    * |-------------------------------------|
@@ -275,25 +274,18 @@ main > nav a {
    */
 
   article.crítica:nth-of-type(6n),
-  article.reseñas:nth-of-type(6n),
   article.crítica:nth-of-type(6n + 1),
-  article.reseñas:nth-of-type(6n + 1),
   article.crítica:nth-of-type(6n + 3),
-  article.reseñas:nth-of-type(6n + 3),
-  article.crítica:nth-of-type(6n + 5),
-  article.reseñas:nth-of-type(6n + 5) {
+  article.crítica:nth-of-type(6n + 5) {
     width: calc(30% - 1.8em);
   }
 
   article.crítica:nth-of-type(6n + 2),
-  article.reseñas:nth-of-type(6n + 2),
-  article.crítica:nth-of-type(6n + 4),
-  article.reseñas:nth-of-type(6n + 4) {
+  article.crítica:nth-of-type(6n + 4) {
     width: calc(40% - 3em);
   }
 
-  article.crítica figure,
-  article.reseñas figure {
+  article.crítica figure {
     width: 100%;
     height: calc(var(--half-article-height) + 4em);
   }
