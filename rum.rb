@@ -141,12 +141,14 @@ class RUM < Sinatra::Base
                    select { |x| x[:relation] != 'author' }.
                    map    { |x|
         x[:collabs][:link] = collab_link(x[:collabs])
+
         x[:collabs][:long_relation] = case x[:relation]
                                       when 'translator' then 'Traducción de'
                                       when 'editor'     then 'Edición de'
                                       when 'producer'   then 'Producción de'
-                                      when 'guest'      then 'Invitado'
                                       when 'co-author'  then 'co-escrito por'
+                                      when 'host'       then 'Conduce'
+                                      when 'guest'      then 'Invitado'
                                       else x[:relation]
                                       end
         x[:collabs]

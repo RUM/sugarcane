@@ -9,7 +9,9 @@ def sort_like this, array
 end
 
 def collab_link c
-   # return "<a>#{c[:name]}</a>" if not c[:online]
-
-  "<a href='/collabs/#{c[:id]}/#{c[:seo_name]}'>#{c[:name]}</a>"
+  if c[:online]
+    "<a href='/collabs/#{c[:id]}/#{c[:seo_name]}'>#{c[:name]}</a>"
+  else
+    c[:name]
+  end
 end

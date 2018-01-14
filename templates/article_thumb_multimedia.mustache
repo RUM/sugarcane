@@ -56,5 +56,15 @@
     {{/ metadata.subsection}}
 
     <h3>{{# md}}{{title}}{{/ md}}</h3>
+
+    <ul class="collabs-list">
+      {{# collaborations}}
+      <li>
+        {{# collabs}}
+        <em>{{name}}</em>
+        {{/ collabs}}
+      </li>
+      {{/ collaborations}}
+    </ul>
   </div>
 </article>

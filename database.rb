@@ -14,7 +14,7 @@ end
 
 release_attrs = "id,date,cover,month_year,name,metadata,online"
 article_attrs = "id,title,cover,file,metadata,release_name,section_name,seo_title,release_date"
-collab_attrs  = "id,fname,lname,seo_name,name"
+collab_attrs  = "id,fname,lname,seo_name,name,online"
 
 # RELEASES
 
@@ -49,7 +49,7 @@ $db_article_by_id = -> (id) {
 }
 
 $db_articles_by_release = -> (release_id) {
-  db("/articles?select=#{article_attrs},quote,content,release:releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&collaborations.relation=eq.author&release_id=eq.#{release_id}").
+  db("/articles?select=#{article_attrs},quote,content,release:releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&collaborations.relation=in.(author,guest)&release_id=eq.#{release_id}").
     group_by { |a| a[:metadata][:section] }
 }
 
@@ -100,7 +100,7 @@ $db_collabs_suggestion = -> (i) {
 
   ids = JSON.parse(post.body).map { |x| x['id'] }.join(',')
 
-  db("/collabs?select=#{collab_attrs},metadata&id=in.#{ids}")
+  db("/collabs?select=#{collab_attrs},metadata&online=eq.true&id=in.#{ids}")
 }
 
 $db_collabs_by_letter = -> (x) {
