@@ -74,6 +74,8 @@ main {
 }
 
 #content p img + em,
+#content iframe + em,
+#content iframe + p em,
 #content audio + em,
 #content audio + p em {
   font-family: 'Overpass', sans-serif;
