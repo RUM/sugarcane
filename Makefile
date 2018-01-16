@@ -18,10 +18,10 @@
 include default.mk
 
 stop:
-	-@fuser -k $(WEB_PORT)/tcp
+	-@lsof -t -i :$(WEB_PORT) | xargs kill
 
 ifneq ($(env), staging)
-	-@fuser -k $(PGREST_PORT)/tcp
+	-@lsof -t -i :$(PGREST_PORT) | xargs kill
 endif
 
 start:
@@ -71,9 +71,17 @@ sync:
 		$(SRV_USER)@$(SRV_SERVER):$(SRV_DEST)
 
 remote-stop:
+ifdef env
 	@ssh $(SRV_USER)@$(SRV_SERVER) "cd $(SRV_DEST); make stop env=$(env)"
+else
+	@echo "remote-stop: No env defined!"
+endif
 
 remote-start:
+ifdef env
 	@ssh $(SRV_USER)@$(SRV_SERVER) "/bin/bash --login -c 'cd $(SRV_DEST); make start env=$(env)'"
+else
+	@echo "remote-start: No env defined!"
+endif
 
 deploy: sync remote-stop remote-start
