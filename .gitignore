@@ -3,3 +3,6 @@ public/storage
 public/fonts
 public/lib
 .latest-commit
+default.mk
+nginx*.conf
+postgrest*.conf
