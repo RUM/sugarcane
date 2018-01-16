@@ -120,16 +120,17 @@ function _search_unlock_shoot(e,f) {
 
   var vsplit = v.split(' ');
 
-  if (vsplit.length > 1) {
-    cqs = `name.ilike.*${v}*`;
+  cqs = `name.ilike.*${v.replace(' ', '*')}*`;
 
+  if (vsplit.length > 1) {
     vsplit.forEach((c,i) => {
       tagsq += `tags.cs.["${c}"]`;
       if (vsplit.length !== i+1) tagsq += ",";
     });
+
+    tagsq += `,tags.cs.["${v}"]`;
   }
   else {
-    cqs = `lname.ilike.${v}*,fname.ilike.${v}*`;
     tagsq += `tags.cs.["${v}"]`
   }
 
