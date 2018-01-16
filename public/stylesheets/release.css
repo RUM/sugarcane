@@ -73,14 +73,6 @@ article.article-thumb > div > .section-label {
   height: var(--half-article-height);
 }
 
-article.multimedia.audio {
-  height: unset;
-}
-
-article.multimedia.audio figure {
-  height: unset;
-}
-
 article figure p {
   text-align: center;
   color: #333;
@@ -270,7 +262,7 @@ main > nav a {
    * |               |          |          |
    * |     6n + 4    |  6n + 5  |    6n    |
    * |               |          |          |
-   * |-------------------------------------/
+   * |-------------------------------------|
    */
 
   article.crítica:nth-of-type(6n),
@@ -295,45 +287,6 @@ main > nav a {
   /**************/
 
   article.multimedia {
-    height: auto;
-  }
-
-  article.multimedia.video {
-    width: calc(40% - 2.2em);
-  }
-
-  article.multimedia.audio {
-    max-width: calc(30% - 2.2em);
-    height: calc(var(--half-article-height) - 2em);
-  }
-
-  article.multimedia.audio audio {
-    width: 100%;
-    display: block;
-    border-radius: 0;
-    max-height: 32px;
-  }
-
-  article.multimedia.audio figure {
-    height: unset;
-  }
-
-  article.audio:nth-of-type(4),
-  article.audio:nth-of-type(5) {
-    position: relative;
-    bottom: calc(var(--article-height) + -14em);
-  }
-
-  article.audio:nth-of-type(4) {
-    margin-left: calc(calc(40%) + 1em);
-  }
-
-  article.video:nth-of-type(6),
-  article.video:nth-of-type(7),
-  article.video:nth-of-type(8) {
-    position: relative;
-    bottom: 11.65em;
-    margin-bottom: -11.65em;
-    width: calc(33% - 2em);
+    width: calc(33% - 1.99em);
   }
 }
