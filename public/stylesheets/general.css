@@ -35,6 +35,10 @@ blockquote {
   margin: auto;
 }
 
+blockquote em {
+  font-style: normal;
+}
+
 /*******/
 /* NAV */
 /*******/
