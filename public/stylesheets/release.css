@@ -199,31 +199,65 @@ main > nav a {
     height: calc(var(--half-article-height) + 2em);
   }
 
-  article.dossier:nth-of-type(15),
-  article.dossier:nth-of-type(16),
-  article.dossier:nth-of-type(17) {
+  /* If the last row has only 3 articles */
+
+  /*
+   * |------------------------------------|
+   * |           |            |           |
+   * |  last(3)  |   last(2)  |  last(1)  |
+   * |           |            |           |
+   * |------------------------------------|
+   */
+
+  article.dossier:nth-of-type(4n+3):nth-last-child(3),
+  article.dossier:nth-of-type(4n):nth-last-child(2),
+  article.dossier:nth-of-type(4n+1):nth-last-child(1), /* intentionally unfinished... */
+
+  /* If the last row has only 1 article, we treat the last two rows as 3 + 2 */
+
+  /*
+   * |-----------------------------------|
+   * |           |           |           |
+   * |  last(5)  |  last(4)  |  last(3)  |
+   * |           |           |           |
+   * |-----------------------------------|
+   * |                |                  |
+   * |    last(2)     |     last(1)      |
+   * |                |                  |
+   * |-----------------------------------|
+   */
+
+  article.dossier:nth-of-type(4n+3):nth-last-child(5),
+  article.dossier:nth-of-type(4n):nth-last-child(4),
+  article.dossier:nth-of-type(4n+1):nth-last-child(3) {
     position: relative;
     width: calc(33% - 1.99em);
     height: var(--article-height);
     margin: 1em;
   }
 
-  article.dossier:nth-of-type(15) figure,
-  article.dossier:nth-of-type(16) figure,
-  article.dossier:nth-of-type(17) figure {
-    width: 100%;
-    height: var(--half-article-height);
-  }
-
-  article.dossier:nth-of-type(18),
-  article.dossier:nth-of-type(19) {
+  article.dossier:nth-of-type(4n+2):nth-last-child(2),
+  article.dossier:nth-of-type(4n+3):nth-last-child(1) {
     position: static;
     width: calc(50% - 2.2em);
     height: var(--article-height);
   }
 
-  article.dossier:nth-of-type(18) figure,
-  article.dossier:nth-of-type(19) figure {
+  /* the figures on the cases above: */
+
+  article.dossier:nth-of-type(4n+3):nth-last-child(5) figure,
+  article.dossier:nth-of-type(4n):nth-last-child(4) figure,
+  article.dossier:nth-of-type(4n+1):nth-last-child(3) figure,
+
+  article.dossier:nth-of-type(4n+3):nth-last-child(3) figure,
+  article.dossier:nth-of-type(4n):nth-last-child(2) figure,
+  article.dossier:nth-of-type(4n+1):nth-last-child(1) figure {
+    width: 100%;
+    height: var(--half-article-height);
+  }
+
+  article.dossier:nth-of-type(4n+2):nth-last-child(2) figure,
+  article.dossier:nth-of-type(4n+3):nth-last-child(1) figure {
     width: 100%;
     height: var(--half-article-height);
     float: unset;
@@ -280,6 +314,25 @@ main > nav a {
   article.crítica figure {
     width: 100%;
     height: calc(var(--half-article-height) + 4em);
+  }
+
+  /* Sometimes we only have 5 articles, so */
+
+  /*
+   * |-------------------------------------|
+   * |          |               |          |
+   * |  6n + 1  |     6n + 2    |  6n + 3  |
+   * |          |               |          |
+   * |-------------------------------------|
+   * |                  |                  |
+   * |      6n + 4      |      6n + 5      |
+   * |                  |                  |
+   * |-------------------------------------|
+   */
+
+  article.crítica:nth-of-type(4):nth-last-child(2),
+  article.crítica:nth-of-type(5):nth-last-child(1) {
+    width: calc(50% - 2.2em);
   }
 
   /**************/
