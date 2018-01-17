@@ -1,12 +1,10 @@
-<article class="article-thumb {{section_name}} {{metadata.subsection}}"
-         onclick="window.location = '/articles/{{id}}/{{seo_title}}';">
-  {{# is_video}}
-  {{# content}}
-  <figure style="background-image: url({{cover}});
+<article class="article-thumb {{section_name}} {{metadata.subsection}}">
+  <figure onclick="_loadasset(this, '{{id}}', {{# is_video}}'video'{{/ is_video}}{{# is_audio}}'audio'{{/ is_audio}});"
+          style="background-image: url({{cover}});
+                 text-align: center;
                  position: relative;">
     <div class="fuzz"
-         style="text-align: center;
-                font-size: 7em;
+         style="font-size: 7em;
                 color: white;
                 padding: 40px;">
       <svg style="width:64px;height:64px" viewBox="0 0 24 24">
@@ -14,33 +12,9 @@
       </svg>
     </div>
   </figure>
-  {{/ content}}
 
-  {{^ content}}
-  <figure style="text-align:center;
-                 display: flex;
-                 align-items: center;">
-    <p><em style="flex: 1;">{{quote}}</em></p>
-  </figure>
-  {{/ content}}
-  {{/ is_video}}
-
-  {{# is_audio}}
-  <figure style="text-align:center;">
-  {{# file}}
-  <audio controls="" preload="none">
-    No se deja esta cosa tocar audio...
-    <source src="{{file}}">
-  </audio>
-  {{/ file}}
-
-  {{^ file}}
-  <p><em>{{quote}}</em></p>
-  {{/ file}}
-  </figure>
-  {{/ is_audio}}
-
-  <div>
+  <div onclick="window.location = '/articles/{{id}}/{{seo_title}}';"
+       style="width: 100%">
     {{# release_name}}
     <label class="section-label">{{release_name}}</label>
     {{/ release_name}}

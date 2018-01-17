@@ -3,6 +3,7 @@
 <script src="/javascripts/capcap.js"></script>
 <script src="/javascripts/footnotes.js"></script>
 <script src="/javascripts/expandable.js"></script>
+<script src="/javascripts/loadasset.js"></script>
 
 <aside id="more-articles"
        class="no-mobile">
@@ -39,6 +40,12 @@
 
   <div id="content">
     {{# md}}{{{content}}}{{/ md}}
+
+    {{# asset}}
+    <noscript>
+      <pre>{{asset}}</pre>
+    </noscript>
+    {{/ asset}}
   </div>
 
   <aside>
@@ -47,7 +54,6 @@
     {{> article_tags}}
   </aside>
 </main>
-{{/ article}}
 
 <script>
   document.onreadystatechange = () => {
@@ -56,8 +62,15 @@
     if (document.body.clientHeight < 2300)
       document.querySelector('#more-articles').remove();
 
+    var a = document.querySelector('p.asset-video');
+    if (a) a['onclick'] = function() { _loadasset(this, '{{id}}', 'video', true) };
+
+    var a = document.querySelector('p.asset-audio');
+    if (a) a['onclick'] = function() { _loadasset(this, '{{id}}', 'audio', true) };
+
     _capcap();
     _footnotes();
     _expandables();
   }
 </script>
+{{/ article}}
