@@ -131,34 +131,43 @@ class RUM < Sinatra::Base
           map    { |x| collab_link x[:collabs] }.
           join(", ")
 
-      authors_plain_list  =
+      collabs_plain_list  =
         @article[:collaborations].
-          select { |x| x[:relation] == 'author' }.
+          select { |x| ['author', 'host', 'guest', 'producer'].include? x[:relation] }.
           map    { |x| x[:collabs][:name] }.
           join(", ")
 
-      collabs  = @article[:collaborations].
-                   select { |x| x[:relation] != 'author' }.
-                   map    { |x|
-        x[:collabs][:link] = collab_link(x[:collabs])
+      collabs_group = []
 
-        x[:collabs][:long_relation] = case x[:relation]
-                                      when 'translator' then 'Traducción de'
-                                      when 'editor'     then 'Edición de'
-                                      when 'producer'   then 'Producción de'
-                                      when 'co-author'  then 'co-escrito por'
-                                      when 'host'       then 'Conduce'
-                                      when 'guest'      then 'Invitado'
-                                      else x[:relation]
-                                      end
-        x[:collabs]
+      @article[:collaborations].
+        select { |x| x[:relation] != 'author' }.
+        each { |x| x[:collabs][:link] = collab_link(x[:collabs]) }.
+        group_by { |x| x[:relation] }.
+        each { |g,l|
+          t = {}
+          t[:long_relation] = case g
+                              when 'translator' then 'Traducción de'
+                              when 'editor'     then 'Edición de'
+                              when 'producer'   then 'Producción de'
+                              when 'co-author'  then 'Co-escrito por'
+                              when 'host'       then 'Conducción de'
+                              when 'guest'      then 'Con'
+                              else g
+                              end
+
+          t[:collabs_list] = l.map { |x| x[:collabs][:link] }.join(", ")
+
+          collabs_group.push(t)
       }
+
+      collabs_group = collabs_group.sort_by { |a| a[:long_relation] }
+
     rescue
       authors_list = nil
-      collabs = nil
+      collabs_group = nil
     end
 
-    @title = "#{ @article[:plain_title] } | #{ authors_plain_list }"
+    @title = "#{ @article[:plain_title] } | #{ collabs_plain_list }"
 
     if @article[:file]
       @article[:file_format] = @article[:file].gsub(/(^.*\.)/, '').upcase
@@ -169,7 +178,7 @@ class RUM < Sinatra::Base
       mustache :article_doc_only,
                :locals => {
                  :article => @article,
-                 :collabs => collabs,
+                 :collabs_group => collabs_group,
                  :authors_list => authors_list
                }
     else
@@ -177,7 +186,7 @@ class RUM < Sinatra::Base
                :locals => {
                  :articles_suggestion => $db_articles_suggestion.call(@article[:id], 3),
                  :article => @article,
-                 :collabs => collabs,
+                 :collabs_group => collabs_group,
                  :authors_list => authors_list
                }
     end
