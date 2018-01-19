@@ -73,24 +73,6 @@ main {
   width: 100%;
 }
 
-#content p img + em,
-#content iframe + em,
-#content iframe + p em,
-#content p.asset-video + em,
-#content p.asset-video + p em,
-#content p.asset-audio + em,
-#content p.asset-audio + p em,
-#content audio + em,
-#content audio + p em {
-  font-family: 'Overpass', sans-serif;
-  font-size: 0.6em;
-  font-weight: 300;
-  font-style: normal;
-  display: block;
-  text-indent: 0 !important;
-  margin-bottom: 1em;
-}
-
 #content blockquote {
   margin: 2em auto;
 }
@@ -212,6 +194,15 @@ sup:hover .footnote-hover {
   font-size: 0.7em;
   background-color: #E3655A;
   color: #f1f1f1;
+}
+
+.caption {
+  font-family: 'Overpass', sans-serif;
+  font-size: 0.6em;
+  font-weight: 300;
+  display: block;
+  text-indent: 0 !important;
+  margin: 0 0 1em 0 !important;
 }
 
 p.pleca {
