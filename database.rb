@@ -49,7 +49,7 @@ $db_article_by_id = -> (id) {
 }
 
 $db_articles_by_release = -> (release_id) {
-  db("/articles?select=#{article_attrs},quote,content,release:releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&collaborations.relation=in.(author,guest)&release_id=eq.#{release_id}").
+  db("/articles?select=#{article_attrs},quote,content,release:releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&collaborations.relation=in.(author,guest,producer,host)&release_id=eq.#{release_id}").
     group_by { |a| a[:metadata][:section] }
 }
 
@@ -61,7 +61,7 @@ $db_articles_by_tags = -> (array) {
   ids = JSON.parse(post.body).map { |x| x['id'] }.join(',')
 
   JSON.parse(
-    Net::HTTP.get($api, "/articles?select=#{article_attrs},collabs(#{collab_attrs}),collaborations(*,collabs(#{collab_attrs}))&order=release_date.desc&id=in.#{ids}", $api_port),
+    Net::HTTP.get($api, "/articles?select=#{article_attrs},collabs(#{collab_attrs}),collaborations(*,collabs(#{collab_attrs}))&collaborations.relation=in.(author,guest,producer,host)&order=release_date.desc&id=in.#{ids}", $api_port),
     { :symbolize_names => true }
   )
 }

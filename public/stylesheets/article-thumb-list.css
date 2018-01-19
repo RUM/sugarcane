@@ -12,6 +12,20 @@ article.article-thumb > figure {
   height: 100%;
 }
 
+@media (min-width: 72em) {
+  article.article-thumb .collabs-list li {
+    display: inline-block;
+  }
+
+  article.article-thumb .collabs-list li em:after {
+    content: ',';
+  }
+
+  article.article-thumb .collabs-list li:last-child em:after {
+    content: '';
+  }
+}
+
 @media (max-width: 72em) {
   article.article-thumb {
     height: var(--article-height);
