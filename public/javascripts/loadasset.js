@@ -28,7 +28,7 @@ _loadasset = function(t,id,media,autosize) {
 
         tag = `<iframe width="${w}"
                        height="${h}"
-                       src="${asset}"
+                       src="${asset}?autoplay=1"
                        frameborder="0"
                        gesture="media"
                        allow="encrypted-media"

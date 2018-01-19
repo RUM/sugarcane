@@ -217,6 +217,8 @@ p.pleca {
   margin: 1em 0 0.2em !important;
   cursor: pointer;
   color: #E3655A;
+  white-space: unset !important;
+  font-family: Overpass;
 }
 
 /* mobile specifics */
