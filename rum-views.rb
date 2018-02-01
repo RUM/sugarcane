@@ -97,6 +97,12 @@ class RUM
       def og_type
         "book"
       end
+
+      def is_in_current_release
+        if @release and $db_current_release.call
+          @release[:id] == $db_current_release.call[:id]
+        end
+      end
     end
 
     class Collab < Layout
