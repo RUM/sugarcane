@@ -6,3 +6,4 @@ public/lib
 default.mk
 nginx*.conf
 postgrest*.conf
+public/images
