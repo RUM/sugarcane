@@ -18,10 +18,6 @@ header blockquote p {
   font-size: 1.3em;
 }
 
-section {
-  clear: both;
-}
-
 section > a[href="#sub-nav"] {
   display: block;
   position: sticky;

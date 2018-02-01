@@ -51,9 +51,6 @@ nav {
   height: 4em;
   line-height: 4em;
   width: 100%;
-}
-
-nav {
   padding: 0 5em;
 }
 
@@ -162,7 +159,7 @@ main nav {
   text-transform: uppercase;
   color: #a8a8a8;
 
-  margin: 0.5em auto -0.5em;
+  margin: 1em auto 0;
 
   height: 4em;
   line-height: 4em;

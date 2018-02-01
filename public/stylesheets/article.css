@@ -74,6 +74,14 @@ main {
 }
 
 #content blockquote {
+  font-style: normal;
+  font-size: 0.8em;
+  color: #424242;
+  margin: 2em auto;
+}
+
+#content blockquote em {
+  font-style: italic;
   margin: 2em auto;
 }
 
@@ -94,7 +102,7 @@ main {
 }
 
 main > blockquote:first-of-type {
-  font-size: 2.2em;
+  font-size: 1.5em;
   font-weight: 600;
   color: #AC87BB;
   margin: 2em auto;

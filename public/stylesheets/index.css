@@ -3,10 +3,17 @@ main {
   flex-flow: row wrap;
 }
 
+section article {
+  margin-top: 2em;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
 section#latest-releases {
   text-align: center;
   min-height: 60%;
-  padding: 3em 1em 1em;
+  padding: 0 1em;
 }
 
 section#latest-releases article.release a {
@@ -20,14 +27,13 @@ section#latest-releases article.release a .date {
   font-size: 0.5em;
 }
 
-h2 {
+section h2 {
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 section#suggestions article.suggestion {
   width: 100%;
-  margin: 0;
-  margin-bottom: 1em;
   padding: 1em;
   height: auto;
 }
@@ -47,7 +53,7 @@ section#suggestions article.suggestion {
 
   section#collabs article.collab:nth-of-type(3n + 1),
   section#collabs article.collab:nth-of-type(3n + 2) {
-    margin-right: 0;
+    /* margin-right: 0; */
   }
 
   section#collabs article.collab:nth-of-type(2n + 1) {
@@ -58,7 +64,8 @@ section#suggestions article.suggestion {
 /* Desktop complexities */
 @media (min-width: 72em) {
   section {
-    padding: 2em 1em;
+    padding: 0 1em;
+    margin-top: 2em;
   }
 
   section#latest-releases {
@@ -67,11 +74,9 @@ section#suggestions article.suggestion {
 
   section#latest-releases article.release {
     height: 0;
-    width: calc(33% - 0.67em) !important;
+    width: calc(33% - 1.27em) !important;
     padding-bottom: calc(33% - 0.6em) !important;
-    margin: 0;
-    margin-right: 1em;
-    margin-bottom: 1em;
+    margin-right: 2em;
   }
 
   section#latest-releases article.release:nth-of-type(3) {
@@ -87,9 +92,8 @@ section#suggestions article.suggestion {
   }
 
   section#selection article.article-thumb {
-    width: calc(33% - 0.71em);
-    margin: 0;
-    margin-right: 1em;
+    width: calc(33% - 1.33em);
+    margin-right: 2em;
   }
 
   section#selection article.article-thumb:nth-of-type(3) {
@@ -102,7 +106,8 @@ section#suggestions article.suggestion {
   }
 
   section#blog article {
-    margin: 0;
+    /* margin-right: 0; */
+    /* margin-left: 0; */
   }
 
   section#collabs {
@@ -115,9 +120,7 @@ section#suggestions article.suggestion {
     width: calc(33% - 0.78em) !important;
     padding-bottom: calc(33% - 0.78em) !important;
 
-    margin: 0;
     margin-right: 1em;
-    margin-bottom: 1em;
   }
 
   section#collabs article.collab:nth-of-type(3n) {
