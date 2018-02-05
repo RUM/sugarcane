@@ -8,8 +8,8 @@ def sort_like this, array
   }
 end
 
-def collab_link c
-  if c[:online]
+def collab_link c, r
+  if c[:online] and not ["guest"].include? r
     "<a href='/collabs/#{c[:id]}/#{c[:seo_name]}'>#{c[:name]}</a>"
   else
     c[:name]
