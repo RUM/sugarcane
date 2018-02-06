@@ -85,10 +85,6 @@ $db_starred_articles = -> {
 
 # COLLABS
 
-$db_collabs = -> {
-  db("/collabs?select=#{collab_attrs},starred,metadata,articles(#{article_attrs},collaborations(*,collabs(#{collab_attrs})))&online=eq.true")
-}
-
 $db_collab_by_id = -> (id) {
   db("/collabs?select=#{collab_attrs},sinopsis,metadata,articles(#{article_attrs},collaborations(*,collabs(#{collab_attrs})))&articles.collaborations.relation=eq.author&articles.order=release_date.desc&id=eq.#{id}&limit=1").first
 }

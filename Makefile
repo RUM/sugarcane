@@ -59,27 +59,29 @@ install:
 sync:
 	@git rev-parse --short HEAD > $(PROJECT)/.latest-commit
 
-	@rsync -OPr \
+	rsync -OPr \
+		-e "ssh -p $(SSH_PORT)" \
 		--copy-links \
 		--checksum \
 		--exclude=.git \
 		--exclude=scripts \
 		--exclude=dependencies.tsv \
 		--exclude=storage \
+		--exclude=access.log \
 		--delete-after \
 		$(PROJECT)/ \
 		$(SRV_USER)@$(SRV_SERVER):$(SRV_DEST)
 
 remote-stop:
 ifdef env
-	@ssh $(SRV_USER)@$(SRV_SERVER) "cd $(SRV_DEST); make stop env=$(env)"
+	@ssh -p $(SSH_PORT) $(SRV_USER)@$(SRV_SERVER) "cd $(SRV_DEST); make stop env=$(env)"
 else
 	@echo "remote-stop: No env defined!"
 endif
 
 remote-start:
 ifdef env
-	@ssh $(SRV_USER)@$(SRV_SERVER) "/bin/bash --login -c 'cd $(SRV_DEST); make start env=$(env)'"
+	@ssh -p $(SSH_PORT) $(SRV_USER)@$(SRV_SERVER) "/bin/bash --login -c 'cd $(SRV_DEST); make start env=$(env)'"
 else
 	@echo "remote-start: No env defined!"
 endif
