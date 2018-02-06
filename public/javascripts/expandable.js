@@ -4,24 +4,39 @@ _expandables = function() {
   expandables.forEach(function(e) {
     var o = document.createElement('a');
     o.href = '#';
-    o.style = 'font-size: medium; float: right;';
+    var sty = `
+font-size: medium;
+background-color: #e3655a;
+padding: 0.5em 1em;
+color: #f1f1f1;
+position: absolute;
+top: 1.7em;
+right: 0;
+display: block;
+`;
     o.innerText = 'Expandir imagen';
+    o.style = sty;
 
     var i = e.querySelector('img')
 
-    var a = () => {
+    var a = (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+
       // the strong assumption here is that the styles attributes were
       // empty in the first place... and ugly waiting to happen.
 
       i.style = null;
       e.style = null;
-      o.style = 'font-size: medium; float: right;';
+      o.style = sty;
 
       i.removeEventListener('click', a);
+      o.addEventListener('click', b);
     };
 
     var b = (event) => {
       event.preventDefault();
+      event.stopPropagation();
 
       e.style["padding"]    = "1em !important";
       e.style["margin"]     = "1em !important";
@@ -62,12 +77,11 @@ _expandables = function() {
       //   else ;
       // }
 
-      i.addEventListener('click', a);
+      e.addEventListener('click', a);
     };
 
     o.addEventListener('click', b);
 
-    e.insertBefore(o, e.firstChild);
-    // e.append(o);
+    e.prepend(o);
   });
 };

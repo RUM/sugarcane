@@ -204,6 +204,14 @@ sup:hover .footnote-hover {
   color: #f1f1f1;
 }
 
+.footnote-hover a {
+  color: #f1f1f1;
+}
+
+.footnote-hover a[class="reversefootnote"] {
+  display: none;
+}
+
 .caption {
   font-family: 'Overpass', sans-serif;
   font-size: 0.6em;
@@ -211,6 +219,10 @@ sup:hover .footnote-hover {
   display: block;
   text-indent: 0 !important;
   margin: 0 0 1em 0 !important;
+}
+
+.expandable {
+  position: relative;
 }
 
 p.pleca {
