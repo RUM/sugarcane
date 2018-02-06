@@ -136,7 +136,7 @@ function _search_unlock_shoot(e,f) {
 
   if (_search_will_search('collabs'))
     _search_fetch(
-      `${_search_origin}/collabs?select=id,name,seo_name,metadata&online=eq.true&or=(${cqs})&limit=12`,
+      `${_search_origin}/collabs?select=id,name,seo_name,metadata&online=is.true&or=(${cqs})&limit=12`,
       (data) => _search_render(data, '#collabs', _search_collab_template)
     );
 

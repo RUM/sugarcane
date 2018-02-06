@@ -23,11 +23,11 @@ $db_releases_all = -> {
 }
 
 $db_releases_latest = -> (i) {
-  db("/releases?select=#{release_attrs}&online=eq.true&order=date.desc&limit=#{i}")
+  db("/releases?select=#{release_attrs}&online=is.true&order=date.desc&limit=#{i}")
 }
 
 $db_releases = -> {
-  db("/releases?select=#{release_attrs}&online=eq.true&order=date.asc")
+  db("/releases?select=#{release_attrs}&online=is.true&order=date.asc")
 }
 
 $db_release_by_id = -> (id) {
@@ -35,7 +35,7 @@ $db_release_by_id = -> (id) {
 }
 
 $db_current_release = -> {
-  db("/releases?select=#{release_attrs},file&online=eq.true&order=date.desc&limit=1").first
+  db("/releases?select=#{release_attrs},file&online=is.true&order=date.desc&limit=1").first
 }
 
 # ARTICLES
@@ -80,7 +80,7 @@ $db_articles_suggestion = -> (not_id, i) {
 }
 
 $db_starred_articles = -> {
-  db("/articles?select=#{article_attrs},release:releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&starred=eq.true&online=eq.true&limit=6")
+  db("/articles?select=#{article_attrs},release:releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&starred=is.true&online=is.true&limit=6")
 }
 
 # COLLABS
@@ -100,11 +100,11 @@ $db_collabs_suggestion = -> (i) {
 
   ids = JSON.parse(post.body).map { |x| x['id'] }.join(',')
 
-  db("/collabs?select=#{collab_attrs},metadata&online=eq.true&id=in.#{ids}")
+  db("/collabs?select=#{collab_attrs},metadata&online=is.true&id=in.#{ids}")
 }
 
 $db_collabs_by_letter = -> (x) {
-  db("/collabs?select=#{collab_attrs},metadata&online=eq.true&lname=ilike.#{x}*")
+  db("/collabs?select=#{collab_attrs},metadata&online=is.true&lname=ilike.#{x}*")
 }
 
 $db_collabs_index_letters = -> {
@@ -118,7 +118,7 @@ $db_suggestions = -> {
 }
 
 $db_starred_suggestions = -> {
-  db("/suggestions?starred=eq.true")
+  db("/suggestions?starred=is.true")
 }
 
 $db_pages_by_id = -> (id) {
