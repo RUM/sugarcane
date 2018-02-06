@@ -57,8 +57,8 @@ class RUM
 
     class Article < Layout
       def og_description
-        if @article[:subtitle] and (@article[:subtitle].strip != "")
-          @article[:subtitle]
+        if @article[:title] and (@article[:title].strip != "")
+          @article[:title]
 
         elsif @article[:quote] and (@article[:quote].strip != "")
           @article[:quote]
