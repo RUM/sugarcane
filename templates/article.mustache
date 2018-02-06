@@ -67,16 +67,24 @@
       a['onclick'] = function() { _loadasset(this, '{{id}}', 'video', true) };
 
       a.innerHTML = `
-        <div class="fuzz"
-             style="position: static !important;
-                    text-align: center;
-                    color: white;
+        <div style="background-image: url(/images/rum-u-tv.png);
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-size: cover;
+                    position: relative;
                     margin: 1em auto !important;
-                    width: 400px;
-                    padding: 40px;">
-        <svg style="width:64px; height:64px; margin-bottom: 0.3em; vertical-align: middle;" viewBox="0 0 24 24">
-          <path fill="white" d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M10,16.5L16,12L10,7.5V16.5Z" />
-        </svg><br>YouTube
+                    width: 300px;
+                    height: 300px;">
+          <div class="fuzz"
+               style="position: static !important;
+                      text-align: center;
+                      color: white;
+                      margin: 1em auto !important;
+                      padding: 40px;">
+          <svg style="width:64px; height:64px; margin-bottom: 0.3em; vertical-align: middle;" viewBox="0 0 24 24">
+            <path fill="white" d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M10,16.5L16,12L10,7.5V16.5Z" />
+          </svg> &nbsp; YouTube
+          </div>
         </div>`;
     }
 
