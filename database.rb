@@ -49,7 +49,7 @@ $db_article_by_id = -> (id) {
 }
 
 $db_articles_by_release = -> (release_id) {
-  db("/articles?select=#{article_attrs},quote,content,release:releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&collaborations.relation=in.(author,guest,producer,host)&release_id=eq.#{release_id}").
+  db("/articles?select=#{article_attrs},quote,content,release:releases(#{release_attrs}),collaborations(*,collabs(#{collab_attrs}))&collaborations.relation=in.(author,guest)&release_id=eq.#{release_id}").
     group_by { |a| a[:metadata][:section] }
 }
 
