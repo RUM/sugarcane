@@ -209,6 +209,9 @@ main > nav a {
   article.dossier:nth-of-type(4n):nth-last-child(2),
   article.dossier:nth-of-type(4n+1):nth-last-child(1), /* intentionally unfinished... */
 
+  article.dossier:nth-of-type(4n+3):nth-last-child(2),
+  article.dossier:nth-of-type(4n):nth-last-child(1),
+
   /* If the last row has only 1 article, we treat the last two rows as 3 + 2 */
 
   /*
@@ -233,7 +236,11 @@ main > nav a {
   }
 
   article.dossier:nth-of-type(4n+2):nth-last-child(2),
-  article.dossier:nth-of-type(4n+3):nth-last-child(1) {
+  article.dossier:nth-of-type(4n+3):nth-last-child(1), /* intentionally unfinished... */
+
+  /* ...and if the last row has only 2 articles */
+  article.dossier:nth-of-type(4n+3):nth-last-child(2),
+  article.dossier:nth-of-type(4n):nth-last-child(1) {
     position: static;
     width: calc(50% - 2.2em);
     height: var(--article-height);
@@ -244,6 +251,9 @@ main > nav a {
   article.dossier:nth-of-type(4n+3):nth-last-child(5) figure,
   article.dossier:nth-of-type(4n):nth-last-child(4) figure,
   article.dossier:nth-of-type(4n+1):nth-last-child(3) figure,
+
+  article.dossier:nth-of-type(4n+3):nth-last-child(2) figure,
+  article.dossier:nth-of-type(4n):nth-last-child(1) figure,
 
   article.dossier:nth-of-type(4n+3):nth-last-child(3) figure,
   article.dossier:nth-of-type(4n):nth-last-child(2) figure,
@@ -263,20 +273,25 @@ main > nav a {
   /* PANÓPTICO */
   /*************/
 
-  article.panóptico:nth-of-type(1),
-  article.panóptico:nth-of-type(2) {
+  article.panóptico {
     width: calc(50% - 2.15em);
-  }
-
-  article.panóptico:nth-of-type(3),
-  article.panóptico:nth-of-type(4),
-  article.panóptico:nth-of-type(5) {
-    width: calc(33% - 1.99em);
   }
 
   article.panóptico figure {
     width: 100%;
     height: calc(var(--half-article-height) + 4em);
+  }
+
+  article.panóptico:nth-of-type(3):nth-last-child(3),
+  article.panóptico:nth-of-type(4):nth-last-child(2),
+  article.panóptico:nth-of-type(5):nth-last-child(1) {
+    width: calc(33% - 1.99em);
+  }
+
+  article.panóptico:nth-of-type(3n+1):nth-last-child(3n),
+  article.panóptico:nth-of-type(3n+2):nth-last-child(3n+2),
+  article.panóptico:nth-of-type(3n):nth-last-child(3n+1) {
+    width: calc(33% - 1.99em);
   }
 
   /***********/
