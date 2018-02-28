@@ -119,7 +119,7 @@ class RUM < Sinatra::Base
       authors_list  =
         @article[:collaborations].
           select { |x| x[:relation] == 'author' }.
-          map    { |x| collab_link x[:collabs], x[:relation] }.
+          map    { |x| collab_link x[:collabs] }.
           join(", ")
 
       collabs_plain_list  =
@@ -132,7 +132,7 @@ class RUM < Sinatra::Base
 
       @article[:collaborations].
         select { |x| x[:relation] != 'author' }.
-        each { |x| x[:collabs][:link] = collab_link x[:collabs], x[:relation] }.
+        each { |x| x[:collabs][:link] = collab_link(x[:collabs]) }.
         group_by { |x| x[:relation] }.
         each { |g,l|
           t = {}
