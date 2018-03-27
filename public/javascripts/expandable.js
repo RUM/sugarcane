@@ -17,7 +17,7 @@ display: block;
     o.innerText = 'Expandir imagen';
     o.style = sty;
 
-    var i = e.querySelector('img')
+    var i = e.querySelector('img');
 
     var a = (event) => {
       event.preventDefault();

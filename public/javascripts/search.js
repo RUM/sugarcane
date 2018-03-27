@@ -131,7 +131,7 @@ function _search_unlock_shoot(e,f) {
     tagsq += `,tags.cs.["${v}"]`;
   }
   else {
-    tagsq += `tags.cs.["${v}"]`
+    tagsq += `tags.cs.["${v}"]`;
   }
 
   if (_search_will_search('collabs'))

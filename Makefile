@@ -72,6 +72,15 @@ sync:
 		$(PROJECT)/ \
 		$(SRV_USER)@$(SRV_SERVER):$(SRV_DEST)
 
+fetch-storage:
+	rsync -Pvr \
+		-e "ssh -p $(SSH_PORT)" \
+		--size-only \
+		--exclude=lost+found \
+		--exclude=garbage \
+		$(SRV_USER)@$(SRV_SERVER):/storage/ \
+		./public/storage
+
 remote-stop:
 ifdef env
 	@ssh -p $(SSH_PORT) $(SRV_USER)@$(SRV_SERVER) "cd $(SRV_DEST); make stop env=$(env)"
