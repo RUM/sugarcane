@@ -100,7 +100,7 @@ $db_collabs_suggestion = -> (i) {
 }
 
 $db_collabs_by_letter = -> (x) {
-  db("/collabs?select=#{collab_attrs},metadata&online=is.true&lname=ilike.#{x}*")
+  db("/collabs?select=#{collab_attrs},metadata&online=is.true&or=(lname.ilike.#{x}*,aka.ilike.#{x}*)")
 }
 
 $db_collabs_index_letters = -> {
