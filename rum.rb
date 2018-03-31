@@ -50,6 +50,12 @@ class RUM < Sinatra::Base
              }
   end
 
+  get '/releases-current/?' do
+    @release = $db_current_release.call
+
+    redirect "/releases/#{@release[:id]}/#{@release[:seo_name]}"
+  end
+
   get '/releases-all/?' do
     mustache :releases,
              :locals => { :releases => $db_releases_all.call }
