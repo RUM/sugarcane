@@ -38,44 +38,40 @@ display: block;
       event.preventDefault();
       event.stopPropagation();
 
-      e.style["padding"]    = "1em !important";
-      e.style["margin"]     = "1em !important";
-
-      e.style["z-index"]    = "10";
-      e.style["text-align"] = "center";
-
-      e.style["position"]   = "fixed";
-      e.style["top"]        = "0";
-      e.style["left"]       = "0";
-
-      e.style["width"]  = "100%";
-      e.style["height"] = window.innerHeight + "px";
-
-      e.style["background-color"] = "rgba(0, 0, 0, 0.7)";
-
-      i.style["margin"] = "0 auto";
+      e.style = `
+position: absolute;
+padding: 1em !important;
+margin: 0;
+z-index: 10;
+text-align: center;
+top: 0;
+left: 0;
+background-color: rgba(0, 0, 0, 0.7);
+`;
 
       o.style["display"] = "none";
 
-      var screen_ratio = window.innerWidth / window.innerHeight;
-      var image_ratio  = i.clientWidth / i.clientHeight;
+      i.style["margin"] = "auto";
+      i.style["width"]  = "auto";
+      i.style["height"] = "auto";
 
-      if (screen_ratio > 1) {
-        if (image_ratio > screen_ratio) {
-          i.style["width"]  = window.innerWidth + "px";
-          i.style["height"] = "auto";
-        }
+      var oo = document.createElement('a');
+      oo.innerText = "Puedes regresar dando click en la imagen";
+      oo.style = `
+background-color: #e3655a;
+padding: 0.5em 1em;
+color: #f1f1f1;
+position: fixed;
+top: 1em;
+right: 1em;
+z-index: 1000;
+font-family: Cormorant, serif;
+font-size: 2em;
+`;
 
-        else {
-          i.style["height"] = window.innerHeight + "px";
-          i.style["width"]  = "auto";
-        }
-      }
-
-      // else {
-      //   if (image_ratio > screen_ratio) ;
-      //   else ;
-      // }
+      oo.addEventListener('click', () => oo.remove());
+      document.body.appendChild(oo);
+      setTimeout(() => { if (oo) oo.remove() }, 5000);
 
       e.addEventListener('click', a);
     };
