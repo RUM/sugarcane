@@ -281,7 +281,7 @@ main > nav a {
   article.crítica figure,
   article.panóptico figure {
     width: 100%;
-    height: calc(var(--half-article-height) + 4em);
+    height: calc(var(--half-article-height) + 1em);
   }
 
   article.crítica:nth-of-type(3):nth-last-child(3),
