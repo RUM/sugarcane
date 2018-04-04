@@ -15,11 +15,11 @@ GEM
     mustache-sinatra (1.0.1)
       mustache (<= 0.99.8)
     mustermann (1.0.2)
-    puma (3.11.2)
+    puma (3.11.3)
     rack (2.0.4)
     rack-protection (2.0.1)
       rack
-    rb-fsevent (0.10.2)
+    rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     rerun (0.13.0)
