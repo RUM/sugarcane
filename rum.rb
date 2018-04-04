@@ -249,6 +249,8 @@ class RUM < Sinatra::Base
     categories = JSON.parse(Net::HTTP.get(URI('https://blog.revistadelauniversidad.mx/wp-json/wp/v2/categories')),
                             { :symbolize_names => true })
 
+    categories = sort_like [13,12,14], categories
+
     posts = JSON.parse(Net::HTTP.get(URI('https://blog.revistadelauniversidad.mx/wp-json/wp/v2/posts?_embed')),
                        { :symbolize_names => true }).each { |p|
       d = Date.parse(p[:date])

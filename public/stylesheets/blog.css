@@ -28,6 +28,10 @@ article ul {
   margin-top: 2em;
 }
 
+article li {
+  text-align: center;
+}
+
 article li em {
   font-size: 1.2em;
 }
@@ -38,7 +42,7 @@ article .date {
 }
 
 article .bm {
-  flex: 1 40%;
+  flex: 1 100px;
 }
 
 /* Desktop */
@@ -49,8 +53,15 @@ article .bm {
 
   article {
     width: calc(100% - 2.2em);
-    display: inline-flex;
+    display: flex;
+    flex-flow: row wrap;
     align-items: center;
+  }
+
+  article h4 {
+    flex: 1 100%;
+    text-align: center;
+    padding: 0 2em;
   }
 
   article .excerpt {
