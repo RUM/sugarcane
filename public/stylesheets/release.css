@@ -128,6 +128,10 @@ main > nav a {
   /* DOSSIER */
   /***********/
 
+  article.dossier:nth-of-type(1) > div {
+    height: var(--half-article-height);
+  }
+
   article.dossier:nth-of-type(1) figure {
     width: 100% !important;
   }
@@ -136,7 +140,7 @@ main > nav a {
     width: calc(60% - 2em) !important;
   }
 
-  article.dossier:nth-of-type(2) div {
+  article.dossier:nth-of-type(2) > div {
     width: 40% !important;
   }
 
@@ -169,6 +173,11 @@ main > nav a {
     width: calc(40% - 2.3em);
   }
 
+  article.dossier:nth-of-type(4n+1) > div {
+    width: 100%;
+    height: calc(var(--half-article-height) - 1em);
+  }
+
   article.dossier:nth-of-type(4n),
   article.dossier:nth-of-type(4n+3) {
     height: var(--half-article-height);
@@ -178,8 +187,8 @@ main > nav a {
     width: calc(20% - 2em);
   }
 
-  article.dossier:nth-of-type(4n) div,
-  article.dossier:nth-of-type(4n+3) div {
+  article.dossier:nth-of-type(4n) > div,
+  article.dossier:nth-of-type(4n+3) > div {
     width: 70%;
   }
 

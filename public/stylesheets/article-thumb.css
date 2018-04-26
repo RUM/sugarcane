@@ -42,8 +42,8 @@ article > div {
   position: relative;
   margin: 0;
   display: inline-block;
-  width: 100%;
   padding: 1em;
+  height: 100%;
 }
 
 article > div h3  {
@@ -119,5 +119,10 @@ article .translations a:hover {
 @media (max-width: 72em) {
   article {
     margin: 1em 0;
+  }
+
+  article > div {
+    height: 50%;
+    width: 100%;
   }
 }
