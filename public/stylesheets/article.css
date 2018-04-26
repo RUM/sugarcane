@@ -16,6 +16,20 @@ header h3, header h4 {
   font-style: italic;
 }
 
+.translations {
+  background-color: #E3655A;
+  font-family: Cormorant;
+  font-size: 1.2em;
+  display: flex;
+  text-align: center;
+}
+
+.translations a {
+  flex: 1 100%;
+  padding: 5px 16px;
+  color: white;
+}
+
 aside#more-articles {
   position: absolute;
   left: 1em;

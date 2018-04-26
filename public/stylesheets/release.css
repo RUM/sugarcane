@@ -117,7 +117,8 @@ main > nav a {
     height: var(--half-article-height);
   }
 
-  article.editorial figure {
+  article.editorial figure,
+  article.editorial > div {
     width: 50%;
     height: 100%;
     float: left;

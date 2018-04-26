@@ -30,5 +30,11 @@
       </li>
       {{/ collaborations}}
     </ul>
+
+    <div class="translations">
+      {{# metadata.translations}}
+      <a href="/articles/{{article_id}}">{{language}}</a>
+      {{/ metadata.translations}}
+    </div>
   </div>
 </article>

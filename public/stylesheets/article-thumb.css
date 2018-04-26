@@ -39,8 +39,10 @@ article > figure a {
 }
 
 article > div {
+  position: relative;
   margin: 0;
   display: inline-block;
+  width: 100%;
   padding: 1em;
 }
 
@@ -92,6 +94,25 @@ article > div > label.multimedia {
 
 article > div > label.editorial {
   display: none;
+}
+
+article .translations {
+  font-size: 0.7em;
+  display: flex;
+
+  position: absolute;
+  bottom: 10px;
+  width: calc(100% - 2em);
+}
+
+article .translations a {
+  flex: 1 100%;
+  padding: 2px;
+  text-align: center;
+}
+
+article .translations a:hover {
+  color: #8B3D37;
 }
 
 /* mobile */

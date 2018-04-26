@@ -33,6 +33,12 @@
   {{/ collabs_group}}
 </header>
 
+<div class="translations">
+  {{# metadata.translations}}
+  <a href="/articles/{{article_id}}">{{language}}</a>
+  {{/ metadata.translations}}
+</div>
+
 <main>
   <blockquote>
     {{# md}}{{quote}}{{/ md}}
